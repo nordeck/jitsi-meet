@@ -69,12 +69,13 @@ function ActionButton({
     onOptionsClick
 }: Props) {
     return (
-        <div
+        <div role="button" tabindex="0"
             className = { `action-btn ${className} ${type} ${disabled ? 'disabled' : ''}` }
             data-testid = { testId ? testId : undefined }
             onClick = { disabled ? undefined : onClick }>
             {children}
-            {hasOptions && <div
+            {hasOptions &&
+            <div role="button" tabindex="0" aria-haspopup="true"
                 className = 'options'
                 data-testid = 'prejoin.joinOptions'
                 onClick = { disabled ? undefined : onOptionsClick }>

@@ -33,7 +33,7 @@ function ToggleButton({ children, isToggled, onClick }: Props) {
     const className = isToggled ? `${mainClass} ${mainClass}--toggled` : mainClass;
 
     return (
-        <div
+        <div role="button" tabindex="0"
             className = { className }
             onClick = { onClick }>
             <div className = 'toggle-button-container'>

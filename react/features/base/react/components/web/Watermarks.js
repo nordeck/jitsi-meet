@@ -176,7 +176,9 @@ class Watermarks extends Component<Props, State> {
             if (_logoLink) {
                 reactElement = (
                     <a
+                        aria-label = { _logoLink }
                         href = { _logoLink }
+                        role = 'link'
                         target = '_new'>
                         { reactElement }
                     </a>

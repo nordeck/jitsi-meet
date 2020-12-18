@@ -68,7 +68,10 @@ function ConnectionStatus({ connectionDetails, t, connectionType }: Props) {
     return (
         <div className = 'con-status'>
             <div className = 'con-status-container'>
-                <div className = 'con-status-header'>
+                <div
+                    aria-level = { 1 }
+                    className = 'con-status-header'
+                    role = 'heading'>
                     <div className = { `con-status-circle ${connectionClass}` }>
                         <Icon
                             size = { 16 }
@@ -82,7 +85,7 @@ function ConnectionStatus({ connectionDetails, t, connectionType }: Props) {
                         size = { 24 }
                         src = { IconArrowDownSmall } />
                 </div>
-                <div className = { `con-status-details ${detailsClassName}` }>{detailsText}</div>
+                <div role="heading" aria-level="2" className = { `con-status-details ${detailsClassName}` }>{detailsText}</div>
             </div>
         </div>
     );

@@ -190,7 +190,7 @@ class CopyMeetingUrl extends Component<Props, State> {
                 className = 'copy-meeting'
                 onMouseEnter = { _showCopyLink }
                 onMouseLeave = { _hideCopyLink }>
-                <div
+                <div tabindex="0" role="button"
                     className = { `url ${showLinkCopied ? 'done' : ''}` }
                     onClick = { _copyUrl } >
                     <div className = 'copy-meeting-text'>

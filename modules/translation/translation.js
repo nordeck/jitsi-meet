@@ -14,6 +14,7 @@ declare var $: Function;
  */
 function _onI18nInitialized() {
     $('[data-i18n]').localize();
+    document.documentElement.lang = i18next.language;
 }
 
 /**
