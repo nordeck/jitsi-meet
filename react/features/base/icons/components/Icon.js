@@ -40,7 +40,12 @@ type Props = {
     /**
      * Style object to be applied.
      */
-    style?: Object
+    style?: Object,
+
+    /**
+     * aria label for the Icon.
+     */
+    ariaLabel?: string
 };
 
 export const DEFAULT_COLOR = navigator.product === 'ReactNative' ? 'white' : undefined;
@@ -60,7 +65,8 @@ export default function Icon(props: Props) {
         onClick,
         size,
         src: IconComponent,
-        style
+        style,
+        ariaLabel
     } = props;
 
     const {
@@ -73,9 +79,12 @@ export default function Icon(props: Props) {
 
     return (
         <Container
+            aria-label = { `${className}` === 'settings-button-small-icon' ? `${ariaLabel}` : ' ' }
             className = { `jitsi-icon ${className}` }
             onClick = { onClick }
-            style = { restStyle }>
+            role = 'button'
+            style = { restStyle }
+            tabIndex = { `${className}` === 'settings-button-small-icon' ? 0 : null }>
             <IconComponent
                 fill = { calculatedColor }
                 height = { calculatedSize }

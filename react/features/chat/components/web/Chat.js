@@ -132,11 +132,17 @@ class Chat extends AbstractChat<Props> {
      */
     _renderChatHeader() {
         return (
-            <div className = 'chat-header'>
+            <div
+                className = 'chat-header'
+                role = 'heading'>
                 <div
                     className = 'chat-close'
-                    onClick = { this.props._onToggleChat }>
-                    <Icon src = { IconClose } />
+                    onClick = { this.props._onToggleChat }
+                    role = 'button'
+                    tabIndex = { 0 }>
+                    <Icon
+                        aria-label = 'chat-close'
+                        src = { IconClose } />
                 </div>
             </div>
         );

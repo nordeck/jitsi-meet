@@ -38,6 +38,7 @@ export function copyText(textToCopy: string) {
     // $FlowFixMe
     document.body.appendChild(fakeTextArea);
     fakeTextArea.value = textToCopy;
+    fakeTextArea.atr('aria-label', 'fakeTextArea');
     fakeTextArea.select();
 
     try {
