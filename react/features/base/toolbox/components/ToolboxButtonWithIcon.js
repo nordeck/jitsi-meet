@@ -30,6 +30,11 @@ type Props = {
      * Additional styles.
      */
     styles?: Object,
+
+    /**
+     * aria label for the Icon.
+     */
+    ariaLabel?: string
 };
 
 type State = {
@@ -100,7 +105,8 @@ export default class ToolboxButtonWithIcon extends Component<Props, State> {
             icon,
             iconDisabled,
             onIconClick,
-            styles
+            styles,
+            ariaLabel
         } = this.props;
 
         const iconProps = {};
@@ -129,6 +135,7 @@ export default class ToolboxButtonWithIcon extends Component<Props, State> {
                     onMouseLeave = { this._onMouseLeave }>
                     <Icon
                         { ...iconProps }
+                        ariaLabel = { ariaLabel }
                         size = { size }
                         src = { icon } />
                 </div>

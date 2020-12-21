@@ -12,6 +12,8 @@ import { getMediaPermissionPromptVisibility } from '../../../overlay';
 import { toggleVideoSettings, VideoSettingsPopup } from '../../../settings';
 import { isVideoSettingsButtonDisabled } from '../../functions';
 import VideoMuteButton from '../VideoMuteButton';
+import { translate, translateToHTML } from '../../../base/i18n';
+
 
 type Props = {
 
@@ -142,6 +144,7 @@ class VideoSettingsButton extends Component<Props, State> {
         return visible ? (
             <VideoSettingsPopup>
                 <ToolboxButtonWithIcon
+                    ariaLabel = 'Video setting'
                     icon = { IconArrowDown }
                     iconDisabled = { this._isIconDisabled() }
                     onIconClick = { onVideoOptionsClick }>

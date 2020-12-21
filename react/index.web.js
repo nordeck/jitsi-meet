@@ -63,6 +63,7 @@ globalNS.entryPoints = {
     PREJOIN: PrejoinApp
 };
 
+
 globalNS.renderEntryPoint = ({
     Component,
     props = {},
@@ -72,4 +73,7 @@ globalNS.renderEntryPoint = ({
         <Component { ...props } />,
         document.getElementById(elementId)
     );
+    const mainDiv = document.getElementById('react');
+
+    mainDiv.setAttribute('role', 'main');
 };

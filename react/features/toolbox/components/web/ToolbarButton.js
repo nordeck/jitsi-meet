@@ -111,7 +111,9 @@ class ToolbarButton extends AbstractToolbarButton<Props> {
      */
     _renderIcon() {
         return (
-            <div className = { `toolbox-icon ${this.props.toggled ? 'toggled' : ''}` }>
+            <div
+                className = { `toolbox-icon ${this.props.toggled ? 'toggled' : ''}` }
+                role = 'button'>
                 <Icon src = { this.props.icon } />
             </div>
         );

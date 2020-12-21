@@ -52,12 +52,14 @@ function InviteMore({
     return (
         _visible
             ? <div className = { `invite-more-container${_tileViewEnabled ? ' elevated' : ''}` }>
-                <div className = 'invite-more-header'>
+                <h1 className = 'invite-more-header'>
                     {t('addPeople.inviteMoreHeader')}
-                </div>
+                </h1>
                 <div
                     className = 'invite-more-button'
-                    onClick = { onClick }>
+                    onClick = { onClick }
+                    role = 'button'
+                    tabIndex = { 0 }>
                     <Icon src = { IconInviteMore } />
                     <div className = 'invite-more-button-text'>
                         {t('addPeople.inviteMorePrompt')}
