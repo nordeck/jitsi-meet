@@ -336,12 +336,17 @@ class Filmstrip extends Component <Props> {
         const { t } = this.props;
 
         return (
-            <div className = 'filmstrip__toolbar'>
+            <div
+                className = 'filmstrip__toolbar'
+                onClick = { this._onToolbarToggleFilmstrip }
+                onKeyPress = { this._onToolbarToggleFilmstrip }
+                tabIndex = { 0 }>
                 <button
                     aria-label = { t('toolbar.accessibilityLabel.toggleFilmstrip') }
-                    id = 'toggleFilmstripButton'
-                    onClick = { this._onToolbarToggleFilmstrip }>
-                    <Icon src = { icon } />
+                    id = 'toggleFilmstripButton'>
+                    <Icon
+                        aria-label = { t('toolbar.accessibilityLabel.toggleFilmstrip') }
+                        src = { icon } />
                 </button>
             </div>
         );

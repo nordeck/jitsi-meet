@@ -92,6 +92,7 @@ class OverflowMenuItem extends Component<Props> {
                 aria-label = { accessibilityLabel }
                 className = { className }
                 onClick = { disabled ? null : onClick }
+                onKeyPress = { disabled ? null : onClick }
                 tabIndex = { 0 }>
                 <span className = 'overflow-menu-item-icon'>
                     <Icon

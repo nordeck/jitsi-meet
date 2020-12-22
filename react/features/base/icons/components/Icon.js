@@ -82,6 +82,7 @@ export default function Icon(props: Props) {
             aria-label = { `${className}` === 'settings-button-small-icon' ? `${ariaLabel}` : ' ' }
             className = { `jitsi-icon ${className}` }
             onClick = { onClick }
+            onKeyPress = { onClick }
             role = 'button'
             style = { restStyle }
             tabIndex = { `${className}` === 'settings-button-small-icon' ? 0 : null }>

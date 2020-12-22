@@ -116,6 +116,7 @@ class ChatInput extends Component<Props, State> {
                             <Emoji
                                 aria-label = 'smileys'
                                 onClick = { this._onToggleSmileysPanel }
+                                onKeyPress = { this._onToggleSmileysPanel }
                                 role = 'button'
                                 tabIndex = { 0 }
                                 text = ':)' />
@@ -128,8 +129,7 @@ class ChatInput extends Component<Props, State> {
                 </div>
                 <div
                     className = 'usrmsg-form'
-                    role = 'form'
-                    tabIndex = { 0 }>
+                    role = 'form'>
                     <TextareaAutosize
                         aria-label = { this.props.t('chat.messagebox') }
                         id = 'usermsg'
@@ -139,6 +139,7 @@ class ChatInput extends Component<Props, State> {
                         onHeightChange = { this.props.onResize }
                         onKeyDown = { this._onDetectSubmit }
                         placeholder = { this.props.t('chat.messagebox') }
+                        tabIndex = { 0 }
                         value = { this.state.message } />
                 </div>
             </div>
