@@ -79,7 +79,7 @@ export default function Icon(props: Props) {
 
     return (
         <Container
-            aria-label = { `${className}` === 'settings-button-small-icon' ? `${ariaLabel}` : ' ' }
+            aria-label = { ariaLabel ? ariaLabel : '' }
             className = { `jitsi-icon ${className}` }
             onClick = { onClick }
             role = 'button'
