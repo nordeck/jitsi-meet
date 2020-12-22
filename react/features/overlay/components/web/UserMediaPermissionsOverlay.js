@@ -66,7 +66,9 @@ class UserMediaPermissionsOverlay extends AbstractUserMediaPermissionsOverlay {
         if (policyLogoSrc) {
             return (
                 <div className = 'policy__logo'>
-                    <img src = { policyLogoSrc } />
+                    <img
+                        alt = 'policy__logo'
+                        src = { policyLogoSrc } />
                 </div>
             );
         }

@@ -73,7 +73,9 @@ class VolumeSlider extends Component<Props, State> {
      */
     render() {
         return (
-            <li className = 'popupmenu__item'>
+            <li
+                aria-label = 'VOLUME_SLIDER_SCALE'
+                className = 'popupmenu__item'>
                 <div className = 'popupmenu__contents'>
                     <span className = 'popupmenu__icon'>
                         <Icon src = { IconVolume } />

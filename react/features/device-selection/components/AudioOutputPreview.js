@@ -66,7 +66,12 @@ class AudioOutputPreview extends Component<Props> {
     render() {
         return (
             <div className = 'audio-output-preview'>
-                <a onClick = { this._onClick }>
+                <a
+                    aria-label = { this.props.t('deviceSelection.testAudio') }
+                    onClick = { this._onClick }
+                    onKeyPress = { this._onClick }
+                    role = ' button'
+                    tabIndex = { 0 }>
                     { this.props.t('deviceSelection.testAudio') }
                 </a>
                 <Audio

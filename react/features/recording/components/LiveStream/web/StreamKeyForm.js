@@ -63,8 +63,12 @@ class StreamKeyForm extends AbstractStreamKeyForm<Props> {
                         }
                         { this.helpURL
                             ? <a
+                                aria-label = { t('liveStreaming.streamIdHelp') }
                                 className = 'helper-link'
-                                onClick = { this._onOpenHelp }>
+                                onClick = { this._onOpenHelp }
+                                onKeyPress = { this._onOpenHelp }
+                                role = 'button'
+                                tabIndex = { 0 }>
                                 { t('liveStreaming.streamIdHelp') }
                             </a>
                             : null
