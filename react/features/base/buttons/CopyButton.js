@@ -90,8 +90,7 @@ function CopyButton({ className, displayedText, textToCopy, textOnHover, textOnC
             return (
                 <>
                     <div className = 'copy-button-content selected'>
-                        Hier ist Peter Pan
-                        {/* {textOnCopySuccess} */}
+                        { { textOnCopySuccess } }
                     </div>
                     <Icon src = { IconCheck } />
                 </>
