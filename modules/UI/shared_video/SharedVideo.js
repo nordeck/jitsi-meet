@@ -732,7 +732,9 @@ function requestVideoLink() {
             state0: {
                 titleKey: 'dialog.shareVideoTitle',
                 html: `
-                    <input name='sharedVideoUrl' type='text'
+                    <input
+                           aria-label='VideoUrl'
+                           name='sharedVideoUrl' type='text'
                            class='input-control'
                            data-i18n='[placeholder]defaultLink'
                            autofocus>`,
