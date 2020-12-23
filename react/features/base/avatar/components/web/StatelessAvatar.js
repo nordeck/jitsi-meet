@@ -64,13 +64,13 @@ export default class StatelessAvatar extends AbstractStatelessAvatar<Props> {
             return (
                 <div className = { this._getBadgeClassName() }>
                     <img
+                        alt = 'avatar'
                         className = { this._getAvatarClassName() }
                         data-testid = { this.props.testId }
                         id = { this.props.id }
                         onError = { this.props.onAvatarLoadError }
                         src = { url }
-                        style = { this._getAvatarStyle() }
-                        />
+                        style = { this._getAvatarStyle() } />
                 </div>
             );
         }

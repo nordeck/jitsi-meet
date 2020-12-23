@@ -142,8 +142,18 @@ function PasswordSection({
         if (passwordEditEnabled) {
             return (
                 <>
-                    <a onClick = { onTogglePasswordEditState }>{ t('dialog.Cancel') }</a>
-                    <a onClick = { onPasswordSave }>{ t('dialog.add') }</a>
+                    <a
+                        aria-label = { t('dialog.Cancel') }
+                        onClick = { onTogglePasswordEditState }
+                        onKeyPress = { onTogglePasswordEditState }
+                        role = 'button'
+                        tabIndex = { 0 }>{ t('dialog.Cancel') }</a>
+                    <a
+                        aria-label = { t('dialog.add')  }
+                        onClick = { onPasswordSave }
+                        onKeyPress = { onPasswordSave }
+                        role = 'button'
+                        tabIndex = { 0 }>{ t('dialog.add') }</a>
                 </>
             );
         }
@@ -152,15 +162,23 @@ function PasswordSection({
             return (
                 <>
                     <a
+                        aria-label = { t('dialog.Remove') }
                         className = 'remove-password'
-                        onClick = { onPasswordRemove }>{ t('dialog.Remove') }</a>
+                        onClick = { onPasswordRemove }
+                        onKeyPress = { onPasswordRemove }
+                        role = 'button'
+                        tabIndex = { 0 }>{ t('dialog.Remove') }</a>
                     {
 
                         // There are cases like lobby and grant moderator when password is not available
                         password ? <>
                             <a
+                                aria-label = { t('dialog.copy') }
                                 className = 'copy-password'
-                                onClick = { onPasswordCopy }>{ t('dialog.copy') }</a>
+                                onClick = { onPasswordCopy }
+                                onKeyPress = { onPasswordCopy }
+                                role = 'button'
+                                tabIndex = { 0 }>{ t('dialog.copy') }</a>
                         </> : null
                     }
                 </>
@@ -169,8 +187,12 @@ function PasswordSection({
 
         return (
             <a
+                aria-label = { t('info.addPassword') }
                 className = 'add-password'
-                onClick = { onTogglePasswordEditState }>{ t('info.addPassword') }</a>
+                onClick = { onTogglePasswordEditState }
+                onKeyPress = { onTogglePasswordEditState }
+                role = 'button'
+                tabIndex = { 0 }>{ t('info.addPassword') }</a>
         );
     }
 

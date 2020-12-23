@@ -27,6 +27,7 @@ class GoogleSignInButton extends AbstractGoogleSignInButton {
                 className = 'google-sign-in'
                 onClick = { this.props.onClick }>
                 <img
+                    alt = 'google-logo'
                     className = 'google-logo'
                     src = 'images/googleLogo.svg' />
                 <div className = 'google-cta'>

@@ -92,7 +92,9 @@ function CopyButton({ className, displayedText, textToCopy, textOnHover, textOnC
                     <div className = 'copy-button-content selected'>
                         { { textOnCopySuccess } }
                     </div>
-                    <Icon src = { IconCheck } />
+                    <Icon
+                        ariaLabel = { 'IconCheck' }
+                        src = { IconCheck } />
                 </>
             );
         }
@@ -102,17 +104,22 @@ function CopyButton({ className, displayedText, textToCopy, textOnHover, textOnC
                 <div className = 'copy-button-content'>
                     {isHovered ? textOnHover : displayedText}
                 </div>
-                <Icon src = { IconCopy } />
+                <Icon
+                    ariaLabel = { 'IconCopy' }
+                    src = { IconCopy } />
             </>
         );
     }
 
     return (
         <div
+            aria-label = { 'copy' }
             className = { `${className} copy-button${isClicked ? ' clicked' : ''}` }
             onClick = { onClick }
             onMouseOut = { onHoverOut }
-            onMouseOver = { onHoverIn }>
+            onMouseOver = { onHoverIn }
+            role = 'but ton'
+            tabIndex = { 0 }>
             { renderContent() }
         </div>
     );

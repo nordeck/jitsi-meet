@@ -136,13 +136,13 @@ class Chat extends AbstractChat<Props> {
                 className = 'chat-header'
                 role = 'heading'>
                 <div
+                    aria-label = 'chat-close'
                     className = 'chat-close'
                     onClick = { this.props._onToggleChat }
                     onKeyPress = { this.props._onToggleChat }
                     role = 'button'
                     tabIndex = { 0 }>
                     <Icon
-                        aria-label = 'chat-close'
                         src = { IconClose } />
                 </div>
             </div>
