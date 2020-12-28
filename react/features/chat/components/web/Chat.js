@@ -132,9 +132,8 @@ class Chat extends AbstractChat<Props> {
      */
     _renderChatHeader() {
         return (
-            <div
-                className = 'chat-header'
-                role = 'heading'>
+            <div className = 'chat-header'>
+                <h2>{ 'Chat Section'}</h2>
                 <div
                     aria-label = 'chat-close'
                     className = 'chat-close'

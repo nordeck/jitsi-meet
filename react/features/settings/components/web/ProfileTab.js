@@ -171,9 +171,9 @@ class ProfileTab extends AbstractDialogTab<Props> {
 
         return (
             <div>
-                <div className = 'mock-atlaskit-label'>
+                <h2 className = 'mock-atlaskit-label'>
                     { t('toolbar.authenticate') }
-                </div>
+                </h2>
                 { authLogin
                     && <div className = 'auth-name'>
                         { t('settings.loggedIn', { name: authLogin }) }

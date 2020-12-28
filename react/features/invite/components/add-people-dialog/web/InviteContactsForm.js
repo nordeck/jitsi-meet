@@ -405,13 +405,21 @@ class InviteContactsForm extends AbstractAddPeopleDialog<Props, State> {
         return (
             <div className = { `invite-more-dialog invite-buttons${this._isAddDisabled() ? ' disabled' : ''}` }>
                 <a
+                    aria-label = { t('dialog.Cancel') }
                     className = 'invite-more-dialog invite-buttons-cancel'
-                    onClick = { this._onClearItems }>
+                    onClick = { this._onClearItems }
+                    onKeyPress = { this._onClearItems }
+                    role = 'button'
+                    tabIndex = { 0 }>
                     {t('dialog.Cancel')}
                 </a>
                 <a
+                    aria-label = { t('addPeople.add') }
                     className = 'invite-more-dialog invite-buttons-add'
-                    onClick = { this._onSubmit }>
+                    onClick = { this._onSubmit }
+                    onKeyPress = { this._onClearItems }
+                    role = 'button'
+                    tabIndex = { 0 }>
                     {t('addPeople.add')}
                 </a>
             </div>
@@ -444,8 +452,11 @@ class InviteContactsForm extends AbstractAddPeopleDialog<Props, State> {
                 </span>
                 <span>
                     <a
+                        aria-label = { supportLink }
                         href = { supportLink }
                         rel = 'noopener noreferrer'
+                        role = 'button'
+                        tabIndex = { 0 }
                         target = '_blank'>
                         { t('inlineDialogFailure.support') }
                     </a>

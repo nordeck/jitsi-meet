@@ -97,6 +97,12 @@
     }
 }
 
+.chat-header > h2{
+ text-align: center;
+ padding-top: 6%;
+}
+
+
 .chat-header {
     background-color: $chatHeaderBackgroundColor;
     height: 70px;

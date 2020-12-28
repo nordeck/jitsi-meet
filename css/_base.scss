@@ -44,7 +44,7 @@ body {
  * pad the modal container in order for the modals to be centered
  * while also taking the chat size into consideration.
 */
-@media (min-width: 480px + $sidebarWidth) {
+@media (min-width: 280px + $sidebarWidth) {
     .shift-right [class^="Modal__FillScreen"] {
         padding-left: $sidebarWidth;
     }
@@ -239,7 +239,7 @@ form {
             display: none;
         }
         .vertical-filmstrip .filmstrip {
-            display: none;
+            display: flex;
         }
         .new-toolbox {
             .toolbox-content {

@@ -177,9 +177,9 @@ class MoreTab extends AbstractDialogTab<Props, State> {
             <div
                 className = 'settings-sub-pane language-settings'
                 key = 'language'>
-                <div className = 'mock-atlaskit-label'>
+                <h2 className = 'mock-atlaskit-label'>
                     { t('settings.language') }
-                </div>
+                </h2>
                 <DropdownMenu
                     isOpen = { this.state.isLanguageSelectOpen }
                     onOpenChange = { this._onLanguageDropdownOpenChange }
@@ -219,9 +219,9 @@ class MoreTab extends AbstractDialogTab<Props, State> {
             <div
                 className = 'settings-sub-pane'
                 key = 'moderator'>
-                <div className = 'mock-atlaskit-label'>
+                <h2 className = 'mock-atlaskit-label'>
                     { t('settings.moderator') }
-                </div>
+                </h2>
                 <Checkbox
                     isChecked = { startAudioMuted }
                     label = { t('settings.startAudioMuted') }
@@ -267,9 +267,9 @@ class MoreTab extends AbstractDialogTab<Props, State> {
             <div
                 className = 'settings-sub-pane'
                 key = 'prejoin-screen'>
-                <div className = 'mock-atlaskit-label'>
+                <h2 className = 'mock-atlaskit-label'>
                     { t('prejoin.premeeting') }
-                </div>
+                </h2>
                 <Checkbox
                     isChecked = { showPrejoinPage }
                     label = { t('prejoin.showScreen') }

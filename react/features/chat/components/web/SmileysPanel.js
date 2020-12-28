@@ -41,7 +41,9 @@ class SmileysPanel extends PureComponent<Props> {
                     <Emoji
                         aria-label = 'smiley'
                         onClick = { onSelectFunction }
+                        onKeyPress = { onSelectFunction }
                         onlyEmojiClassName = 'smiley'
+                        tabindex = { 0 }
                         text = { smileys[smileyKey] } />
                 </div>
             );
