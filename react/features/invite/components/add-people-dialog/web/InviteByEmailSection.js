@@ -113,7 +113,11 @@ function InviteByEmailSection({ inviteSubject, inviteText, t }: Props) {
                             key = { idx }
                             position = 'top'>
                             <div
-                                onClick = { _onSelectProvider(url) }>
+                                aria-label = { tooltipKey }
+                                onClick = { _onSelectProvider(url) }
+                                onKeyPress = { _onSelectProvider(url) }
+                                role = 'button'
+                                tabIndex = { 0 }>
                                 <Icon src = { icon } />
                             </div>
                         </Tooltip>
@@ -142,8 +146,11 @@ function InviteByEmailSection({ inviteSubject, inviteText, t }: Props) {
                         content = { t('addPeople.copyInvite') }
                         position = 'top'>
                         <div
+                            aria-label = { t('addPeople.copyInvite') }
                             className = 'copy-invite-icon'
-                            onClick = { _onCopyText }>
+                            onClick = { _onCopyText }
+                            onKeyPress = { _onCopyText }
+                            tabIndex = { 0 }>
                             <Icon src = { IconCopy } />
                         </div>
                     </Tooltip>

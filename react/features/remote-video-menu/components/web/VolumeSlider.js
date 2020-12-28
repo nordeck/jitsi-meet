@@ -82,10 +82,14 @@ class VolumeSlider extends Component<Props, State> {
                     </span>
                     <div className = 'popupmenu__slider_container'>
                         <input
+                            aria-valuemax = { VOLUME_SLIDER_SCALE }
+                            aria-valuemin = { 0 }
+                            aria-valuenow = { this.state.volumeLevel }
                             className = 'popupmenu__slider'
                             max = { VOLUME_SLIDER_SCALE }
                             min = { 0 }
                             onChange = { this._onVolumeChange }
+                            tabIndex = { 0 }
                             type = 'range'
                             value = { this.state.volumeLevel } />
                     </div>

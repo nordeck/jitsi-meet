@@ -118,7 +118,7 @@ function CopyButton({ className, displayedText, textToCopy, textOnHover, textOnC
             onClick = { onClick }
             onMouseOut = { onHoverOut }
             onMouseOver = { onHoverIn }
-            role = 'but ton'
+            role = 'button'
             tabIndex = { 0 }>
             { renderContent() }
         </div>

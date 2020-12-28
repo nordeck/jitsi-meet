@@ -35,6 +35,11 @@ type Props = {
      * Callback to invoke when the component is clicked.
      */
     onClick: Function,
+
+    /**
+     * press key to invoke when the component is clicked.
+     */
+    onKeyPress: Function,
 };
 
 /**
@@ -61,16 +66,15 @@ export default class RemoteVideoMenuButton extends Component<Props> {
         const linkClassName = `popupmenu__link ${displayClass || ''}`;
 
         return (
-            <li
-                aria-label = { buttonText }
-                className = 'popupmenu__item'
-                role = 'button'
-                tabIndex = { 0 }>
+            <li className = 'popupmenu__item'>
                 <a
+                    aria-label = { buttonText ? buttonText : 'some thing' }
                     className = { linkClassName }
                     id = { id }
                     onClick = { onClick }
-                    onKeyPress = { onClick }>
+                    onKeyPress = { onClick }
+                    role = 'button'
+                    tabIndex = { 0 }>
                     <span className = 'popupmenu__icon'>
                         <Icon src = { icon } />
                     </span>
