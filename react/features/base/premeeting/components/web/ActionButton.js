@@ -69,16 +69,21 @@ function ActionButton({
     onOptionsClick
 }: Props) {
     return (
-        <div role="button" tabindex="0"
+        <div
             className = { `action-btn ${className} ${type} ${disabled ? 'disabled' : ''}` }
             data-testid = { testId ? testId : undefined }
             onClick = { disabled ? undefined : onClick }>
+            role="button"
+            tabindex="0"
             {children}
-            {hasOptions &&
-            <div role="button" tabindex="0" aria-haspopup="true"
+            {hasOptions
+            && <div
+                aria-haspopup = 'true'
                 className = 'options'
                 data-testid = 'prejoin.joinOptions'
-                onClick = { disabled ? undefined : onOptionsClick }>
+                onClick = { disabled ? undefined : onOptionsClick }
+                role = 'button'
+                tabIndex = '0' >
                 <Icon
                     className = 'icon'
                     size = { 14 }
