@@ -138,12 +138,14 @@ class VideoSettingsContent extends Component<Props, State> {
         const isSelected = deviceId === currentCameraDeviceId;
         const key = `vp-${index}`;
         const className = 'video-preview-entry';
+        const tabIndex = '0';
 
         if (error) {
             return (
                 <div
                     className = { className }
-                    key = { key }>
+                    key = { key }
+                    tabIndex = { 0 } >
                     <div className = 'video-preview-error'>{t(error)}</div>
                 </div>
             );
@@ -151,7 +153,8 @@ class VideoSettingsContent extends Component<Props, State> {
 
         const props: Object = {
             className,
-            key
+            key,
+            tabIndex
         };
         const label = jitsiTrack && jitsiTrack.getTrackLabel();
 
@@ -163,11 +166,13 @@ class VideoSettingsContent extends Component<Props, State> {
 
         return (
             <div { ...props }>
-                <div className = 'video-preview-label'>{label}</div>
+                <div
+                    className = 'video-preview-label'>{label}</div>
                 <div className = 'video-preview-overlay' />
                 <Video
                     className = { videoClassName }
                     playsinline = { true }
+                    tabIndex = { 0 }
                     videoTrack = {{ jitsiTrack }} />
             </div>
         );
