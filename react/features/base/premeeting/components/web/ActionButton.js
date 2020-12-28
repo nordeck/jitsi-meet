@@ -72,9 +72,9 @@ function ActionButton({
         <div
             className = { `action-btn ${className} ${type} ${disabled ? 'disabled' : ''}` }
             data-testid = { testId ? testId : undefined }
-            onClick = { disabled ? undefined : onClick }>
-            role="button"
-            tabindex="0"
+            onClick = { disabled ? undefined : onClick }
+            role = 'button'
+            tabIndex = '0' >
             {children}
             {hasOptions
             && <div
@@ -83,7 +83,7 @@ function ActionButton({
                 data-testid = 'prejoin.joinOptions'
                 onClick = { disabled ? undefined : onOptionsClick }
                 role = 'button'
-                tabIndex = '0' >
+                tabindex = '0'>
                 <Icon
                     className = 'icon'
                     size = { 14 }

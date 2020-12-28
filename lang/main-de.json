@@ -503,7 +503,7 @@
     "passwordSetRemotely": "von einem anderen Teilnehmer gesetzt",
     "passwordDigitsOnly": "Bis zu {{number}} Ziffern",
     "poweredby": "Betrieben von",
-    "jitsiHome": "Peter Pan 222222222222222222222222",
+    "jitsiHome": "jitsi homepage",
     "prejoin": {
         "audioAndVideoError": "Audio- und Videofehler:",
         "audioDeviceProblem": "Es gibt ein Problem mit Ihrem Audiogerät.",

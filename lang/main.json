@@ -500,7 +500,7 @@
     "passwordSetRemotely": "set by another participant",
     "passwordDigitsOnly": "Up to {{number}} digits",
     "poweredby": "powered by",
-    "jitsiHome": "Peter Pan",
+    "jitsiHome": "jitsi homepage",
     "prejoin": {
         "audioAndVideoError": "Audio and video error:",
         "audioDeviceProblem": "There is a problem with your audio device",
