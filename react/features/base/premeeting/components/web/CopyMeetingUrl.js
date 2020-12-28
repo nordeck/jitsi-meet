@@ -190,9 +190,11 @@ class CopyMeetingUrl extends Component<Props, State> {
                 className = 'copy-meeting'
                 onMouseEnter = { _showCopyLink }
                 onMouseLeave = { _hideCopyLink }>
-                <div tabindex="0" role="button"
+                <div
                     className = { `url ${showLinkCopied ? 'done' : ''}` }
-                    onClick = { _copyUrl } >
+                    onClick = { _copyUrl }
+                    role = 'button'
+                    tabIndex = '0' >
                     <div className = 'copy-meeting-text'>
                         { !showCopyLink && !showLinkCopied && getDecodedURI(url) }
                         { showCopyLink && t('prejoin.copyAndShare') }

@@ -103,17 +103,23 @@ export default class SpeakerEntry extends Component<Props> {
         return (
             <div
                 className = 'audio-preview-speaker'
-                onClick = { this._onClick }>
+                onClick = { this._onClick }
+                tabIndex = { 0 }>
                 <AudioSettingsEntry
                     isSelected = { isSelected }
                     key = { deviceId }>
                     {children}
                 </AudioSettingsEntry>
-                <TestButton onClick = { this._onTestButtonClick } />
+                <TestButton
+                    onClick = { this._onTestButtonClick }
+                    role = 'button'
+                    tabIndex = { 0 } />
                 <audio
                     preload = 'auto'
                     ref = { this.audioRef }
-                    src = { TEST_SOUND_PATH } />
+                    role = 'button'
+                    src = { TEST_SOUND_PATH }
+                    tabIndex = { 0 } />
             </div>
         );
     }
