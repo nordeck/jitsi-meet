@@ -155,7 +155,8 @@ export default class MicrophoneEntry extends Component<Props, State> {
         return (
             <div
                 className = 'audio-preview-microphone'
-                onClick = { this._onClick }>
+                onClick = { this._onClick }
+                tabIndex = { 0 }>
                 <AudioSettingsEntry
                     hasError = { hasError }
                     isSelected = { isSelected }>

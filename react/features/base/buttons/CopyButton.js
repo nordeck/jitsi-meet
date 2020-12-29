@@ -101,7 +101,8 @@ function CopyButton({ className, displayedText, textToCopy, textOnHover, textOnC
 
         return (
             <>
-                <div className = 'copy-button-content'>
+                <div
+                    className = 'copy-button-content'>
                     {isHovered ? textOnHover : displayedText}
                 </div>
                 <Icon
@@ -113,7 +114,7 @@ function CopyButton({ className, displayedText, textToCopy, textOnHover, textOnC
 
     return (
         <div
-            aria-label = { 'copy' }
+            aria-label = { textOnHover }
             className = { `${className} copy-button${isClicked ? ' clicked' : ''}` }
             onClick = { onClick }
             onKeyPress = { onClick }

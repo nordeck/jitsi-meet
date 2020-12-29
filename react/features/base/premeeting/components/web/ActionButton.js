@@ -69,10 +69,12 @@ function ActionButton({
     onOptionsClick
 }: Props) {
     return (
-        <div role="button" tabindex="0"
+        <div
             className = { `action-btn ${className} ${type} ${disabled ? 'disabled' : ''}` }
             data-testid = { testId ? testId : undefined }
-            onClick = { disabled ? undefined : onClick }>
+            onClick = { disabled ? undefined : onClick }
+            role = 'button'
+            tabIndex = '0' >
             {children}
             {hasOptions &&
             <div

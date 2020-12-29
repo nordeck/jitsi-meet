@@ -200,6 +200,8 @@ class FeedbackDialog extends Component<Props, State> {
         const scoreToDisplayAsSelected
             = mousedOverScore > -1 ? mousedOverScore : score;
 
+        const { t } = this.props;
+
         const scoreIcons = this._scoreClickConfigurations.map(
             (config, index) => {
                 const isFilled = index <= scoreToDisplayAsSelected;
@@ -209,10 +211,13 @@ class FeedbackDialog extends Component<Props, State> {
 
                 return (
                     <a
+                        aria-label = { t(SCORES[index]) }
                         className = { className }
                         key = { index }
                         onClick = { config._onClick }
-                        onMouseOver = { config._onMouseOver }>
+                        onMouseOver = { config._onMouseOver }
+                        role = 'button'
+                        tabIndex = { 0 }>
                         { isFilled
                             ? <StarFilledIcon
                                 label = 'star-filled'
@@ -224,7 +229,7 @@ class FeedbackDialog extends Component<Props, State> {
                 );
             });
 
-        const { t } = this.props;
+
 
         return (
             <Dialog
@@ -234,7 +239,9 @@ class FeedbackDialog extends Component<Props, State> {
                 titleKey = 'feedback.rateExperience'>
                 <div className = 'feedback-dialog'>
                     <div className = 'rating'>
-                        <div className = 'star-label'>
+                        <div
+                            aria-label = 'Sterne'
+                            className = 'star-label' >
                             <p id = 'starLabel'>
                                 { t(SCORES[scoreToDisplayAsSelected]) }
                             </p>

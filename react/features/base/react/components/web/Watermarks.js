@@ -160,6 +160,7 @@ class Watermarks extends Component<Props, State> {
             _logoUrl,
             _showJitsiWatermark
         } = this.props;
+        const { t } = this.props;
         let reactElement = null;
 
         if (_showJitsiWatermark) {
@@ -170,17 +171,17 @@ class Watermarks extends Component<Props, State> {
             };
 
             reactElement = (<div
-                aria-label = 'jitsi'
                 className = 'watermark leftwatermark'
-                role = 'img'
+                role = 'link'
                 style = { style } />);
 
             if (_logoLink) {
                 reactElement = (
                     <a
-                        aria-label = { _logoLink }
+                        aria-label = { t('jitsiHome') }
                         href = { _logoLink }
                         role = 'link'
+                        tabIndex = { 0 }
                         target = '_new'>
                         { reactElement }
                     </a>
