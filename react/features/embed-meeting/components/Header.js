@@ -31,7 +31,6 @@ function Header({ onClose, t }: Props) {
             <Icon
                 ariaLabel = { 'close' }
                 onClick = { onClose }
-
                 src = { IconClose }
                 tabIndex = { 0 } />
         </div>
