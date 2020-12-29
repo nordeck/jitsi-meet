@@ -137,7 +137,8 @@ export default class ToolboxButtonWithIcon extends Component<Props, State> {
                         { ...iconProps }
                         ariaLabel = { ariaLabel }
                         size = { size }
-                        src = { icon } />
+                        src = { icon }
+                        tabIndex = { 0 } />
                 </div>
             </div>
         );

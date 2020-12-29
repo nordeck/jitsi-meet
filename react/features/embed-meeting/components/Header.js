@@ -29,8 +29,11 @@ function Header({ onClose, t }: Props) {
             className = 'embed-meeting-dialog-header'>
             { t('embedMeeting.title') }
             <Icon
+                ariaLabel = { 'close' }
                 onClick = { onClose }
-                src = { IconClose } />
+
+                src = { IconClose }
+                tabIndex = { 0 } />
         </div>
     );
 }
