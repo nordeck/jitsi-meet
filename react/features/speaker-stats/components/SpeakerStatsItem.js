@@ -55,10 +55,16 @@ class SpeakerStatsItem extends Component<Props> {
                 <div className = 'speaker-stats-item__status'>
                     <span className = { speakerStatusClass } />
                 </div>
-                <div className = 'speaker-stats-item__name'>
+                <div
+                    aria-label = 'speaker'
+                    className = 'speaker-stats-item__name'
+                    tabIndex = { 0 } >
                     { this.props.displayName }
                 </div>
-                <div className = 'speaker-stats-item__time'>
+                <div
+                    aria-label = 'speaker-time'
+                    className = 'speaker-stats-item__time'
+                    tabIndex = { 0 } >
                     <TimeElapsed
                         time = { this.props.dominantSpeakerTime } />
                 </div>

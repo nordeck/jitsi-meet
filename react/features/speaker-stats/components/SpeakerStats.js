@@ -6,6 +6,7 @@ import { Dialog } from '../../base/dialog';
 import { translate } from '../../base/i18n';
 import { getLocalParticipant } from '../../base/participants';
 import { connect } from '../../base/redux';
+import Header from "./Header";
 
 import SpeakerStatsItem from './SpeakerStatsItem';
 import SpeakerStatsLabels from './SpeakerStatsLabels';
@@ -101,6 +102,7 @@ class SpeakerStats extends Component<Props, State> {
         return (
             <Dialog
                 cancelKey = { 'dialog.close' }
+                customHeader = { Header }
                 submitDisabled = { true }
                 titleKey = 'speakerStats.speakerStats'>
                 <div className = 'speaker-stats'>
@@ -151,7 +153,8 @@ class SpeakerStats extends Component<Props, State> {
                 dominantSpeakerTime = { dominantSpeakerTime }
                 hasLeft = { hasLeft }
                 isDominantSpeaker = { isDominantSpeaker }
-                key = { userId } />
+                key = { userId }
+                tabIndex = { 0 } />
         );
     }
 

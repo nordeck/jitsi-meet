@@ -85,7 +85,11 @@ function ConnectionStatus({ connectionDetails, t, connectionType }: Props) {
                         size = { 24 }
                         src = { IconArrowDownSmall } />
                 </div>
-                <div role="heading" aria-level="2" className = { `con-status-details ${detailsClassName}` }>{detailsText}</div>
+                <div
+                    aria-level = '2'
+                    className = { `con-status-details ${detailsClassName}` }
+                    role = 'heading'>
+                    {detailsText}</div>
             </div>
         </div>
     );
