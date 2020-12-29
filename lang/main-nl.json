@@ -61,6 +61,7 @@
         "today": "Vandaag"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Fout: uw bericht \"{{originalText}}\" is niet verzonden. Reden: {{error}}",
         "fieldPlaceHolder": "Typ hier uw bericht",
         "messagebox": "Typ een bericht",

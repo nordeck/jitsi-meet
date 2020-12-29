@@ -45,6 +45,7 @@
         "today": "Vandag"
     },
     "chat": {
+        "chatTitle" : "chat section",
         "error": "",
         "messagebox": "",
         "nickname": {

@@ -46,6 +46,7 @@
         "today": "Avui"
     },
     "chat": {
+        "chatTitle" : "chat section",
         "error": "Error: no s'ha enviat el vostre missatge. Raó: {{error}}",
         "fieldPlaceHolder": "Escriviu aquí el missatge",
         "messagebox": "Escriviu un missatge",

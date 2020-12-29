@@ -46,6 +46,7 @@
         "today": "Aujourd'hui"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Erreur : votre message n'a pas été envoyé. Raison : {{error}}",
         "fieldPlaceHolder": "Tapez votre message ici",
         "messagebox": "Tapez un message",

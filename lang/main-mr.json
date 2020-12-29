@@ -46,6 +46,7 @@
         "today": "आज"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Error: तुमचा संदेश पाठविला गेला नाही. कारणः {{error}}",
         "fieldPlaceHolder": "आपला संदेश येथे टाइप करा",
         "messagebox": "एक संदेश टाइप करा",
@@ -475,7 +476,7 @@
     "passwordDigitsOnly": " पर्यंत {{number}} अंक",
     "poweredby": "द्वारा समर्थित",
     "prejoin": {
-       
+
         "audioAndVideoError": "ऑडिओ आणि व्हिडिओ त्रुटी:",
         "audioOnlyError": "ऑडिओ त्रुटी:",
         "audioTrackError": "ऑडिओ ट्रॅक तयार करू शकलो नाही.",
@@ -621,7 +622,7 @@
     },
     "toolbar": {
         "accessibilityLabel": {
-       
+
         },
         "addPeople": "आपल्या कॉलमध्ये लोकांना जोडा",
 "audioOnlyOff": "कमी बँडविड्थ मोड अक्षम करा",

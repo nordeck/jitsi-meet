@@ -46,6 +46,7 @@
         "today": "Ma"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Hiba: az üzenetet nem sikerült elküldeni. Hiba oka: {{error}}",
         "fieldPlaceHolder": "Írja ide az üzenetét",
         "messagebox": "Írja be az üzenetet",

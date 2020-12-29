@@ -61,6 +61,7 @@
         "today": "Σήμερα"
     },
     "chat": {
+        "chatTitle" : "chat section",
         "error": "Σφάλμα: το μήνυμα δεν εστάλη. Λόγος: {{reason}}",
         "fieldPlaceHolder": "Πληκτρολογήστε το μήνυμά σας εδώ",
         "messagebox": "Πληκτρολογήστε ένα μήνυμα",

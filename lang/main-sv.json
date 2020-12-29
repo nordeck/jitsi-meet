@@ -46,6 +46,7 @@
         "today": "Idag"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Fel: ditt meddelande skickades inte. Orsak: {{error}}",
         "messagebox": "Skriv ett meddelande",
         "nickname": {

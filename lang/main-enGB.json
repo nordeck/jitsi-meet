@@ -46,6 +46,7 @@
         "today": "Today"
     },
     "chat": {
+        "chatTitle" : "chat section",
         "error": "Error: your message \"{{originalText}}\" was not sent. Reason: {{error}}",
         "messagebox": "Type a message",
         "nickname": {

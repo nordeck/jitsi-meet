@@ -46,6 +46,7 @@
         "today": "Gaur"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Errorea: zure mezua ez da bidali. Arrazoia: {{error}}",
         "fieldPlaceHolder": "Idatzi mezua hemen",
         "messagebox": "Idatzi mezua",

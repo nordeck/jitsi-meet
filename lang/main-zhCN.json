@@ -46,6 +46,7 @@
         "today": "今日"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "错误：消息未发送。原因：{{error}}",
         "fieldPlaceHolder": "在这里输入你的信息",
         "messagebox": "输入消息",

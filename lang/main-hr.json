@@ -45,6 +45,7 @@
         "today": "Danas"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Greška: poruka \"{{originalText}}\" nije poslana. Razlog: {{error}}",
         "messagebox": "",
         "nickname": {

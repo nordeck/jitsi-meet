@@ -61,6 +61,7 @@
         "today": "Uèi"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Error : lo messatge es pas estat enviat. Rason : {{error}}",
         "fieldPlaceHolder": "Picatz vòstre messatge aquí",
         "messagebox": "Picatz un messatge",

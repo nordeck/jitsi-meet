@@ -29,8 +29,10 @@ function Header({ onClose, t }: Props) {
             className = 'invite-more-dialog header'>
             { t('security.securityOptions') }
             <Icon
+                ariaLabel = { 'close' }
                 onClick = { onClose }
-                src = { IconClose } />
+                src = { IconClose }
+                tabIndex = { 0 } />
         </div>
     );
 }

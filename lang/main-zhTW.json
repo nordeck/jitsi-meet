@@ -46,6 +46,7 @@
         "today": "今日"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "錯誤：您的訊息未被傳送。原因： {{error}}",
         "fieldPlaceHolder": "在此輸入您的訊息",
         "messagebox": "輸入訊息",

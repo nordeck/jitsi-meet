@@ -46,6 +46,7 @@
         "today": "Hoxe"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Erro: a súa mensaxe non se enviou. Razón: {{error}}",
         "fieldPlaceHolder": "Escriba a súa mensaxe aquí",
         "messagebox": "Escriba unha mensaxe",

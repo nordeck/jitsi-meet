@@ -45,6 +45,7 @@
         "today": "Hôm nay"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Lỗi: thông điệp của bạn \"{{originalText}}\" không được gửi. Nguyên nhân: {{error}}",
         "messagebox": "Nhập một thông điệp",
         "nickname": {

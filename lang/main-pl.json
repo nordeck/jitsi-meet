@@ -7,7 +7,7 @@
         "copyStream": "Kopiuj link transmisji na żywo",
         "countryNotSupported": "Nie obsługujemy jeszcze tej lokalizacji.",
         "countryReminder": "Dzwonisz spoza USA? Upewnij się, że zaczynasz od kodu kraju!",
-        "defaultEmail": "Domyślna poczta",        
+        "defaultEmail": "Domyślna poczta",
         "disabled": "Nie możesz zapraszać ludzi.",
         "failedToAdd": "Błąd dodawania uczestników",
         "footerText": "Wybieranie numeru jest wyłączone.",
@@ -61,6 +61,7 @@
         "today": "Dzisiaj"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Błąd: Twoja wiadomość nie została wysłana. Powód: {{error}}",
         "fieldPlaceHolder": "Wpisz wiadomość tutaj",
         "messagebox": "Wpisz wiadomość",

@@ -46,6 +46,7 @@
         "today": "Šiandien"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Klaida: jūsų pranešimas nebuvo išsiųstas. Priežastis: {{klaida}}",
         "fieldPlaceHolder": "Rašykite žinutę čia",
         "messagebox": "Rašykite žinutę",

@@ -45,6 +45,7 @@
         "today": "Tänään"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Virhe: viestiä \"{{originalText}}\" ei lähetetty. Syy: {{error}}",
         "messagebox": "Kirjoita viesti",
         "nickname": {

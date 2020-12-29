@@ -46,6 +46,7 @@
         "today": "Hoje"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Erro: sua mensagem não foi enviada. Motivo: {{error}}",
         "fieldPlaceHolder": "Digite sua mensagem aqui",
         "messagebox": "Digite uma mensagem",
