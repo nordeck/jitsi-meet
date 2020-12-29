@@ -46,6 +46,7 @@
         "today": "Oe"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Faddina: su messàgiu tuo no est istadu imbiadu. Resone: {{error}}",
         "fieldPlaceHolder": "Iscrie su messàgiu inoghe",
         "messagebox": "Iscrie unu messàgiu",

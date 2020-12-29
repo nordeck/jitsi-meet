@@ -46,6 +46,7 @@
         "today": ""
     },
     "chat": {
+        "chatTitle" : "",
         "error": "",
         "fieldPlaceHolder": "",
         "messagebox": "",

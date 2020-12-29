@@ -46,6 +46,7 @@
         "today": "היום"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "שגיאה: ההודעה שלך \"{{originalText}}\" לא נשלחה. סיבה: {{error}}",
 		"fieldPlaceHolder": "הקלד הודעתך כאו",
         "messagebox": "הקלד הודעה",

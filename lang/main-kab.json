@@ -59,6 +59,7 @@
         "today": "Ass-a"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Izen-inek·inem ur yettwazen ara. Taɣzint: {{error}}",
         "messagebox": "Aru izen",
         "nickname": {

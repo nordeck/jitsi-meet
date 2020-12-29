@@ -45,6 +45,7 @@
     "today": "Данас"
   },
   "chat": {
+    "chatTitle" : "",
     "error": "Грeшка: порука \"{{originalText}}\" нијe послана. Разлог: {{error}}",
     "messagebox": "",
     "nickname": {

@@ -42,6 +42,7 @@
         "today": "I dag"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "",
         "messagebox": "Skriv en melding",
         "nickname": {

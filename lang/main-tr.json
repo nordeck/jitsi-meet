@@ -60,6 +60,7 @@
         "today": "Bugün"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Hata: mesajınız gönderilmedi. Gerekçe: {{error}}",
         "fieldPlaceHolder": "Mesajınızı buraya yazın",
         "messagebox": "Bir mesaj yazın",
@@ -844,7 +845,7 @@
         "sendFeedback": "Geri bildirim gönder",
         "terms": "Kurallar",
         "title": "Güvenli, tüm özelliklere erişimli ve tamamen ücretsiz görüntülü arama"
-       
+
     },
 
     "lonelyMeetingExperience": {

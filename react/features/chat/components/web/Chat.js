@@ -133,7 +133,7 @@ class Chat extends AbstractChat<Props> {
     _renderChatHeader() {
         return (
             <div className = 'chat-header'>
-                <h2>{ 'Chat Section'}</h2>
+                <h2>{ this.props.t('chat.chatTitle') }</h2>
                 <div
                     aria-label = 'chat-close'
                     className = 'chat-close'

@@ -46,6 +46,7 @@
         "today": "Danes"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Napaka: vaše sporočilo ni bilo poslano. Razlog: {{error}}",
         "fieldPlaceHolder": "Type your message here",
         "messageTo": "Zasebno sporočilo za uporabnika {{recipient}}",

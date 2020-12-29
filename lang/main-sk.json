@@ -61,6 +61,7 @@
         "today": "Dnes"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Chyba: vaša správa \"{{originalText}}\" nebola poslaná. Dôvod: {{error}}",
         "fieldPlaceHolder": "Zadajte sem vašu správu",
         "messagebox": "Napíšte správu",

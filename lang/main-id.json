@@ -46,6 +46,7 @@
         "today": "Hari ini"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Error: your message was not sent. Reason: {{error}}",
         "fieldPlaceHolder": "Type your message here",
         "messagebox": "Type a message",

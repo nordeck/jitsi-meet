@@ -61,6 +61,7 @@
         "today": "Oggi"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Errore: il tuo messaggio “{{originalText}}” non e’ stato inviato. Motivo: {{error}}",
         "fieldPlaceHolder": "Scrivi qui il tuo messaggio",
         "messagebox": "Digitare un messaggio",

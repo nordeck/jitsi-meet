@@ -61,6 +61,7 @@
         "today": "Heute"
     },
     "chat": {
+        "chatTitle" : "chat sektion",
         "error": "Fehler: Ihre Nachricht wurde nicht versendet. Grund: {{error}}",
         "fieldPlaceHolder": "Geben Sie Ihre Nachricht hier ein",
         "messagebox": "Nachricht eingeben",

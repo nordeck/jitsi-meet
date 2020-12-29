@@ -46,6 +46,7 @@
         "today": "Í dag"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Villa: skilaboðin þín voru ekki send. Ástæða: {{error}}",
         "fieldPlaceHolder": "Skrifaðu skilaboðin þín hér",
         "messagebox": "Skrifaðu skilaboð",

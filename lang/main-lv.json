@@ -46,6 +46,7 @@
         "today": "Šodien"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Ķibele: Jūsu ziņa netika nosūtīta. Cēlonis: {{error}}",
         "fieldPlaceHolder": "Rakstiet ziņu šeit",
         "messagebox": "Rakstiet ziņu",

@@ -61,6 +61,7 @@
         "today": "今日"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "エラー: メッセージは送信されませんでした。原因: {{error}}",
         "fieldPlaceHolder": "ここにメッセージを入力してください",
         "messagebox": "メッセージを入力してください",

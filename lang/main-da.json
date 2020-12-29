@@ -46,6 +46,7 @@
         "today": "I dag"
     },
     "chat": {
+        "chatTitle" : "chat section",
         "error": "Fejl: din besked \"{{originalText}}\" blev ikke sendt. Årsag: {{error}}",
         "fieldPlaceHolder": "Skriv din besked her",
         "messagebox": "Indtast en besked",

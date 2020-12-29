@@ -46,6 +46,7 @@
         "today": "Azi"
     },
     "chat": {
+        "chatTitle" : "",
         "error": "Eroare: mesajul dumneavoastră \"{{originalText}}\" nu a fost trimis. Motiv: {{error}}",
         "messagebox": "Scrieți mesajul",
         "nickname": {

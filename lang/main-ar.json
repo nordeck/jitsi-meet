@@ -46,6 +46,7 @@
         "today": "اليوم"
     },
     "chat": {
+        "chatTitle": "المحادثة",
         "error": "",
         "fieldPlaceHolder": "اكتب رسالتك هنا",
         "messagebox": "اكتب رسالة",
