@@ -333,7 +333,9 @@ class Prejoin extends Component<Props, State> {
                                         <div
                                             className = 'prejoin-preview-dropdown-btn'
                                             data-testid = 'prejoin.joinWithoutAudio'
-                                            onClick = { joinConferenceWithoutAudio }>
+                                            onClick = { joinConferenceWithoutAudio }
+                                            role = 'button'
+                                            tabIndex = { 0 }>
                                             <Icon
                                                 className = 'prejoin-preview-dropdown-icon'
                                                 size = { 24 }

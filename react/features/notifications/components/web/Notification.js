@@ -85,7 +85,9 @@ class Notification extends AbstractNotification<Props> {
 
         // the id is used for testing the UI
         return (
-            <div data-testid = { this._getDescriptionKey() } >
+            <div
+                data-testid = { this._getDescriptionKey() }
+                role = 'button'>
                 { description }
             </div>
         );
