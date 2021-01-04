@@ -31,6 +31,17 @@
     .cksvax[data-role=droplistContent] {
         border: 1px solid #455166;
     }
+
+    /**
+  * Override @atlaskit/tab styling when in a modal because the
+  * tab text xolor clash with the modal backgrounds.
+  */
+    .iqNwPx {
+        color: #BDBDFF;
+    }
+    .itZGfB {
+        color: #C7C7C7;
+    }
 }
 
 /**
