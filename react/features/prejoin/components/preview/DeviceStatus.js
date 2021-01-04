@@ -38,11 +38,13 @@ export type Props = {
 const iconMap = {
     warning: {
         src: IconExclamation,
-        className: 'prejoin-preview-status--warning'
+        className: 'prejoin-preview-status--warning',
+        role: 'button'
     },
     ok: {
         src: IconCheck,
-        className: 'prejoin-preview-status--ok'
+        className: 'prejoin-preview-status--ok',
+        role: 'button'
     }
 };
 
@@ -61,8 +63,14 @@ function DeviceStatus({ deviceStatusType, deviceStatusText, rawError, t }: Props
                 className = 'prejoin-preview-icon'
                 size = { 16 }
                 src = { src } />
-            <span className = 'prejoin-preview-error-desc'>{t(deviceStatusText)}</span>
-            { rawError && <span>
+            <span
+                className = 'prejoin-preview-error-desc'
+                role = 'alert'
+                tabIndex = { 0 }>{t(deviceStatusText)}
+            </span>
+            { rawError && <span
+                role = 'alert'
+                tabIndex = { 0 }>
                 { rawError }
             </span> }
         </div>

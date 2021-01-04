@@ -343,7 +343,8 @@ class Filmstrip extends Component <Props> {
                 tabIndex = { 0 }>
                 <button
                     aria-label = { t('toolbar.accessibilityLabel.toggleFilmstrip') }
-                    id = 'toggleFilmstripButton'>
+                    id = 'toggleFilmstripButton'
+                    tabIndex = { 0 }>
                     <Icon
                         aria-label = { t('toolbar.accessibilityLabel.toggleFilmstrip') }
                         src = { icon } />
