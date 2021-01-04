@@ -74,7 +74,7 @@ function ActionButton({
             data-testid = { testId ? testId : undefined }
             onClick = { disabled ? undefined : onClick }
             role = 'button'
-            tabIndex = '0' >
+            tabIndex = { 0 } >
             {children}
             {hasOptions &&
             <div
