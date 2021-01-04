@@ -34,11 +34,16 @@
 
     /**
   * Override @atlaskit/tab styling when in a modal because the
-  * tab text xolor clash with the modal backgrounds.
+  * tab text color clash with the modal backgrounds.
   */
     .iqNwPx {
         color: #BDBDFF;
     }
+
+    /**
+* Override @atlaskit/label styling when in a modal because the
+* label text color clash with the modal backgrounds.
+*/
     .itZGfB {
         color: #C7C7C7;
     }
