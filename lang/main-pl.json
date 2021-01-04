@@ -381,6 +381,7 @@
         "support": "Wsparcie",
         "supportMsg": "Jeśli to się powtarza, skontaktuj się z nami przez"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Powiększ wideo",
         "focusRemote": "Skup na obrazie innej osoby",

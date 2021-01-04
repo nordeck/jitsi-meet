@@ -345,6 +345,7 @@
         "support": "Atbalsts",
         "supportMsg": "Ja tas atkārtojas/turpinās, sazinieties ar"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Skats (fokuss) uz savu video",
         "focusRemote": "Skats (fokuss) uz cita dalībnieka video",

@@ -383,6 +383,7 @@
         "support": "Support",
         "supportMsg": "Wenn der Fehler erneut auftritt, bitte kontaktieren Sie"
     },
+    "jitsiHome": "Jitsi Logo, verlinkt zur Jitsi Homepage",
     "keyboardShortcuts": {
         "focusLocal": "Lokales Video fokussieren",
         "focusRemote": "Auf das Video eines anderen Teilnehmers fokussieren",
@@ -504,7 +505,6 @@
     "passwordSetRemotely": "von einem anderen Teilnehmer gesetzt",
     "passwordDigitsOnly": "Bis zu {{number}} Ziffern",
     "poweredby": "Betrieben von",
-    "jitsiHome": "jitsi homepage",
     "prejoin": {
         "audioAndVideoError": "Audio- und Videofehler:",
         "audioDeviceProblem": "Es gibt ein Problem mit Ihrem Audiogerät.",
@@ -881,6 +881,9 @@
         "info": "Einwahlinformationen",
         "join": "ERSTELLEN / BEITRETEN",
         "moderatedMessage": "Oder <a href=\"{{url}}\" rel=\"noopener noreferrer\" target=\"_blank\">reservieren Sie sich eine Konferenz-URL</a>, unter der Sie der einzige Moderator sind.",
+        "mobileDownLoadLinkIos": "Mobil app für IOS",
+        "mobileDownLoadLinkAndroid": "Mobil app für Android",
+        "mobileDownLoadLinkFDroid": "Mobil app für F-Droid",
         "privacy": "Datenschutz",
         "recentList": "Verlauf",
         "recentListDelete": "Eintrag löschen",

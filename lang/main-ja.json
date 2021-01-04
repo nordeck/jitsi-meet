@@ -380,6 +380,7 @@
         "support": "サポート",
         "supportMsg": "続くようであれば、次に連絡してください:"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "自分のビデオにフォーカス",
         "focusRemote": "他のメンバーのビデオにフォーカス",

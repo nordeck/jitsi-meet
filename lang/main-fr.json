@@ -373,6 +373,7 @@
         "support": "Support",
         "supportMsg": "Si ceci persiste, contactez"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Épingler ma vidéo",
         "focusRemote": "Épingler la vidéo de quelqu'un d'autre",

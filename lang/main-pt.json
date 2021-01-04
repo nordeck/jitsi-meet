@@ -335,6 +335,7 @@
         "support": "Suporte",
         "supportMsg": "Se isso continuar acontecendo, chegar a"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Focar no seu vídeo",
         "focusRemote": "Focar no vídeo de outro participante",

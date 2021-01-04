@@ -381,6 +381,7 @@
         "support": "Support",
         "supportMsg": "If this keeps happening, reach out to"
     },
+    "jitsiHome": "Jitsi Logo, links to  Jitsi Homepage",
     "keyboardShortcuts": {
         "focusLocal": "Focus on your video",
         "focusRemote": "Focus on another person's video",
@@ -501,7 +502,6 @@
     "passwordSetRemotely": "set by another participant",
     "passwordDigitsOnly": "Up to {{number}} digits",
     "poweredby": "powered by",
-    "jitsiHome": "jitsi homepage",
     "prejoin": {
         "audioAndVideoError": "Audio and video error:",
         "audioDeviceProblem": "There is a problem with your audio device",
@@ -711,7 +711,7 @@
             "moreActions": "Toggle more actions menu",
             "moreActionsMenu": "More actions menu",
             "moreOptions": "Show more options",
-            "mute": "Toggle mute audio",
+            "mute": "Mute audio",
             "muteEveryone": "Mute everyone",
             "pip": "Toggle Picture-in-Picture mode",
             "privateMessage": "Send private message",
@@ -730,7 +730,7 @@
             "tileView": "Toggle tile view",
             "toggleCamera": "Toggle camera",
             "toggleFilmstrip": "Toggle filmstrip",
-            "videomute": "Toggle mute video",
+            "videomute": "Turn off video",
             "videoblur": "Toggle video blur"
         },
         "addPeople": "Add people to your call",

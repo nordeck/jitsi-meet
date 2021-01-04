@@ -178,6 +178,7 @@ class Watermarks extends Component<Props, State> {
             if (_logoLink) {
                 reactElement = (
                     <a
+                        alt = { t('jitsiHome') }
                         aria-label = { t('jitsiHome') }
                         href = { _logoLink }
                         role = 'link'

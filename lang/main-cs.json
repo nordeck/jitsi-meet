@@ -396,6 +396,7 @@
         "support": "Podpora",
         "supportMsg": ""
     },
+    "jitsiHome": "",
     "inviteDialog": {
         "alertText": "Pozvání některých účastníků selhalo.",
         "header": "Pozvat",

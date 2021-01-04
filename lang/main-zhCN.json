@@ -335,6 +335,7 @@
         "support": "支持",
         "supportMsg": "如果此事多次发生，请联系"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "切换到本地视频上",
         "focusRemote": "显示对方的视频",

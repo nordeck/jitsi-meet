@@ -350,6 +350,7 @@
         "support": "Kasutajatugi",
         "supportMsg": "Kui see juhtub uuesti, võta ühendust"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Keskendu videole",
         "focusRemote": "Keskendu teise kasutaja videole",

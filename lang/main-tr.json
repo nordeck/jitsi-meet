@@ -369,6 +369,7 @@
         "support": "Destek",
         "supportMsg": "Bu olmaya devam ederse, ulaşın."
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Videoya odaklan",
         "focusRemote": "Başka bir kişinin videosuna odaklan",

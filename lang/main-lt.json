@@ -350,6 +350,7 @@
         "support": "Palaikyti",
         "supportMsg": "Jei tai vėl pasikartos, kreipkitės į"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Koncentruotis į savo vaizdą",
         "focusRemote": "Koncentruotis į kito naudotojo vaizdą",
