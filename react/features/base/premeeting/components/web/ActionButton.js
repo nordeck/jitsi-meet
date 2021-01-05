@@ -74,16 +74,15 @@ function ActionButton({
             data-testid = { testId ? testId : undefined }
             onClick = { disabled ? undefined : onClick }
             role = 'button'
-            tabIndex = '0' >
+            tabIndex = { 0 } >
             {children}
-            {hasOptions
-            && <div
+            {hasOptions &&
+            <div
                 aria-haspopup = 'true'
                 className = 'options'
                 data-testid = 'prejoin.joinOptions'
                 onClick = { disabled ? undefined : onOptionsClick }
-                role = 'button'
-                tabindex = '0'>
+                role = 'button'>
                 <Icon
                     className = 'icon'
                     size = { 14 }

@@ -235,7 +235,7 @@ class WelcomePage extends AbstractWelcomePage {
                                 className = 'welcome-page-button'
                                 id = 'enter_room_button'
                                 onClick = { this._onFormSubmit }
-                                tabIndex = '0'
+                                tabIndex = { 0 }
                                 type = 'button'>
                                 { t('welcomepage.startMeeting') }
                             </button>

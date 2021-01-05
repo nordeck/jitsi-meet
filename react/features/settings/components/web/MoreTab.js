@@ -1,5 +1,4 @@
 // @flow
-
 import { Checkbox } from '@atlaskit/checkbox';
 import DropdownMenu, {
     DropdownItem,
@@ -10,6 +9,7 @@ import React from 'react';
 import { AbstractDialogTab } from '../../../base/dialog';
 import type { Props as AbstractDialogTabProps } from '../../../base/dialog';
 import { translate } from '../../../base/i18n';
+import keyboardShortcut from '../../../../../modules/keyboardshortcut/keyboardshortcut'
 
 /**
  * The type of the React {@code Component} props of {@link MoreTab}.
@@ -57,6 +57,7 @@ export type Props = {
      * Whether or not to show prejoin screen.
      */
     showPrejoinPage: boolean,
+
 
     /**
      * Whether or not the user has selected the Start Audio Muted feature to be
@@ -277,7 +278,16 @@ class MoreTab extends AbstractDialogTab<Props, State> {
                     // eslint-disable-next-line react/jsx-no-bind
                     onChange = {
                         ({ target: { checked } }) =>
-                            super._onChange({ showPrejoinPage: checked })
+                            super._onChange({ showPrejoinPag: checked })
+                    } />
+                <Checkbox
+                    label = { t('prejoin.keyboardShortcuts') }
+                    name = 'show-prejoin-page'
+                    // eslint-disable-next-line react/jsx-no-bind
+                    onChange = {
+                        ({ target: { checked } }) => {
+                            keyboardShortcut.enable(checked);
+                        }
                     } />
             </div>
         );

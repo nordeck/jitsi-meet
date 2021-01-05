@@ -32,7 +32,7 @@ const _shortcutsHelp = new Map();
  * True if the keyboard shortcuts are enabled and false if not.
  * @type {boolean}
  */
-let enabled = true;
+let enabled = false;
 
 /**
  * Maps keycode to character, id of popover for given function and function.
@@ -86,6 +86,10 @@ const KeyboardShortcut = {
      */
     enable(value) {
         enabled = value;
+    },
+
+    getEnabled() {
+        return enabled;
     },
 
     /**
