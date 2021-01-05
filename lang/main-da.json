@@ -351,6 +351,7 @@
         "support": "Support",
         "supportMsg": "Hvis denne fejl bliver ved, kontakt"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Fokusér på din video",
         "focusRemote": "Fokusér på en anden persons video",

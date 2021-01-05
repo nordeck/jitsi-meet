@@ -317,6 +317,7 @@
         "support": "",
         "supportMsg": ""
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Առաջ բերել Ձեռ վիդեոն",
         "focusRemote": "Առաջ բերել այլ մասնակցի վիդեոն",

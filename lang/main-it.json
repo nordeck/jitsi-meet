@@ -380,6 +380,7 @@
         "support": "Supporto",
         "supportMsg": "Se succede ancora contatta"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Sposta il focus sul tuo video",
         "focusRemote": "Sposta il focus sul video di un altro partecipante",

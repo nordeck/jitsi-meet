@@ -322,6 +322,7 @@
         "support": "Tuki",
         "supportMsg": "Jos tämä jatkuu, ota yhteyttä:"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Keskity omaan videoon",
         "focusRemote": "Keskity jonkun muun videoon",

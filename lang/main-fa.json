@@ -330,6 +330,7 @@
         "support": "",
         "supportMsg": ""
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "تمرکز روی ویدئوی شما",
         "focusRemote": "انتخاب تصویر مخاطب",

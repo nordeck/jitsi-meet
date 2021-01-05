@@ -171,9 +171,11 @@ class Watermarks extends Component<Props, State> {
             };
 
             reactElement = (<div
+                aria-label = { t('jitsiHome') }
                 className = 'watermark leftwatermark'
                 role = 'link'
-                style = { style } />);
+                style = { style }
+                tabIndex = { 0 } />);
 
             if (_logoLink) {
                 reactElement = (

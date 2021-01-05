@@ -343,6 +343,7 @@
         "support": "Support",
         "supportMsg": "Om detta fortsätter hända kontakta"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Sätt fokus på din videobild",
         "focusRemote": "Fokusera på någon annans video",

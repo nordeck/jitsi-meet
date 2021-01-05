@@ -346,6 +346,7 @@
         "support": "Support",
         "supportMsg": "If this keeps happening, reach out to"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Focus on your video",
         "focusRemote": "Focus on another person's video",

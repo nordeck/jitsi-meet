@@ -378,6 +378,7 @@
         "support": "Soporte",
         "supportMsg": "Si esto sigue ocurriendo, contacta a"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Ver tu cámara",
         "focusRemote": "Ver la cámara de otras personas",

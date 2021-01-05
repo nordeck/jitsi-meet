@@ -351,6 +351,7 @@
         "support": "Stuðningur",
         "supportMsg": "Ef þetta heldur áfram að koma upp, skaltu hafa samband við"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Gera myndmerkið þitt virkt",
         "focusRemote": "Gera myndmerkið einhvers annars virkt",
