@@ -119,10 +119,10 @@ class E2EESection extends Component<Props, State> {
                 <div className = 'control-row'>
                     <label>
                         { t('dialog.e2eeLabel') }
+                        <Switch
+                            onValueChange = { this._onToggle }
+                            value = { enabled } />
                     </label>
-                    <Switch
-                        onValueChange = { this._onToggle }
-                        value = { enabled } />
                 </div>
             </div>
         );

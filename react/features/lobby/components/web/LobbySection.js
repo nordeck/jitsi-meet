@@ -97,10 +97,10 @@ class LobbySection extends PureComponent<Props, State> {
                     <div className = 'control-row'>
                         <label>
                             { t('lobby.toggleLabel') }
+                            <Switch
+                                onValueChange = { this._onToggleLobby }
+                                value = { this.state.lobbyEnabled } />
                         </label>
-                        <Switch
-                            onValueChange = { this._onToggleLobby }
-                            value = { this.state.lobbyEnabled } />
                     </div>
                 </div>
                 <div className = 'separator-line' />
