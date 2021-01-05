@@ -556,6 +556,7 @@
         "or": "oder",
         "premeeting": "Vorraum",
         "showScreen": "Konferenzvorraum aktivieren",
+        "keyboardShortcuts" : "Aktivieren die Tastatur Kurzbefehle",
         "startWithPhone": "Mit Telefonaudio starten",
         "screenSharingError": "Fehler bei Bildschirmfreigabe:",
         "videoOnlyError": "Videofehler:",

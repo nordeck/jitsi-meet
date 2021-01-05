@@ -553,6 +553,7 @@
         "or": "or",
         "premeeting": "Pre meeting",
         "showScreen": "Enable pre meeting screen",
+        "keyboardShortcuts" : "Enable Keyboard shortcuts",
         "startWithPhone": "Start with phone audio",
         "screenSharingError": "Screen sharing error:",
         "videoOnlyError": "Video error:",
