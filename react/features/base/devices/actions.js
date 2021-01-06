@@ -165,6 +165,7 @@ export function getAvailableDevices() {
 export function notifyCameraError(error) {
     return {
         type: NOTIFY_CAMERA_ERROR,
+        role: 'alert',
         error
     };
 }
@@ -184,6 +185,7 @@ export function notifyCameraError(error) {
 export function notifyMicError(error) {
     return {
         type: NOTIFY_MIC_ERROR,
+        role: 'alert',
         error
     };
 }

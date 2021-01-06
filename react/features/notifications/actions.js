@@ -66,7 +66,8 @@ export function setNotificationsEnabled(enabled: boolean) {
 export function showErrorNotification(props: Object) {
     return showNotification({
         ...props,
-        appearance: NOTIFICATION_TYPE.ERROR
+        appearance: NOTIFICATION_TYPE.ERROR,
+        role: 'alert'
     });
 }
 
@@ -87,6 +88,7 @@ export function showNotification(props: Object = {}, timeout: ?number) {
     return {
         type: SHOW_NOTIFICATION,
         props,
+        role: 'alert',
         timeout,
         uid: window.Date.now()
     };
@@ -101,6 +103,7 @@ export function showNotification(props: Object = {}, timeout: ?number) {
 export function showWarningNotification(props: Object) {
     return showNotification({
         ...props,
+        role: 'alert',
         appearance: NOTIFICATION_TYPE.WARNING
     });
 }

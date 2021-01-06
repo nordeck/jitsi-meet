@@ -358,6 +358,7 @@
         "support": "지원",
         "supportMsg": "문제가 계속 발생하면 연락하세요"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "자신의 동영상에 포커스",
         "focusRemote": "다른 발신자의 동영상에 포커스",

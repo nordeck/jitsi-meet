@@ -347,6 +347,7 @@
         "support": "Támogatás",
         "supportMsg": "Ismételt hiba esetén érdemes kapcsolatba lépnie"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Fókusz a saját videómra",
         "focusRemote": "Fókusz egy másik személy videójára",

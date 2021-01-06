@@ -28,6 +28,7 @@ export function notifyKickedOut(participant: Object, _: ?Function) { // eslint-d
             hideErrorSupportLink: true,
             descriptionKey: 'dialog.kickMessage',
             descriptionArguments: args,
+            role: 'alert',
             titleKey: 'dialog.kickTitle',
             titleArguments: args
         }));

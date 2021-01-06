@@ -350,6 +350,7 @@
         "support": "Дэмжлэг",
         "supportMsg": "Хэрэв ийм асуудал дахиад тохиолдвол холбоо бариарай"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Өөрийн видеог үзэх",
         "focusRemote": "Өөр хүний видеог үзэх",

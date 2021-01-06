@@ -21,6 +21,7 @@ export function notifyKickedOut(participant: Object, submit: ?Function) {
         dispatch(openDialog(AlertDialog, {
             contentKey: {
                 key: 'dialog.kickTitle',
+                role: 'alert',
                 params: {
                     participantDisplayName: getParticipantDisplayName(getState, participant.getId())
                 }

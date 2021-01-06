@@ -351,6 +351,7 @@
         "support": "Assistència",
         "supportMsg": "Si segueix passant, feu-nos-ho saber"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Focus al vostre vídeo",
         "focusRemote": "Focus en el vídeo d'una altra persona",

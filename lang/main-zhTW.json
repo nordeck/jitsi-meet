@@ -347,6 +347,7 @@
         "support": "支援",
         "supportMsg": "如果這樣狀況一直發生，請聯絡"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "聚焦於自己的影像",
         "focusRemote": "聚焦於另一人的影像",

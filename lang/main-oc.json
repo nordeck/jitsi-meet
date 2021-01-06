@@ -383,6 +383,7 @@
         "support": "Assisténcia",
         "supportMsg": "Se ten d'arribat, contactatz l'"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Centrar sus vòstra vidèo",
         "focusRemote": "Centrar sus la vidèo de qualqu'un mai",

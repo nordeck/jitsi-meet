@@ -340,6 +340,7 @@
         "support": "Asistencia",
         "supportMsg": "Se isto continúa, contacte con"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Foco no seu vídeo",
         "focusRemote": "Foco no vídeo doutra persoa",

@@ -6,8 +6,8 @@ import { Dialog } from '../../base/dialog';
 import { translate } from '../../base/i18n';
 import { getLocalParticipant } from '../../base/participants';
 import { connect } from '../../base/redux';
-import Header from "./Header";
 
+import Header from './Header';
 import SpeakerStatsItem from './SpeakerStatsItem';
 import SpeakerStatsLabels from './SpeakerStatsLabels';
 

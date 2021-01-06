@@ -346,6 +346,7 @@
         "support": "Ajutor",
         "supportMsg": "Daca situația se repetă, apelați"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Focusați pe imaginea dumneavoastră",
         "focusRemote": "Focusați pe imaginea altei persoane",

@@ -375,6 +375,7 @@
         "support": "Ondersteuning",
         "supportMsg": "Als dit blijft gebeuren, neemt u contact op met"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Focus op uw video",
         "focusRemote": "Focus op de video van een andere persoon",

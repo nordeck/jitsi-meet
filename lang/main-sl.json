@@ -352,6 +352,7 @@
         "support": "Podpora",
         "supportMsg": "Če se bo to nadaljevalo, kontaktirajte"
     },
+    "jitsiHome": "",
     "inviteDialog": {
         "alertText": "Nekaterih udeležencev ni bilo mogoče povabiti.",
         "header": "Povabi",

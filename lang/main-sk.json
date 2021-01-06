@@ -377,6 +377,7 @@
         "support": "Podpora",
         "supportMsg": "Pokiaľ sa chyba zopakuje, spojte sa s"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Zamerať sa na vaše video",
         "focusRemote": "Zamerať sa na video iného účastníka",

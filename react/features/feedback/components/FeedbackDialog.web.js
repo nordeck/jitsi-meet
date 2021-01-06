@@ -210,11 +210,12 @@ class FeedbackDialog extends Component<Props, State> {
                     = `star-btn ${scoreAnimationClass} ${activeClass}`;
 
                 return (
-                    <a
+                    <span
                         aria-label = { t(SCORES[index]) }
                         className = { className }
                         key = { index }
                         onClick = { config._onClick }
+                        onKeyPress = { config._onClick }
                         onMouseOver = { config._onMouseOver }
                         role = 'button'
                         tabIndex = { 0 }>
@@ -225,10 +226,9 @@ class FeedbackDialog extends Component<Props, State> {
                             : <StarIcon
                                 label = 'star'
                                 size = 'xlarge' /> }
-                    </a>
+                    </span>
                 );
             });
-
 
 
         return (

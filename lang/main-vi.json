@@ -322,6 +322,7 @@
         "support": "Hỗ trợ",
         "supportMsg": "Nếu vẫn xảy ra, hãy liên hệ với"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Tập trung vào video của bạn",
         "focusRemote": "Tập trung vào hình ảnh của người khác",

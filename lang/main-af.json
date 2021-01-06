@@ -322,6 +322,7 @@
         "support": "Ondersteuning",
         "supportMsg": "Indien dit aanhou, maak kontak met"
     },
+    "jitsiHome": "",
     "keyboardShortcuts": {
         "focusLocal": "Fokus op u video",
         "focusRemote": "Fokus op ’n ander persoon se video",
