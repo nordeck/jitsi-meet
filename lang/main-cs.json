@@ -61,7 +61,7 @@
         "today": "Dnes"
     },
     "chat": {
-        "chatTitle" : "chat section",
+        "chatTitle" : "chat",
         "error": "Chyba: vaše zpráva se neodeslala. Důvod: {{error}}",
         "fieldPlaceHolder": "Sem napište zprávu",
         "messageTo": "Soukromá zpráva pro {{recipient}}",
