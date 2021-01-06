@@ -178,8 +178,6 @@ class WelcomePage extends AbstractWelcomePage {
         const showAdditionalContent = this._shouldShowAdditionalContent();
         const showAdditionalToolbarContent = this._shouldShowAdditionalToolbarContent();
 
-        APP.store.dispatch(redirectToStaticPage(`static/welcomepage.html`, ''));
-        if ( true ) return;
         return (
             <div
                 className = { `welcome ${showAdditionalContent
