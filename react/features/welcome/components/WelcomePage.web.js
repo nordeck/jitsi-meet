@@ -13,6 +13,7 @@ import { SettingsButton, SETTINGS_TABS } from '../../settings';
 
 import { AbstractWelcomePage, _mapStateToProps } from './AbstractWelcomePage';
 import Tabs from './Tabs';
+import {redirectToStaticPage} from "../../app/actions";
 
 /**
  * The pattern used to validate room name.
@@ -177,6 +178,8 @@ class WelcomePage extends AbstractWelcomePage {
         const showAdditionalContent = this._shouldShowAdditionalContent();
         const showAdditionalToolbarContent = this._shouldShowAdditionalToolbarContent();
 
+        APP.store.dispatch(redirectToStaticPage(`static/welcomepage.html`, ''));
+        if ( true ) return;
         return (
             <div
                 className = { `welcome ${showAdditionalContent
