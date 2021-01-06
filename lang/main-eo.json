@@ -46,7 +46,7 @@
         "today": "Hodiaŭ"
     },
     "chat": {
-        "chatTitle" : "chat section",
+        "chatTitle" : "chat",
         "error": "Eraro: via mesaĝo “{{originalText}}” ne estis sendita. Kialo: {{error}}",
         "fieldPlaceHolder": "Tajpu vian mesaĝon ĉi tien",
         "messagebox": "Tajpu mesaĝon",

@@ -46,7 +46,7 @@
         "today": "Täna"
     },
     "chat": {
-        "chatTitle" : "chat section",
+        "chatTitle" : "chat",
         "error": "Viga: sõnumi \"{{originalText}}\" saatmine ebaõnnestus. Põhjus: {{error}}",
         "fieldPlaceHolder": "Sisesta oma sõnum siia",
         "messagebox": "Sisesta sõnum",
