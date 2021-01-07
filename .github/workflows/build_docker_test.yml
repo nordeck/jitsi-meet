@@ -47,11 +47,11 @@ jobs:
       - name: Make source-package
         run: make source-package
 
-      - name: Login to Bayern DockerHub
-        uses:  harbor.px.openws.de/login-action@v1
-        with:
-          username: ${{ secrets.BAYERN_DOCKERHUB_USERNAME }}
-          password: ${{ secrets.BAYERN_DOCKERHUB_TOKEN }}
+#      - name: Login to Bayern DockerHub
+#        uses:  harbor.px.openws.de
+#        with:
+#          username: ${{ secrets.BAYERN_DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.BAYERN_DOCKERHUB_TOKEN }}
 
       - name: Build Docker Image
         run: docker build . -t ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.5_test --push
