@@ -76,34 +76,33 @@
 		</g>
 	</defs>
 </svg>
-	<script type="text/javascript">
-		function jitsistart(e) {
-			var roomInput = document.getElementById("room-name-input");
-			var key = e ? e.keyCode : 13;
-			var valid = false;
-			// ignore space and backspace and del
-			if(key !== 8 || key !== 32 || key !== 46) {
-				valid = checkRoomName(roomInput);
-			}
-			if(key == 13 && valid) {
-				window.location.href = "/" + roomInput.value;
-			}
+<script type="text/javascript">
+	function jitsistart(e) {
+		var roomInput = document.getElementById("room-name-input");
+		var key = e ? e.keyCode : 13;
+		var valid = false;
+		// ignore space and backspace and del
+		if(key !== 8 || key !== 32 || key !== 46) {
+			valid = checkRoomName(roomInput);
 		}
-
-		function checkRoomName(roomInput) {
-			var roomName = roomInput.value;
-			var invalidChars = /([!,?,&,%,#,',",;])/;
-			var valid = roomName.trim() !== "" && !roomName.match(invalidChars);
-			if(!valid) {
-				roomInput.setAttribute("aria-invalid", "true");
-			} else {
-				roomInput.removeAttribute("aria-invalid");
-			}
-			return valid;
+		if(key == 13 && valid) {
+			window.location.href = "/" + roomInput.value;
 		}
+	}
 
-	</script>
-	<style type="text/css">
+	function checkRoomName(roomInput) {
+		var roomName = roomInput.value;
+		var invalidChars = /([!,?,&,%,#,',",;])/;
+		var valid = roomName.trim() !== "" && !roomName.match(invalidChars);
+		if(!valid) {
+			roomInput.setAttribute("aria-invalid", "true");
+		} else {
+			roomInput.removeAttribute("aria-invalid");
+		}
+		return valid;
+	}
+</script>
+<style type="text/css">
 	[aria-invalid] {
 		border: #CCD0D4 1px solid !important;
 		border-right: red 8px solid !important;
