@@ -35,35 +35,41 @@ jobs:
 
       - name: Install NPM packages
         run: npm install
+        
+      - name: Update package verions
+        run: |
+          npm version ${{ github.event.inputs.version }} --force -m "Version %s"
+          git push --follow-tags        
 
       - name: Make all
         run: make all
 
-      - name: Make all
+      - name: Make source-package
         run: make source-package
 
-#      - name: Login to DockerHub
-#        uses: docker/login-action@v1
-#        with:
-#          username: ${{ secrets.BAYERN_DOCKERHUB_USERNAME }}
-#          password: ${{ secrets.BAYERN_DOCKERHUB_TOKEN }}
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.BAYERN_DOCKERHUB_USERNAME }}
+          password: ${{ secrets.BAYERN_DOCKERHUB_TOKEN }}
 
       - name: Build Docker Image
-        run: docker build . -t ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.5_test
+        run: docker build . -t ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.5_test --push
         env:
           GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
-          draft: yes
-          prerelease: yes
+#      - name: Create Release
+#        id: create_release
+#        uses: actions/create-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+#        with:
+#          tag_name: ${{ github.ref }}
+#          release_name: Release ${{ github.ref }}
+#          body: |
+#            Changes in this Release
+#            - First Change
+#            - Second Change
+#          draft: yes
+#          prerelease: yes
+
