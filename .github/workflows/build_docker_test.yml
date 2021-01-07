@@ -46,7 +46,7 @@ jobs:
 #          password: ${{ secrets.BAYERN_DOCKERHUB_TOKEN }}
 
       - name: Build Docker Image
-        run: npm run docker:build -t ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.5_test
+        run: docker build . -t ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.5_test
         env:
           GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
