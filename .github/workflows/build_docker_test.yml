@@ -48,7 +48,7 @@ jobs:
         run: make source-package
 
       - name: Login to Bayern DockerHub
-        uses: docker/login-action@v1
+        uses:  harbor.px.openws.de/login-action@v1
         with:
           username: ${{ secrets.BAYERN_DOCKERHUB_USERNAME }}
           password: ${{ secrets.BAYERN_DOCKERHUB_TOKEN }}
