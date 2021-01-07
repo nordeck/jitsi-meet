@@ -12,7 +12,7 @@ on:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Test build docker'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: 'tttttttttttttttttttt'
         # Input has to be provided for the workflow to run
         required: true
 
@@ -24,9 +24,9 @@ jobs:
 
     steps:
       - name: Checkout branch
-        uses: actions/checkout@nic/feat/general
+        uses: actions/checkout@v2
         with:
-          ref: main
+          ref: nic/feat/general
 
       - name: Setup Node.js
         uses: actions/setup-node@v1
