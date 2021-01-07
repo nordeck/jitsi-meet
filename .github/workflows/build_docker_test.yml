@@ -39,6 +39,9 @@ jobs:
       - name: Make all
         run: make all
 
+      - name: Make all
+        run: make source-package
+
 #      - name: Login to DockerHub
 #        uses: docker/login-action@v1
 #        with:
