@@ -8,73 +8,70 @@
 <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAABinRfyAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAJUExURaIpLJ8kJ+7Y2CAUO7EAAAACdFJOU/MKqdeWWAAAADZJREFUCNdjCHVgDGUIYWAQZQjgWsDK4MDAwMjgwLWAkQECuBYwILM4FKAEWAlYMVgb2ACQUQBbXgijV6cMYgAAAABJRU5ErkJggg==" />
 </head>
 <body>
-	<header id="header" class="container header-logo">
+<header id="header" class="container header-logo">
+	<a aria-label="Dataport Logo mit Link zur Dataport Homepage" lang="de-DE" href="https://www.dataport.de/">
+		<svg class="logo-svg" role="img"><use xlink:href="#logo-link"/></svg>
+	</a>
+</header>
+<main class="">
+	<div class="introduction container">
+		<h1 class="big-title">Sichere Videokonferenzen bei Dataport</h1>
+		<br>
+		<p class="informative-text">
+			Willkommen beim Videokonferenzdienst von Dataport. Wenn Sie einen existierenden Raum besuchen wollen, nutzen Sie den Raumnamen aus der Einladung, die Sie erhalten haben. Wenn Sie über einen Account für Moderator:innen verfügen, können Sie auch einen neuen Raum mit einem zufälligen oder selbst vergebenen Namen erzeugen. Bitte vergeben Sie dazu unbedingt ein <b>sicheres Passwort</b>, um den Raum zu schützen. Für Moderator:innen empfehlen wir <b>Chrome</b> oder <b>Edge Chromium</b> als Browser. Als Teilnehmer*in können Sie auch unter Android und iOS die in den Stores erhältliche App „Jitsi Meet“ nutzen.
+			<br><br>
+			<a lang="de-DE" href="https://video.openws.de/Anleitungen/dOnlineZusammenarbeit_Anleitung_fuer_Moderatorinnen_und_Moderatoren.pdf">Anleitung für Moderator:innen</a>(Stand: 25.09.2020)<br>
+			<a lang="de-DE" href="https://video.openws.de/Anleitungen/dOnlineZusammenarbeit_Anleitung_fuer_Teilnehmerinnen_und_Teilnehmer.pdf">Anleitung für Teilnehmer:innen</a>(Stand: 25.09.2020)
+			<br><br>
+			Aktuelle Hinweise zur Benutzung finden Sie hier. Bei technischen Störungen wenden Sie sich bitte an den UHD.
+		</p>
+	</div>
+	<div class="input-fields">
+		<div class="container">
+			<span class="informative-text">Bitte geben Sie den Namen Ihres Konferenzraums ein</span><br>
+			<span class="small-text">Verwenden Sie für den Raumnamen keines der folgenden Sonderzeichen:  ( ! ? & % # ' " ; )</span><br>
+			<input type="search" aria-label="Eingabefeld für den Raumnamen" id="room-name-input" size="40" onkeyUp="jitsistart(event)" />
+			<button class="buttons" id="roombutton" onclick="jitsistart()">Zu Ihrem Konferenzraum</button>
+			<a class="buttons" lang="de-DE"  href="https://sandbox-008.sx.openws.de/univention/newfrontendprod/">Passwort / E-Mail ändern</a>
+		</div>
+	</div>
+	<div class="bullet-points container">
+		<p class="informative-text"><b>An dieser Stelle finden Sie aktuelle Hinweise zur Nutzung der Dataport Lösung <span class="dRed">d</span>OnlineZusammenarbeit</b></p>
+		<ul class="informative-text list">
+			<li>Bitte sorgen Sie für eine stabile Internetverbindung mit entsprechender Bandbreite: ca. 1Mbit pro Teilnehmer pro Sekunde (abweichend je nach Endgerät, Browser und Verhalten des Teilnehmers)</li>
+			<li>Maximal 70 Teilnehmer (empfohlen: 30)</li>
+			<li>Zur Entlastung der Verbindung werden nur die Video-Ansichten der letzten zehn Sprecher angezeigt.</li>
+			<li>Browser mit einer Chromium Engine liefern die besten Ergebnisse, z. B.. Google Chrome oder Microsoft Edge Chromium. In aktuellen Tests mit dem Firefox Browser kommt es zu Fehlern.</li>
+			<li>Einige externe Kameras werden nicht unterstützt </li>
+		</ul>
+	</div>
+</main>
+<footer class="container footer">
+	<nav>
+		<ul class="big-text">
+			<li class="footer-list-item"><a lang="de-DE" href="https://www.dataport.de/impressum/">Impressum</a></li>
+			<li class="footer-list-item"><a lang="de-DE" href="https://video.openws.de/datenschutz/datenschutz.html">Datenschutz</a> </li>
+			<li class="footer-list-item"><a lang="de-DE" href="https://video.openws.de/faq/faq.html">FAQ</a></li>
+			<li class="footer-list-item"><a lang="de-DE" href="https://video.openws.de/service/info.html">Technische Service Hotline</a></li>
+			<li class="footer-list-item"><a lang="de-DE" href="https://video.openws.de/docs/381_DP11_Hinweisdokument_dOZ_barrierefrei_V2.pdf">Lizenzhinweise</a></li>
+		</ul>
+	</nav>
+	<div class="footer-logo">
 		<a aria-label="Dataport Logo mit Link zur Dataport Homepage" lang="de-DE" href="https://www.dataport.de/">
-			<svg class="logo-svg" role="img"><use xlink:href="#logo-link"/></svg>
+			<svg class="logo-svg" focusable="false" role="img" viewBox="0 0 173 60"xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice"><use xlink:href="#logo-link"/></svg>
 		</a>
-	</header>
-	<main class="">
-		<div class="introduction container">
-			<h1 class="big-title">Sichere Videokonferenzen bei Dataport</h1>
-			<br>
-			<p class="informative-text">
-				Willkommen beim Videokonferenzdienst von Dataport. Wenn Sie einen existierenden Raum besuchen wollen, nutzen Sie den Raumnamen aus der Einladung, die Sie erhalten haben. Wenn Sie über einen Account für Moderator:innen verfügen, können Sie auch einen neuen Raum mit einem zufälligen oder selbst vergebenen Namen erzeugen. Bitte vergeben Sie dazu unbedingt ein <b>sicheres Passwort</b>, um den Raum zu schützen. Für Moderator:innen empfehlen wir <b>Chrome</b> oder <b>Edge Chromium</b> als Browser. Als Teilnehmer*in können Sie auch unter Android und iOS die in den Stores erhältliche App „Jitsi Meet“ nutzen.
-				<br><br>
-				<a lang="de-DE" href="https://video.openws.de/Anleitungen/dOnlineZusammenarbeit_Anleitung_fuer_Moderatorinnen_und_Moderatoren.pdf">Anleitung für Moderator:innen</a>(Stand: 25.09.2020)<br>
-				<a lang="de-DE" href="https://video.openws.de/Anleitungen/dOnlineZusammenarbeit_Anleitung_fuer_Teilnehmerinnen_und_Teilnehmer.pdf">Anleitung für Teilnehmer:innen</a>(Stand: 25.09.2020)
-				<br><br>
-				Aktuelle Hinweise zur Benutzung finden Sie hier. Bei technischen Störungen wenden Sie sich bitte an den UHD.
-			</p>
-		</div>
-		<div class="input-fields">
-			<div class="container">
-				<span class="informative-text">Bitte geben Sie den Namen Ihres Konferenzraums ein</span><br>
-				<span class="small-text">Verwenden Sie für den Raumnamen keines der folgenden Sonderzeichen:  ( ! ? & % # ' " ; )</span><br>
-				<input type="search" aria-label="Eingabefeld für den Raumnamen" id="room-name-input" size="40" onkeyUp="jitsistart(event)" />
-				<button class="buttons" id="roombutton" onclick="jitsistart()">Zu Ihrem Konferenzraum</button>
-				<a class="buttons" lang="de-DE"  href="https://sandbox-008.sx.openws.de/univention/newfrontendprod/">Passwort / E-Mail ändern</a>
-			</div>
-		</div>
-		<div class="bullet-points container">
-			<p class="informative-text"><b>An dieser Stelle finden Sie aktuelle Hinweise zur Nutzung der Dataport Lösung <span class="dRed">d</span>OnlineZusammenarbeit</b></p>
-			<ul class="informative-text list">
-				<li>Bitte sorgen Sie für eine stabile Internetverbindung mit entsprechender Bandbreite: ca. 1Mbit pro Teilnehmer pro Sekunde (abweichend je nach Endgerät, Browser und Verhalten des Teilnehmers)</li>
-				<li>Maximal 70 Teilnehmer (empfohlen: 30)</li>
-				<li>Zur Entlastung der Verbindung werden nur die Video-Ansichten der letzten zehn Sprecher angezeigt.</li>
-				<li>Browser mit einer Chromium Engine liefern die besten Ergebnisse, z. B.. Google Chrome oder Microsoft Edge Chromium. In aktuellen Tests mit dem Firefox Browser kommt es zu Fehlern.</li>
-				<li>Einige externe Kameras werden nicht unterstützt </li>
-			</ul>
-		</div>
-	</main>
-	<footer class="container footer">
-		<nav>
-			<ul class="big-text">
-				<li class="footer-list-item"><a lang="de-DE" href="https://www.dataport.de/impressum/">Impressum</a></li>
-				<li class="footer-list-item"><a lang="de-DE" href="https://video.openws.de/datenschutz/datenschutz.html">Datenschutz</a> </li>
-				<li class="footer-list-item"><a lang="de-DE" href="https://video.openws.de/faq/faq.html">FAQ</a></li>
-				<li class="footer-list-item"><a lang="de-DE" href="https://video.openws.de/service/info.html">Technische Service Hotline</a></li>
-				<li class="footer-list-item"><a lang="de-DE" href="https://video.openws.de/docs/381_DP11_Hinweisdokument_dOZ_barrierefrei_V2.pdf">Lizenzhinweise</a></li>
-			</ul>
-		</nav>
-		<div class="footer-logo">
-			<a aria-label="Dataport Logo mit Link zur Dataport Homepage" lang="de-DE" href="https://www.dataport.de/">
-				<svg class="logo-svg" focusable="false" role="img" viewBox="0 0 173 60" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice"><use xlink:href="#logo-link"/></svg>
-			</a>
-		</div>
-	</footer>
-	<svg focusable="false" aria-hidden="true" height="60" width="173" viewBox="0 0 173 60" version="1.1" xmlns="http://www.w3.org/2000/svg" style="display: none;">
-	<defs>
-		<g id="logo-link" stroke="none" fill="none" fill-rule="evenodd">
-			<g class="HeaderLogo-small" transform="translate(120.066900, 0.000000)">
-				<rect x="0" y="0" width="22" height="60"></rect>
-				<path d="M20.0264,16.0313 C20.7786,16.0313 21.1547,16.4063 21.1547,17.1563 L21.1547,18.0001 C21.1547,18.7501 20.7787,19.1251 20.0264,19.1251 L1.9743,19.1251 C1.2221,19.125 0.846,18.75 0.846,18 L0.846,17.1562 C0.846,16.4062 1.2221,16.0312 1.9743,16.0312 L20.0264,16.0312 L20.0264,16.0313 Z M20.0264,8.0626 C20.7786,8.0626 21.1547,8.4376 21.1547,9.1876 L21.1547,10.0313 C21.1547,10.7813 20.7787,11.1563 20.0264,11.1563 L1.9743,11.1563 C1.2221,11.1563 0.846,10.7813 0.846,10.0313 L0.846,9.1876 C0.846,8.4376 1.2221,8.0626 1.9743,8.0626 L20.0264,8.0626 Z M20.0264,0 C20.7786,0 21.1547,0.375 21.1547,1.125 L21.1547,1.9688 C21.1547,2.7188 20.7787,3.0938 20.0264,3.0938 L1.9743,3.0938 C1.2221,3.0938 0.846,2.7188 0.846,1.9688 L0.846,1.125 C0.846,0.375 1.2221,0 1.9743,0 L20.0264,0 Z M20.0264,56.0623 C20.7786,56.0623 21.1547,56.4373 21.1547,57.1873 L21.1547,58.0311 C21.1547,58.7811 20.7787,59.1561 20.0264,59.1561 L1.9743,59.1561 C1.2221,59.1561 0.846,58.7811 0.846,58.0311 L0.846,57.1873 C0.846,56.4373 1.2221,56.0623 1.9743,56.0623 L20.0264,56.0623 Z M20.0264,47.9997 C20.7786,47.9997 21.1547,48.3747 21.1547,49.1247 L21.1547,49.9685 C21.1547,50.7185 20.7787,51.0935 20.0264,51.0935 L1.9743,51.0935 C1.2221,51.0935 0.846,50.7185 0.846,49.9685 L0.846,49.1247 C0.846,48.3747 1.2221,47.9997 1.9743,47.9997 L20.0264,47.9997 Z" fill="#9E292B"></path>
-				<path d="M0,30.281 C0,27.0935 1.5044,25.5935 4.7011,25.5935 L17.3941,25.5935 C20.5899,25.5935 22.0952,27.0935 22.0952,30.281 L22.0952,36.9372 C22.0952,40.1247 20.5899,41.6247 17.3942,41.6247 L4.7011,41.6247 C1.5043,41.6247 0,40.1247 0,36.9372 L0,30.281 Z M5.2653,28.781 C4.1371,28.781 3.6669,29.3435 3.6669,30.3747 L3.6669,36.8435 C3.6669,37.9685 4.232,38.4372 5.2653,38.4372 L16.7361,38.4372 C17.8643,38.4372 18.3344,37.8747 18.3344,36.8435 L18.3344,30.3747 C18.3344,29.2497 17.7694,28.781 16.7361,28.781 L5.2653,28.781 Z" fill="#54616E"></path>
-			</g>
-			<g class="HeaderLogo-big" transform="translate(0.000000, 19.781000)" fill="#54616E">
-				<path d="M158.1455,8.9998 L152.6922,8.9998 C151.564,8.9998 151.0939,9.5623 151.0939,10.5936 L151.0939,21.8436 L147.427,21.8436 L147.427,10.4998 C147.427,7.3123 148.9323,5.8123 152.1281,5.8123 L158.2395,5.8123 L158.1455,8.9998 Z M63.2777,18.6563 L63.2777,21.7501 L57.8244,21.7501 C54.6277,21.7501 53.1234,20.2501 53.1234,17.0626 L53.1234,2.3438 L56.7902,2.3438 L56.7902,5.8126 L62.8066,5.8126 L62.8066,8.9063 L56.7902,8.9063 L56.7902,17.0626 C56.7902,18.1876 57.3543,18.6563 58.3876,18.6563 L63.2777,18.6563 Z M172.3425,18.6563 L172.3425,21.7501 L166.8892,21.7501 C163.6925,21.7501 162.1882,20.2501 162.1882,17.0626 L162.1882,2.3438 L165.855,2.3438 L165.855,5.8126 L171.8714,5.8126 L171.8714,8.9063 L165.855,8.9063 L165.855,17.0626 C165.855,18.1876 166.4191,18.6563 167.4524,18.6563 L172.3425,18.6563 Z M17.958,5.8126 L17.958,0 L21.625,0 L21.625,21.75 L4.701,21.75 C1.5043,21.75 0,20.25 0,17.0626 L0,10.4063 C0,7.2188 1.5043,5.7188 4.701,5.7188 L17.958,5.8126 Z M70.9872,21.8438 C67.7904,21.8438 66.2861,20.3438 66.2861,17.1562 L66.2861,16.3125 C66.2861,13.125 67.7904,11.625 70.9871,11.625 L84.2442,11.625 L84.2442,10.5 C84.2442,9.375 83.6801,8.9062 82.6468,8.9062 L69.8589,8.9062 L69.8589,5.8125 L83.304,5.8125 C86.5008,5.8125 88.0051,7.3125 88.0051,10.5 L88.0051,21.8438 L70.9871,21.8438 L70.9872,21.8438 Z M97.2196,21.8436 L97.2196,27.9373 L93.5528,27.9373 L93.5528,5.8123 L110.3826,5.8123 C113.5784,5.8123 115.0837,7.3123 115.0837,10.4998 L115.0837,17.1561 C115.0837,20.3436 113.5784,21.8436 110.3827,21.8436 L97.2196,21.8436 Z M30.8402,21.8438 C27.6444,21.8438 26.1391,20.3438 26.1391,17.1562 L26.1391,16.3125 C26.1391,13.125 27.6444,11.625 30.8401,11.625 L44.0972,11.625 L44.0972,10.5 C44.0972,9.375 43.5322,8.9062 42.4989,8.9062 L29.7109,8.9062 L29.7109,5.8125 L43.157,5.8125 C46.3528,5.8125 47.8581,7.3125 47.8581,10.5 L47.8581,21.8438 L30.8401,21.8438 L30.8402,21.8438 Z M70.0469,17.1562 C70.0469,18.2812 70.6111,18.75 71.6453,18.75 L84.2433,18.75 L84.2433,14.7187 L71.6453,14.7187 C70.5171,14.7187 70.0469,15.2812 70.0469,16.3125 L70.0469,17.1563 L70.0469,17.1562 Z M97.2196,8.9998 L97.2196,18.7498 L109.8186,18.7498 C110.9468,18.7498 111.4169,18.1873 111.4169,17.1561 L111.4169,10.6873 C111.4169,9.5623 110.8528,9.0936 109.8185,9.0936 L97.2196,8.9998 Z M29.8059,17.1562 C29.8059,18.2812 30.3701,18.75 31.4043,18.75 L44.0033,18.75 L44.0033,14.7187 L31.4043,14.7187 C30.276,14.7187 29.8059,15.2812 29.8059,16.3125 L29.8059,17.1563 L29.8059,17.1562 Z M17.9581,18.6563 L17.9581,9.0001 L5.36,9.0001 C4.2318,9.0001 3.7617,9.5626 3.7617,10.5938 L3.7617,17.0626 C3.7617,18.1876 4.3258,18.6563 5.3601,18.6563 L17.9581,18.6563 Z"></path>
-			</g>
+	</div>
+</footer>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display: none;">
+	<defs/>
+	<g id="logo-link" fill="none" fill-rule="evenodd">
+		<path d="M120.067 0h22v60h-22z"/>
+		<path fill="#9E292B" d="M140.093 16.031c.753 0 1.129.375 1.129 1.125V18c0 .75-.376 1.125-1.129 1.125h-18.052c-.752 0-1.128-.375-1.128-1.125v-.844c0-.75.376-1.125 1.128-1.125h18.052zm0-7.968c.753 0 1.129.375 1.129 1.125v.843c0 .75-.376 1.125-1.129 1.125h-18.052c-.752 0-1.128-.375-1.128-1.125v-.843c0-.75.376-1.125 1.128-1.125h18.052zm0-8.063c.753 0 1.129.375 1.129 1.125v.844c0 .75-.376 1.125-1.129 1.125h-18.052c-.752 0-1.128-.375-1.128-1.125v-.844c0-.75.376-1.125 1.128-1.125h18.052zm0 56.062c.753 0 1.129.375 1.129 1.125v.844c0 .75-.376 1.125-1.129 1.125h-18.052c-.752 0-1.128-.375-1.128-1.125v-.844c0-.75.376-1.125 1.128-1.125h18.052zm0-8.062c.753 0 1.129.375 1.129 1.125v.843c0 .75-.376 1.125-1.129 1.125h-18.052c-.752 0-1.128-.375-1.128-1.125v-.843c0-.75.376-1.125 1.128-1.125h18.052z"/>
+		<path fill="#54616E" d="M120.067 30.281c0-3.188 1.504-4.688 4.701-4.688h12.693c3.196 0 4.701 1.5 4.701 4.688v6.656c0 3.188-1.505 4.688-4.7 4.688h-12.694c-3.197 0-4.701-1.5-4.701-4.688v-6.656zm5.265-1.5c-1.128 0-1.598.563-1.598 1.594v6.468c0 1.125.565 1.594 1.598 1.594h11.471c1.128 0 1.598-.562 1.598-1.593v-6.47c0-1.124-.565-1.593-1.598-1.593h-11.47z"/>
+		<g fill="#54616E">
+			<path d="M158.145 28.78h-5.453c-1.128 0-1.598.563-1.598 1.595v11.25h-3.667V30.28c0-3.188 1.505-4.688 4.701-4.688h6.112l-.095 3.188zm-94.867 9.657v3.094h-5.454c-3.196 0-4.7-1.5-4.7-4.687v-14.72h3.666v3.47h6.017v3.093H56.79v8.157c0 1.125.564 1.593 1.598 1.593h4.89zm109.065 0v3.094h-5.454c-3.197 0-4.7-1.5-4.7-4.687v-14.72h3.666v3.47h6.016v3.093h-6.016v8.157c0 1.125.564 1.593 1.597 1.593h4.89zM17.958 25.594V19.78h3.667v21.75H4.701c-3.197 0-4.701-1.5-4.701-4.687v-6.657C0 27 1.504 25.5 4.701 25.5l13.257.094zm53.03 16.03c-3.198 0-4.702-1.5-4.702-4.687v-.843c0-3.188 1.504-4.688 4.701-4.688h13.257v-1.125c0-1.125-.564-1.594-1.597-1.594H69.859v-3.094h13.445c3.197 0 4.701 1.5 4.701 4.688v11.344H70.987zm26.232 0v6.094h-3.667V25.593h16.83c3.195 0 4.7 1.5 4.7 4.688v6.656c0 3.188-1.505 4.688-4.7 4.688H97.22zm-66.38 0c-3.196 0-4.7-1.5-4.7-4.687v-.843c0-3.188 1.504-4.688 4.7-4.688h13.257v-1.125c0-1.125-.565-1.594-1.598-1.594H29.71v-3.093h13.446c3.196 0 4.701 1.5 4.701 4.687v11.344H30.84zm39.207-4.687c0 1.125.564 1.594 1.598 1.594h12.598V34.5H71.645c-1.128 0-1.598.562-1.598 1.594v.843zm27.173-8.156v9.75h12.599c1.128 0 1.598-.563 1.598-1.594v-6.469c0-1.125-.564-1.593-1.599-1.593L97.22 28.78zm-67.414 8.156c0 1.125.564 1.594 1.598 1.594h12.6V34.5h-12.6c-1.128 0-1.598.562-1.598 1.594v.843zm-11.848 1.5v-9.656H5.36c-1.128 0-1.598.563-1.598 1.594v6.469c0 1.125.564 1.593 1.598 1.593h12.598z"/>
 		</g>
-	</defs>
+	</g>
 </svg>
 <script type="text/javascript">
 	function jitsistart(e) {
