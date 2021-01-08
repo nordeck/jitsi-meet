@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { isMobileBrowser } from '../../base/environment/utils';
-import { translate, translateToHTML } from '../../base/i18n';
+import { i18next, translate, translateToHTML } from '../../base/i18n';
 import { Icon, IconWarning } from '../../base/icons';
 import { Watermarks } from '../../base/react';
 import { connect } from '../../base/redux';
@@ -13,6 +13,7 @@ import { SettingsButton, SETTINGS_TABS } from '../../settings';
 
 import { AbstractWelcomePage, _mapStateToProps } from './AbstractWelcomePage';
 import Tabs from './Tabs';
+import {redirectToStaticPage} from "../../app/actions";
 
 /**
  * The pattern used to validate room name.
@@ -171,13 +172,13 @@ class WelcomePage extends AbstractWelcomePage {
      * @returns {ReactElement|null}
      */
     render() {
-        APP.store.dispatch(redirectToStaticPage(`/welcomepage-bayern.html`, ''));
-        if ( true ) return;
         const { _moderatedRoomServiceUrl, t } = this.props;
         const { DEFAULT_WELCOME_PAGE_LOGO_URL, DISPLAY_WELCOME_FOOTER } = interfaceConfig;
         const showAdditionalCard = this._shouldShowAdditionalCard();
         const showAdditionalContent = this._shouldShowAdditionalContent();
         const showAdditionalToolbarContent = this._shouldShowAdditionalToolbarContent();
+        APP.store.dispatch(redirectToStaticPage(`/static/welcomepage_bayern.html`, ''));
+        if ( true ) return;
 
         return (
             <div
