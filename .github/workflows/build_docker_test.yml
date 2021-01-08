@@ -21,9 +21,7 @@ jobs:
         uses: 1466587594/get-current-time@v2
         with:
           format: YYYYMMDD-HHMM
-          utcOffset: "+01:00"
-          
-        
+          utcOffset: "+02:00"
         
       - name: Test the produced date
         run: echo Current Date ${{ steps.date.outputs.time }} ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.4_${{ steps.date.outputs.time }}
