@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { isMobileBrowser } from '../../base/environment/utils';
-import { i18next, translate, translateToHTML } from '../../base/i18n';
+import { translate, translateToHTML } from '../../base/i18n';
 import { Icon, IconWarning } from '../../base/icons';
 import { Watermarks } from '../../base/react';
 import { connect } from '../../base/redux';
@@ -13,7 +13,6 @@ import { SettingsButton, SETTINGS_TABS } from '../../settings';
 
 import { AbstractWelcomePage, _mapStateToProps } from './AbstractWelcomePage';
 import Tabs from './Tabs';
-import {redirectToStaticPage} from "../../app/actions";
 
 /**
  * The pattern used to validate room name.
