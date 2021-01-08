@@ -18,10 +18,15 @@ jobs:
         
       - name: Get current date
         id: date
-        run: echo "MY_DATE=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+        uses: 1466587594/get-current-time@v2
+        with:
+          format: YYYYMMDD-HHMM
+          utcOffset: "+01:00"
+          
+        
         
       - name: Test the produced date
-        run: echo Current Date ${{ env.MY_DATE }} ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.4_${{ env.MY_DATE }}
+        run: echo Current Date ${{ steps.date.outputs.time }} ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.4_${{ steps.date.outputs.time }}
            
       - name: Checkout branch
         uses: actions/checkout@v2
@@ -51,12 +56,12 @@ jobs:
           password: ${{ secrets.BAYERN_DOCKERHUB_TOKEN }}
  
       - name: Build Docker Image
-        run: docker build . -t ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.4_${{ env.MY_DATE }}
+        run: docker build . -t ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.4_${{steps.date.outputs.time}}
         env:
           GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
  
  
       - name: Build Docker Push
-        run: docker push  ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.4_${{ env.MY_DATE }}
+        run: docker push  ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.4_${{ steps.date.outputs.time}}
         env:
           GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }} 
