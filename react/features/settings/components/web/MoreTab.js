@@ -5,6 +5,7 @@ import DropdownMenu, {
     DropdownItemGroup
 } from '@atlaskit/dropdown-menu';
 import React from 'react';
+
 import keyboardShortcut from '../../../../../modules/keyboardshortcut/keyboardshortcut';
 import { AbstractDialogTab } from '../../../base/dialog';
 import type { Props as AbstractDialogTabProps } from '../../../base/dialog';
