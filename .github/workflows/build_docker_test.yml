@@ -30,9 +30,7 @@ jobs:
         
       - name: Test the produced date
         run: echo Current Date ${{ env.MY_DATE }}
-		  
-      
-                  
+           
 #      - name: Checkout branch
 #        uses: actions/checkout@v2
 #        with:
