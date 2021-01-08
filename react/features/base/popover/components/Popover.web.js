@@ -130,6 +130,7 @@ class Popover extends Component<Props, State> {
             <div
                 className = { this.props.className }
                 id = { this.props.id }
+                onKeyPress = { this.state.showDialog ? this._onHideDialog : this._onShowDialog }
                 onMouseEnter = { this._onShowDialog }
                 onMouseLeave = { this._onHideDialog }>
                 <InlineDialog

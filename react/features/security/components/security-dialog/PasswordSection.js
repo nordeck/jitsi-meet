@@ -149,7 +149,7 @@ function PasswordSection({
                         role = 'button'
                         tabIndex = { 0 }>{ t('dialog.Cancel') }</a>
                     <a
-                        aria-label = { t('dialog.add')  }
+                        aria-label = { t('dialog.add') }
                         onClick = { onPasswordSave }
                         onKeyPress = { onPasswordSave }
                         role = 'button'

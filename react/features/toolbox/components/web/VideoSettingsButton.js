@@ -12,7 +12,6 @@ import { getMediaPermissionPromptVisibility } from '../../../overlay';
 import { toggleVideoSettings, VideoSettingsPopup } from '../../../settings';
 import { isVideoSettingsButtonDisabled } from '../../functions';
 import VideoMuteButton from '../VideoMuteButton';
-import { translate, translateToHTML } from '../../../base/i18n';
 
 
 type Props = {
