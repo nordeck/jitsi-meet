@@ -1,6 +1,6 @@
 /* @flow */
 
-import AKDropdownMenu from '@atlaskit/dropdown-menu';
+import DropdownMenu from '@atlaskit/dropdown-menu';
 import ChevronDownIcon from '@atlaskit/icon/glyph/chevron-down';
 import React, { Component } from 'react';
 
@@ -110,7 +110,9 @@ class DeviceSelector extends Component<Props> {
      */
     _createDropdownTrigger(triggerText) {
         return (
-            <div className = 'device-selector-trigger'>
+            <div
+                className = 'device-selector-trigger'
+                tabIndex = { 0 }>
                 <span
                     className = { `device-selector-icon ${this.props.icon}` } />
                 <span className = 'device-selector-trigger-text'>
@@ -169,12 +171,12 @@ class DeviceSelector extends Component<Props> {
         }
 
         return (
-            <AKDropdownMenu
+            <DropdownMenu
                 items = { [ { items: options.items || [] } ] }
                 onItemActivated = { this._onSelect }
-                shouldFitContainer = { true }>
+                shouldFitContainer = { true } >
                 { trigger }
-            </AKDropdownMenu>
+            </DropdownMenu>
         );
     }
 

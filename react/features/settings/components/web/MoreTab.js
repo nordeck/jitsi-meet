@@ -6,10 +6,10 @@ import DropdownMenu, {
 } from '@atlaskit/dropdown-menu';
 import React from 'react';
 
+import keyboardShortcut from '../../../../../modules/keyboardshortcut/keyboardshortcut';
 import { AbstractDialogTab } from '../../../base/dialog';
 import type { Props as AbstractDialogTabProps } from '../../../base/dialog';
 import { translate } from '../../../base/i18n';
-import keyboardShortcut from '../../../../../modules/keyboardshortcut/keyboardshortcut'
 
 /**
  * The type of the React {@code Component} props of {@link MoreTab}.
