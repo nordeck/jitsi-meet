@@ -28,9 +28,8 @@ jobs:
         run: echo "name=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
         
       - name: Test the produced date
-        run: echo Current Date $CURR_DATE 
-        env:
-          CURR_DATE:${{ steps.date.outputs.date }}
+        run: echo Current Date ${{ steps.date.outputs.date }}
+      
                   
 #      - name: Checkout branch
 #        uses: actions/checkout@v2
