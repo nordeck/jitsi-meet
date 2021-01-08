@@ -29,7 +29,8 @@ jobs:
         run: echo "MY_DATE=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
         
       - name: Test the produced date
-        run: echo Current Date ${{ env.MY_DATE }}
+        run: echo Current Date ${{ env.MY_DATE }}   ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.4_${{ env.MY_DATE }}	
+		  
       
                   
 #      - name: Checkout branch
