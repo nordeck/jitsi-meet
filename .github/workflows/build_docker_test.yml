@@ -23,47 +23,50 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
-        with:
-          ref: nic/feat/general
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-
-      - name: Install NPM packages
-        run: npm install
+      - name: Get current date
+        id: date
+        run: echo "name=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
         
-#      - name: Update package verions
-#        run: |
-#          npm version ${{ github.event.inputs.version }} --force -m "Version %s"
-#          git push --follow-tags        
-
-      - name: Make all
-        run: make all
-
-      - name: Make source-package
-        run: make source-package
-
-      - name: Login to Bayern DockerHub
-        uses: docker/login-action@v1
+      - name: Test the produced date
+        run: echo Current Date $CURR_DATE 
         with:
-          registry: ${{ secrets.BAYERN_DOCKER_HUB }}
-          username: ${{ secrets.BAYERN_DOCKERHUB_USERNAME }}
-          password: ${{ secrets.BAYERN_DOCKERHUB_TOKEN }}
+          CURR_DATE:${{ steps.date.outputs.date }}
+                  
+#      - name: Checkout branch
+#        uses: actions/checkout@v2
+#        with:
+#          ref: nic/feat/general
 
-      - name: Build Docker Image
-        run: docker build . -t ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.5_test_00001
-        env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
-
-
-
-      - name: Build Docker Push
-        run: docker push  ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.5_test_00001
-        env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
-
-
+#     - name: Setup Node.js
+#       uses: actions/setup-node@v1
+#       with:
+#         node-version: '12.x'
+#
+#     - name: Install NPM packages
+#       run: npm install
+#       
+#
+#     - name: Make all
+#       run: make all
+#
+#     - name: Make source-package
+#       run: make source-package
+#
+#     - name: Login to Bayern DockerHub
+#       uses: docker/login-action@v1
+#       with:
+#         registry: ${{ secrets.BAYERN_DOCKER_HUB }}
+#         username: ${{ secrets.BAYERN_DOCKERHUB_USERNAME }}
+#         password: ${{ secrets.BAYERN_DOCKERHUB_TOKEN }}
+#
+#     - name: Build Docker Image
+#       run: docker build . -t ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.5_test_00001
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+#
+#
+#
+#     - name: Build Docker Push
+#       run: docker push  ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.5_test_00001
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
