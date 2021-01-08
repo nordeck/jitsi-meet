@@ -6,15 +6,7 @@ name: Manual workflow
 # or API.
 on:
   workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      currdate:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'aktuelles datum'
-        # Default value if no value is explicitly provided
-        default: $(date +%m%d%H%M%Y.%S)
-        # Input has to be provided for the workflow to run
-        required: true
+
 
 jobs:
 
