@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html dir="ltr" data-whatinput="mouse" data-whatintent="mouse" lang="de-DE">
 <head>
-<title>Startseite | Dataport</title>
+<title>Startseite | STMuk</title>
 <meta content-type="text/html">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAABinRfyAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAJUExURaIpLJ8kJ+7Y2CAUO7EAAAACdFJOU/MKqdeWWAAAADZJREFUCNdjCHVgDGUIYWAQZQjgWsDK4MDAwMjgwLWAkQECuBYwILM4FKAEWAlYMVgb2ACQUQBbXgijV6cMYgAAAABJRU5ErkJggg==" />
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAABinRfyAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAJcEhZcwAAGdYAABnWARjRyu0AAAAJUExURQGc2FdRTv///xuWxjcAAAAtSURBVAjXYwgFAoasVatWMmQui8xkyJwFIrLSQCwQsSwrEyLrwMDASIAAGQUAqXASKq5jNP8AAAAASUVORK5CYII=" />
 </head>
 <body>
 <header id="header" class="container header-logo">
-	<a aria-label="Dataport Logo mit Link zur Dataport Homepage" lang="de-DE" href="https://www.dataport.de/">
-		<svg class="logo-svg" role="img"><use xlink:href="#logo-link"/></svg>
+	<a aria-label="Logo mit Link zur Homepage des Bayrischen Staatsministerium für Unterricht und Kultus" lang="de-DE" href="https://www.km.bayern.de/">
+		<img class="logo" aria-hidden="true" src="logo.png" alt="Logo des Bayrischen Staatsministerium für Unterricht und Kultus" />
 	</a>
 </header>
 <main>
 	<div class="introduction container">
-		<h1 class="big-title">Sichere Videokonferenzen bei Dataport</h1>
+		<h1 class="big-title">Sichere Videokonferenzen beim STMuk</h1>
 		<br>
 		<p class="informative-text">
-			Willkommen beim Videokonferenzdienst von Dataport. Wenn Sie einen existierenden Raum besuchen wollen, nutzen Sie den Raumnamen aus der Einladung, die Sie erhalten haben. Wenn Sie über einen Account für Moderator:innen verfügen, können Sie auch einen neuen Raum mit einem zufälligen oder selbst vergebenen Namen erzeugen. Bitte vergeben Sie dazu unbedingt ein <b>sicheres Passwort</b>, um den Raum zu schützen. Für Moderator:innen empfehlen wir <b>Chrome</b> oder <b>Edge Chromium</b> als Browser. Als Teilnehmer*in können Sie auch unter Android und iOS die in den Stores erhältliche App „Jitsi Meet“ nutzen.
+			Willkommen beim Videokonferenzdienst vom STMuk. Wenn Sie einen existierenden Raum besuchen wollen, nutzen Sie den Raumnamen aus der Einladung, die Sie erhalten haben. Wenn Sie über einen Account für Moderator:innen verfügen, können Sie auch einen neuen Raum mit einem zufälligen oder selbst vergebenen Namen erzeugen. Bitte vergeben Sie dazu unbedingt ein <b>sicheres Passwort</b>, um den Raum zu schützen. Für Moderator:innen empfehlen wir <b>Chrome</b> oder <b>Edge Chromium</b> als Browser. Als Teilnehmer*in können Sie auch unter Android und iOS die in den Stores erhältliche App „Jitsi Meet“ nutzen.
 			<br><br>
 			<a lang="de-DE" href="https://video.openws.de/Anleitungen/dOnlineZusammenarbeit_Anleitung_fuer_Moderatorinnen_und_Moderatoren.pdf">Anleitung für Moderator:innen</a>(Stand: 25.09.2020)<br>
 			<a lang="de-DE" href="https://video.openws.de/Anleitungen/dOnlineZusammenarbeit_Anleitung_fuer_Teilnehmerinnen_und_Teilnehmer.pdf">Anleitung für Teilnehmer:innen</a>(Stand: 25.09.2020)
-			<br><br>
-			Aktuelle Hinweise zur Benutzung finden Sie hier. Bei technischen Störungen wenden Sie sich bitte an den <a class="dRed" href="https://video.openws.de/service/info.html">UHD</a>.
 		</p>
 	</div>
 	<div class="input-fields">
@@ -32,11 +30,11 @@
 			<span class="small-text">Verwenden Sie für den Raumnamen keines der folgenden Sonderzeichen:  ( ! ? & % # ' " ; )</span><br>
 			<input type="search" aria-label="Eingabefeld für den Raumnamen" id="room-name-input" size="40" onkeyUp="jitsistart(event)" />
 			<button class="buttons" id="roombutton" onclick="jitsistart()">Zu Ihrem Konferenzraum</button>
-			<a class="buttons" lang="de-DE"  href="https://sandbox-008.sx.openws.de/univention/newfrontendprod/">Passwort / E-Mail ändern</a>
+			<button class="buttons" onclick="changePWorEmail">Passwort / E-Mail ändern</button>
 		</div>
 	</div>
 	<div class="bullet-points container">
-		<p class="informative-text"><b>An dieser Stelle finden Sie aktuelle Hinweise zur Nutzung der Dataport Lösung <span class="dRed">d</span>OnlineZusammenarbeit</b></p>
+		<p class="informative-text"><b>An dieser Stelle finden Sie aktuelle Hinweise zur Nutzung</p>
 		<ul class="informative-text list">
 			<li>Bitte sorgen Sie für eine stabile Internetverbindung mit entsprechender Bandbreite: ca. 1Mbit pro Teilnehmer pro Sekunde (abweichend je nach Endgerät, Browser und Verhalten des Teilnehmers)</li>
 			<li>Maximal 70 Teilnehmer (empfohlen: 30)</li>
@@ -49,20 +47,20 @@
 <footer class="container footer">
 	<nav>
 		<ul class="big-text">
-			<li class="footer-list-item"><a lang="de-DE" href="https://www.dataport.de/impressum/">Impressum</a></li>
-			<li class="footer-list-item"><a lang="de-DE" href="https://video.openws.de/datenschutz/datenschutz.html">Datenschutz</a> </li>
-			<li class="footer-list-item"><a lang="de-DE" href="https://video.openws.de/faq/faq.html">FAQ</a></li>
-			<li class="footer-list-item"><a lang="de-DE" href="https://video.openws.de/service/info.html">Technische Service Hotline</a></li>
-			<li class="footer-list-item"><a lang="de-DE" href="https://video.openws.de/docs/381_DP11_Hinweisdokument_dOZ_barrierefrei_V2.pdf">Lizenzhinweise</a></li>
+			<li class="footer-list-item"><a href="">Impressum</a></li>
+			<li class="footer-list-item"><a href="">Datenschutz</a> </li>
+			<li class="footer-list-item"><a href="">FAQ</a></li>
+			<li class="footer-list-item"><a href="">Technische Service Hotline</a></li>
+			<li class="footer-list-item"><a href="">Lizenzhinweise</a></li>
+			<li class="footer-list-item"><a href="/Barrierefreiheitserklaerung.html">Barrierefreiheitserklärung</a></li>
 		</ul>
 	</nav>
-	<div class="footer-logo">
-		<a aria-label="Dataport Logo mit Link zur Dataport Homepage" lang="de-DE" href="https://www.dataport.de/">
-			<svg class="logo-svg" focusable="false" role="img" viewBox="0 0 173 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice"><use xlink:href="#logo-link"/></svg>
-		</a>
+	<div>
+	<a aria-label="Logo mit Link zur Homepage des Bayrischen Staatsministerium für Unterricht und Kultus" lang="de-DE" href="https://www.km.bayern.de/">
+		<img class="logo" aria-hidden="true" src="logo.png" alt="Logo des Bayrischen Staatsministerium für Unterricht und Kultus" />
+	</a>
 	</div>
 </footer>
-<svg xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" style="display: none;"><defs/><g id="logo-link" fill="none" fill-rule="evenodd"><path d="M120 0h22v60h-22z"/><path fill="#9E292B" d="M140 16c.8 0 1.2.4 1.2 1.2v.8c0 .8-.4 1.1-1.1 1.1h-18c-.8 0-1.2-.4-1.2-1.1v-.8c0-.8.4-1.2 1.1-1.2h18zm0-8c.8 0 1.2.4 1.2 1.2v.8c0 .8-.4 1.2-1.1 1.2h-18c-.8 0-1.2-.4-1.2-1.2v-.8c0-.8.4-1.1 1.1-1.1h18zm0-8c.8 0 1.2.4 1.2 1.1V2c0 .7-.4 1-1.1 1h-18c-.8 0-1.2-.3-1.2-1V1c0-.7.4-1.1 1.1-1.1h18zm0 56c.8 0 1.2.4 1.2 1.2v.8c0 .8-.4 1.2-1.1 1.2h-18c-.8 0-1.2-.4-1.2-1.2v-.8c0-.8.4-1.1 1.1-1.1h18zm0-8c.8 0 1.2.4 1.2 1.1v.9c0 .7-.4 1-1.1 1h-18c-.8 0-1.2-.3-1.2-1V49c0-.7.4-1.1 1.1-1.1h18z"/><path fill="#54616E" d="M120 30.3c0-3.2 1.6-4.7 4.8-4.7h12.7c3.2 0 4.7 1.5 4.7 4.7v6.6c0 3.2-1.5 4.7-4.7 4.7h-12.7c-3.2 0-4.7-1.5-4.7-4.7v-6.6zm5.3-1.5c-1.1 0-1.6.5-1.6 1.6v6.4c0 1.2.6 1.6 1.6 1.6h11.5c1.1 0 1.6-.5 1.6-1.6v-6.4c0-1.2-.6-1.6-1.6-1.6h-11.5z"/><g fill="#54616E"><path d="M158.1 28.8h-5.4c-1.1 0-1.6.5-1.6 1.6v11.2h-3.7V30.3c0-3.2 1.5-4.7 4.7-4.7h6.1v3.2zm-94.8 9.6v3.1h-5.5c-3.2 0-4.7-1.5-4.7-4.7V22.1h3.7v3.5h6v3h-6v8.2c0 1.2.6 1.6 1.6 1.6h4.9zm109 0v3.1H167c-3.2 0-4.7-1.5-4.7-4.7V22.1h3.7v3.5h6v3h-6v8.2c0 1.2.5 1.6 1.6 1.6h4.8zM18 25.6v-5.8h3.6v21.7H4.7C1.5 41.5 0 40 0 36.8v-6.6c0-3.2 1.5-4.7 4.7-4.7H18zm53 16c-3.2 0-4.7-1.5-4.7-4.7v-.8c0-3.2 1.5-4.7 4.7-4.7h13.2v-1.1c0-1.1-.5-1.6-1.6-1.6H70v-3.1h13.4c3.2 0 4.7 1.5 4.7 4.7v11.3H71zm26.2 0v6.1h-3.6V25.6h16.8c3.2 0 4.7 1.5 4.7 4.7v6.6c0 3.2-1.5 4.7-4.7 4.7H97.2zm-66.4 0c-3.2 0-4.7-1.5-4.7-4.7v-.8c0-3.2 1.5-4.7 4.7-4.7h13.3v-1.1c0-1.1-.6-1.6-1.6-1.6H29.7v-3.1h13.5c3.2 0 4.7 1.5 4.7 4.7v11.3h-17zM70 37c0 1.2.6 1.6 1.6 1.6h12.6v-4H71.6c-1 0-1.6.6-1.6 1.6v.8zm27.2-8.1v9.7h12.6c1.1 0 1.6-.5 1.6-1.6v-6.4c0-1.2-.5-1.6-1.6-1.6l-12.6-.1zm-67.4 8.1c0 1.2.6 1.6 1.6 1.6H44v-4H31.4c-1.1 0-1.6.6-1.6 1.6v.8zM18 38.4v-9.6H5.4c-1.2 0-1.6.5-1.6 1.6v6.4c0 1.2.5 1.6 1.6 1.6H18z"/></g></g></svg>
 <script type="text/javascript">
 	function jitsistart(e) {
 		var roomInput = document.getElementById("room-name-input");
@@ -86,6 +84,10 @@
 			roomInput.removeAttribute("aria-invalid");
 		}
 		return valid;
+	}
+
+	function changePWorEmail() {
+		window.location.href = "https://sandbox-008.sx.openws.de/univention/newfrontendprod/";
 	}
 </script>
 <style type="text/css">
@@ -141,15 +143,19 @@
 	}
 
 	.header-logo {
-		width: 50%;
-		max-width: 173px;
 		margin: 12px auto 18px 0;
 		padding-right: 16px;
 	}
 
+	.logo {
+		max-width: 450px;
+	}
+
 	.input-fields {
-		background: #D9F3FF;
+		background: #0584D1;
 		padding: 2rem 0;
+		color: white;
+		font-weight: bold;
 	}
 
 	#room-name-input {
@@ -163,9 +169,9 @@
 	}
 
 	.buttons {
-		color: white;
-		background-color: #9E292B;
-		border: 2px solid #9e292b;
+		color: black;
+		background-color: white;
+		border: 2px solid white;
 		border-radius: 10px;
 		font-size: 1.125rem;
 		font-weight: 600;
@@ -211,11 +217,6 @@
 	.logo-svg {
 		width: 100%;
 		height: 60px;
-	}
-
-	.footer-logo {
-		width: 50%;
-		max-width: 173px;
 	}
 
 	@media (min-width: 960px) {
