@@ -86,8 +86,8 @@
 		errors.innerHTML = "";
 		
 		if (!valid) {roomInput.setAttribute("aria-invalid", "true");}
-		if (empty) {errors.innerHTML += "Der Raumname darf nicht leer sein!";}
-		if (hasBadChar) {errors.innerHTML += "Der Raumname darf nicht die folgenden Zeichen enthalten: ! ? & % # ' ;"}
+		if (empty) {errors.innerHTML = "Der Raumname darf nicht leer sein!";}
+		if (hasBadChar) {errors.innerHTML = "Der Raumname darf nicht die folgenden Zeichen enthalten: ! ? & % # ' ;"}
 		if (valid) {roomInput.removeAttribute("aria-invalid")}
 
 		return valid;
