@@ -20,20 +20,12 @@ jobs:
       uses: 1466587594/get-current-time@v2
       id: current-time
       with:
-        format: YYYYMMDD-HHMM
+        format: YYYYMMDD-HHMMSS
         utcOffset: "+01:00"
     - name: Use current time
       env:
         F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
       run: echo $F_TIME
-
-# this step will get the commit id
-    - name: Set outputs
-      id: vars
-      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-    - name: Check outputs
-      run: echo ${{ steps.vars.outputs.sha_short }}
-
 
 #      - name: Get current date
 #        id: date
@@ -42,11 +34,18 @@ jobs:
 #      - name: Test the produced date
 #        run: echo Current Date ${{ env.MY_DATE }} ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.4_${{ env.MY_DATE }}
            
-#      - name: Checkout branch
-#        uses: actions/checkout@v2
-#        with:
-#         ref: nic/feat/general
+    - name: Checkout branch
+      uses: actions/checkout@v2
+      with:
+       ref: nic/feat/general
 
+# this step will get the commit id
+    - name: Set outputs
+      id: vars
+      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+    - name: Check outputs
+      run: echo ${{ steps.vars.outputs.sha_short }}
+      
 #      - name: Setup Node.js
 #        uses: actions/setup-node@v1
 #        with:
