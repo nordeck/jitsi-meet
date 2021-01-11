@@ -67,7 +67,7 @@ jobs:
         password: ${{ secrets.BAYERN_DOCKERHUB_TOKEN }}
  
     - name: Build Docker Image
-      run: docker build . -t ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.4_${{ env.F_TIME }}_${{ steps.vars.outputs.sha_short }}
+      run: docker build . -t ${{ secrets.BAYERN_DOCKER_HUB }}/nordeck-dev/jitsi-meet:v0.4_${{ steps.current-time.outputs.formattedTime }}_${{ steps.vars.outputs.sha_short }}
       env:
         GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
   
