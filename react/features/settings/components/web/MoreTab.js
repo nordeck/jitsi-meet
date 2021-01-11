@@ -4,7 +4,7 @@ import DropdownMenu, {
     DropdownItem,
     DropdownItemGroup
 } from '@atlaskit/dropdown-menu';
-import React from 'react';
+import React, { useState } from 'react';
 
 import keyboardShortcut from '../../../../../modules/keyboardshortcut/keyboardshortcut';
 import { AbstractDialogTab } from '../../../base/dialog';
@@ -281,12 +281,14 @@ class MoreTab extends AbstractDialogTab<Props, State> {
                             super._onChange({ showPrejoinPag: checked })
                     } />
                 <Checkbox
+                    isChecked = { keyboardShortcut.getEnabled() }
                     label = { t('prejoin.keyboardShortcuts') }
                     name = 'show-prejoin-page'
                     // eslint-disable-next-line react/jsx-no-bind
                     onChange = {
                         ({ target: { checked } }) => {
                             keyboardShortcut.enable(checked);
+                            super._onChange({ keyboardShortcutEnable: checked });
                         }
                     } />
             </div>
