@@ -26,10 +26,12 @@
 	</div>
 	<div class="input-fields">
 		<div class="container">
-			<span class="informative-text">Bitte geben Sie den Namen Ihres Konferenzraums ein</span><br>
-			<span class="small-text">Verwenden Sie für den Raumnamen keines der folgenden Sonderzeichen:  ( ! ? & % # ' " ; )</span><br>
+			<div class="blur">
+				<span class="informative-text">Bitte geben Sie den Namen Ihres Konferenzraums ein</span><br>
+				<span class="small-text">Verwenden Sie für den Raumnamen keines der folgenden Sonderzeichen:  ( ! ? & % # ' " ; )</span>
+			</div>
 			<input type="text" aria-label="Eingabefeld für den Raumnamen" id="room-name-input" size="40" onkeyUp="jitsistart(event)" />
-			<div id="error-messages" aria-live="assertive" aria-relevant="additions removals"></div>
+			<div hidden aria-hidden="true" id="error-messages" class="error-messages sb10" aria-live="assertive" aria-relevant="additions removals"></div>
 			<button class="buttons" id="roombutton" onclick="jitsistart()">Zu Ihrem Konferenzraum</button>
 			<a class="buttons" lang="de-DE" aria-label="Weiterleitung zum Passwort- und E-Mail-Änderungsservice " onclick="changePWorEmail()">Passwort / E-Mail ändern</a>
 		</div>
@@ -85,10 +87,18 @@
 
 		errors.innerHTML = "";
 		
-		if (!valid) {roomInput.setAttribute("aria-invalid", "true");}
+
 		if (empty) {errors.innerHTML = "Der Raumname darf nicht leer sein!";}
-		if (hasBadChar) {errors.innerHTML = "Der Raumname darf nicht die folgenden Zeichen enthalten: ! ? & % # ' ;"}
-		if (valid) {roomInput.removeAttribute("aria-invalid")}
+		if (hasBadChar) {errors.innerHTML = "Der Raumname darf die folgenden Zeichen nicht enthalten: ! ? & % # ' ;"}
+		if (!valid) {
+			errors.removeAttribute("hidden");
+			errors.removeAttribute("aria-hidden");
+			roomInput.setAttribute("aria-invalid", "true");
+		} else {
+			roomInput.removeAttribute("aria-invalid")
+			errors.setAttribute("hidden", "true");
+			errors.setAttribute("aria-hidden", "true");
+		}
 
 		return valid;
 	}
@@ -98,11 +108,6 @@
 	}
 </script>
 <style type="text/css">
-	[aria-invalid] {
-		border: #CCD0D4 1px solid !important;
-		border-right: red 8px solid !important;
-	}
-
 	a, body, footer, h1, header, html, label, li, main, nav, p, span, ul {
 		margin: 0;
 		padding: 0;
@@ -156,7 +161,6 @@
 	.input-fields {
 		background: #0584D1;
 		padding: 2rem 0;
-		color: black;
 		font-weight: bold;
 	}
 
@@ -168,10 +172,6 @@
 		padding: 12px;
 		margin: 1rem 0;
 		display: block;
-	}
-
-	#error-messages {
-		margin-bottom: 1rem;
 	}
 
 	.buttons {
@@ -223,6 +223,38 @@
 	.logo-svg {
 		width: 100%;
 		height: 60px;
+	}
+
+	.error-messages {
+		width: max-content;
+		margin-bottom: 1rem;
+		border: 4px solid red;
+		padding: 20px;
+		text-align: center;
+		font-weight: 900;
+		font-family: arial;
+		position: relative;
+		background-color: red;
+		color: white;
+	}
+
+	.error-messages:before {
+		content: "";
+		width: 0px;
+		height: 0px;
+		position: absolute;
+		border: 10px solid transparent;
+		border-bottom: 10px solid red;
+		top: -23px;
+	}
+
+	.blur {
+		width: max-content;
+		margin-left: 10px;
+		margin-bottom: 2rem;
+		color: black;
+		background-color: rgba(255, 255, 255, 0.15);
+		box-shadow: 0 0 5px 10px rgba(255, 255, 255, 0.15);
 	}
 
 	@media (min-width: 960px) {
