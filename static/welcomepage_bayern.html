@@ -28,13 +28,14 @@
 		<div class="container">
 			<span class="informative-text">Bitte geben Sie den Namen Ihres Konferenzraums ein</span><br>
 			<span class="small-text">Verwenden Sie für den Raumnamen keines der folgenden Sonderzeichen:  ( ! ? & % # ' " ; )</span><br>
-			<input type="search" aria-label="Eingabefeld für den Raumnamen" id="room-name-input" size="40" onkeyUp="jitsistart(event)" />
+			<input type="text" aria-label="Eingabefeld für den Raumnamen" id="room-name-input" size="40" onkeyUp="jitsistart(event)" />
+			<div id="error-messages" aria-live="assertive" aria-relevant="additions removals"></div>
 			<button class="buttons" id="roombutton" onclick="jitsistart()">Zu Ihrem Konferenzraum</button>
-			<button class="buttons" onclick="changePWorEmail">Passwort / E-Mail ändern</button>
+			<a class="buttons" lang="de-DE" aria-label="Weiterleitung zum Passwort- und E-Mail-Änderungsservice " onclick="changePWorEmail()">Passwort / E-Mail ändern</a>
 		</div>
 	</div>
 	<div class="bullet-points container">
-		<p class="informative-text"><b>An dieser Stelle finden Sie aktuelle Hinweise zur Nutzung</p>
+		<p class="informative-text"><b>An dieser Stelle finden Sie aktuelle Hinweise zur Nutzung</b></p>
 		<ul class="informative-text list">
 			<li>Bitte sorgen Sie für eine stabile Internetverbindung mit entsprechender Bandbreite: ca. 1Mbit pro Teilnehmer pro Sekunde (abweichend je nach Endgerät, Browser und Verhalten des Teilnehmers)</li>
 			<li>Maximal 70 Teilnehmer (empfohlen: 30)</li>
@@ -46,7 +47,7 @@
 </main>
 <footer class="container footer">
 	<nav>
-		<ul class="big-text">
+		<ul>
 			<li class="footer-list-item"><a href="">Impressum</a></li>
 			<li class="footer-list-item"><a href="">Datenschutz</a> </li>
 			<li class="footer-list-item"><a href="">FAQ</a></li>
@@ -76,13 +77,19 @@
 
 	function checkRoomName(roomInput) {
 		var roomName = roomInput.value;
+		var errors = document.getElementById("error-messages");
 		var invalidChars = /([!,?,&,%,#,',",;])/;
-		var valid = roomName.trim() !== "" && !roomName.match(invalidChars);
-		if(!valid) {
-			roomInput.setAttribute("aria-invalid", "true");
-		} else {
-			roomInput.removeAttribute("aria-invalid");
-		}
+		var empty = roomName.trim() === "";
+		var hasBadChar = roomName.match(invalidChars);
+		var valid = !empty && !hasBadChar;
+
+		errors.innerHTML = "";
+		
+		if (!valid) {roomInput.setAttribute("aria-invalid", "true");}
+		if (empty) {errors.innerHTML += "Der Raumname darf nicht leer sein!";}
+		if (hasBadChar) {errors.innerHTML += "Der Raumname darf nicht die folgenden Zeichen enthalten: ! ? & % # ' ;"}
+		if (valid) {roomInput.removeAttribute("aria-invalid")}
+
 		return valid;
 	}
 
@@ -120,8 +127,7 @@
 	}
 
 	.informative-text {
-		font-size: 1.125em;
-		font-weight: 400;
+		font-size: 1.175em;
 		line-height: 1.75;
 		margin-bottom: 1em;
 	}
@@ -135,11 +141,7 @@
 	}
 
 	.small-text {
-		font-size: 0.8em;
-	}
-
-	.big-text {
-		font-size: 1.125em;
+		font-size: 1em;
 	}
 
 	.header-logo {
@@ -154,7 +156,7 @@
 	.input-fields {
 		background: #0584D1;
 		padding: 2rem 0;
-		color: white;
+		color: black;
 		font-weight: bold;
 	}
 
@@ -166,6 +168,10 @@
 		padding: 12px;
 		margin: 1rem 0;
 		display: block;
+	}
+
+	#error-messages {
+		margin-bottom: 1rem;
 	}
 
 	.buttons {
