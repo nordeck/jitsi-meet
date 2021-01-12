@@ -9,7 +9,7 @@
 </head>
 <body>
 <header id="header" class="container header-logo">
-	<a aria-label="Logo mit Link zur Homepage des Bayrischen Staatsministerium für Unterricht und Kultus" lang="de-DE" href="https://www.km.bayern.de/">
+	<a aria-label="Logo mit Link zur Homepage des Bayrischen Staatsministerium für Unterricht und Kultus" href="https://www.km.bayern.de/">
 		<img class="logo" aria-hidden="true" src="../images/bayern_logo_f.png" alt="Logo des Bayrischen Staatsministerium für Unterricht und Kultus" />
 	</a>
 </header>
@@ -20,20 +20,20 @@
 		<p class="informative-text">
 			Willkommen beim Videokonferenzdienst vom STMuk. Wenn Sie einen existierenden Raum besuchen wollen, nutzen Sie den Raumnamen aus der Einladung, die Sie erhalten haben. Wenn Sie über einen Account für Moderator:innen verfügen, können Sie auch einen neuen Raum mit einem zufälligen oder selbst vergebenen Namen erzeugen. Bitte vergeben Sie dazu unbedingt ein <b>sicheres Passwort</b>, um den Raum zu schützen. Für Moderator:innen empfehlen wir <b>Chrome</b> oder <b>Edge Chromium</b> als Browser. Als Teilnehmer*in können Sie auch unter Android und iOS die in den Stores erhältliche App „Jitsi Meet“ nutzen.
 			<br><br>
-			<a lang="de-DE" href="https://video.openws.de/Anleitungen/dOnlineZusammenarbeit_Anleitung_fuer_Moderatorinnen_und_Moderatoren.pdf">Anleitung für Moderator:innen</a>(Stand: 25.09.2020)<br>
-			<a lang="de-DE" href="https://video.openws.de/Anleitungen/dOnlineZusammenarbeit_Anleitung_fuer_Teilnehmerinnen_und_Teilnehmer.pdf">Anleitung für Teilnehmer:innen</a>(Stand: 25.09.2020)
+			<a aria-label="Öffnet als PDF Dokument in einem neuen Tab" target="_blank" href="https://video.openws.de/Anleitungen/dOnlineZusammenarbeit_Anleitung_fuer_Moderatorinnen_und_Moderatoren.pdf">Anleitung für Moderator:innen</a>(Stand: 25.09.2020)<br>
+			<a aria-label="Öffnet als PDF Dokument in einem neuen Tab" target="_blank" href="https://video.openws.de/Anleitungen/dOnlineZusammenarbeit_Anleitung_fuer_Teilnehmerinnen_und_Teilnehmer.pdf">Anleitung für Teilnehmer:innen</a>(Stand: 25.09.2020)
 		</p>
 	</div>
 	<div class="input-fields">
 		<div class="container">
 			<div class="blur">
-				<span class="informative-text">Bitte geben Sie den Namen Ihres Konferenzraums ein</span><br>
+				<span class="informative-text" id="info-text">Bitte geben Sie den Namen Ihres Konferenzraums ein</span><br>
 				<span class="small-text">Verwenden Sie für den Raumnamen keines der folgenden Sonderzeichen: ! ? & % # ' " ; </span>
 			</div>
-			<input type="text" pattern="^[^?&:\x22'%#]+$" aria-label="Eingabefeld für den Raumnamen" id="room-name-input" size="40" onkeyUp="jitsistart(event)" />
+			<input type="text" pattern="^[^?&:\x22'%#]+$" aria-describedby="info-text" id="room-name-input" size="40" onkeyUp="jitsistart(event)" />
 			<div hidden id="error-messages" class="error-messages sb10" role="alert"></div>
 			<button class="buttons" id="roombutton" onclick="jitsistart()">Zu Ihrem Konferenzraum</button>
-			<a class="buttons" lang="de-DE" aria-label="Weiterleitung zum Passwort- und E-Mail-Änderungsservice " onclick="changePWorEmail()">Passwort / E-Mail ändern</a>
+			<a class="buttons" aria-label="Weiterleitung zum Passwort- und E-Mail-Änderungsservice " onclick="changePWorEmail()">Passwort / E-Mail ändern</a>
 		</div>
 	</div>
 	<div class="bullet-points container">
@@ -59,7 +59,7 @@
 		</ul>
 	</nav>
 	<div>
-	<a aria-label="Logo mit Link zur Homepage des Bayrischen Staatsministerium für Unterricht und Kultus" lang="de-DE" href="https://www.km.bayern.de/">
+	<a aria-label="Logo mit Link zur Homepage des Bayrischen Staatsministerium für Unterricht und Kultus" href="https://www.km.bayern.de/">
 		<img class="logo" aria-hidden="true" src="../images/bayern_logo_f.png" alt="Logo des Bayrischen Staatsministerium für Unterricht und Kultus" />
 	</a>
 	</div>
@@ -226,13 +226,13 @@
 	.error-messages {
 		width: max-content;
 		margin-bottom: 1rem;
-		border: 4px solid red;
+		border: 4px solid #E00;
 		padding: 20px;
 		text-align: center;
 		font-weight: 900;
 		font-family: arial;
 		position: relative;
-		background-color: red;
+		background-color: #E00;
 		color: white;
 	}
 
@@ -242,7 +242,7 @@
 		height: 0px;
 		position: absolute;
 		border: 10px solid transparent;
-		border-bottom: 10px solid red;
+		border-bottom: 10px solid #E00;
 		top: -23px;
 	}
 
