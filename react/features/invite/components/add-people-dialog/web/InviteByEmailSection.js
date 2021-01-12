@@ -113,7 +113,7 @@ function InviteByEmailSection({ inviteSubject, inviteText, t }: Props) {
                             key = { idx }
                             position = 'top'>
                             <div
-                                aria-label = { tooltipKey }
+                                aria-label = { t(tooltipKey) }
                                 onClick = { _onSelectProvider(url) }
                                 onKeyPress = { _onSelectProvider(url) }
                                 role = 'button'
@@ -132,11 +132,12 @@ function InviteByEmailSection({ inviteSubject, inviteText, t }: Props) {
         <>
             <div>
                 <div
+                    aria-expanded = { isActive ? true : false }
                     aria-label = { t('addPeople.shareInvite') }
                     className = { `invite-more-dialog email-container${isActive ? ' active' : ''}` }
                     onClick = { _onToggleActiveState }
                     onKeyPress = { _onToggleActiveState }
-                    role = 'button'
+                    role = 'switch'
                     tabIndex = { 0 }>
                     <span>{t('addPeople.shareInvite')}</span>
                     <Icon src = { IconArrowDownSmall } />

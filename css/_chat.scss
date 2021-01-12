@@ -99,7 +99,7 @@
 
 .chat-header-h2{
  text-align: center;
- padding-top: 6% !important;
+ padding-top: 6%;
 }
 
 
@@ -264,12 +264,11 @@
 }
 
 .smileys-panel {
-    display: none;
     bottom: 100%;
     box-sizing: border-box;
     background-color: rgba(0, 0, 0, .6) !important;
     height: auto;
-    max-height: 0;
+    display: none;
     overflow: hidden;
     position: absolute;
     width: $sidebarWidth;
@@ -283,7 +282,7 @@
     transition: max-height 0.3s;
 
     &.show-smileys {
-        display: inline;
+        display: flex;
         max-height: 500%;
     }
 
