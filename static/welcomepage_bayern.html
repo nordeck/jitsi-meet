@@ -28,10 +28,10 @@
 		<div class="container">
 			<div class="blur">
 				<span class="informative-text">Bitte geben Sie den Namen Ihres Konferenzraums ein</span><br>
-				<span class="small-text">Verwenden Sie für den Raumnamen keines der folgenden Sonderzeichen:  ( ! ? & % # ' " ; )</span>
+				<span class="small-text">Verwenden Sie für den Raumnamen keines der folgenden Sonderzeichen: ! ? & % # ' " ; </span>
 			</div>
-			<input type="text" aria-label="Eingabefeld für den Raumnamen" id="room-name-input" size="40" onkeyUp="jitsistart(event)" />
-			<div hidden aria-hidden="true" id="error-messages" class="error-messages sb10" aria-live="assertive" aria-relevant="additions removals"></div>
+			<input type="text" pattern="^[^?&:\x22'%#]+$" aria-label="Eingabefeld für den Raumnamen" id="room-name-input" size="40" onkeyUp="jitsistart(event)" />
+			<div hidden id="error-messages" class="error-messages sb10" role="alert"></div>
 			<button class="buttons" id="roombutton" onclick="jitsistart()">Zu Ihrem Konferenzraum</button>
 			<a class="buttons" lang="de-DE" aria-label="Weiterleitung zum Passwort- und E-Mail-Änderungsservice " onclick="changePWorEmail()">Passwort / E-Mail ändern</a>
 		</div>
@@ -92,12 +92,10 @@
 		if (hasBadChar) {errors.innerHTML = "Der Raumname darf die folgenden Zeichen nicht enthalten: ! ? & % # ' ;"}
 		if (!valid) {
 			errors.removeAttribute("hidden");
-			errors.removeAttribute("aria-hidden");
 			roomInput.setAttribute("aria-invalid", "true");
 		} else {
 			roomInput.removeAttribute("aria-invalid")
 			errors.setAttribute("hidden", "true");
-			errors.setAttribute("aria-hidden", "true");
 		}
 
 		return valid;
