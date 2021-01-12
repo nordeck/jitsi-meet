@@ -1,5 +1,5 @@
 /* global APP, $ */
-
+import { jitsiLocalStorage } from '@jitsi/js-utils';
 import Logger from 'jitsi-meet-logger';
 
 import {
@@ -32,7 +32,7 @@ const _shortcutsHelp = new Map();
  * True if the keyboard shortcuts are enabled and false if not.
  * @type {boolean}
  */
-let enabled = false;
+const ENABLE_SHORTCUTS = 'enableShortcuts';
 
 /**
  * Maps keycode to character, id of popover for given function and function.
@@ -42,7 +42,7 @@ const KeyboardShortcut = {
         this._initGlobalShortcuts();
 
         window.onkeyup = e => {
-            if (!enabled) {
+            if (!this.getEnabled()) {
                 return;
             }
             const key = this._getKeyboardKey(e).toUpperCase();
@@ -61,7 +61,7 @@ const KeyboardShortcut = {
         };
 
         window.onkeydown = e => {
-            if (!enabled) {
+            if (!this.getEnabled()) {
                 return;
             }
             if (!($(':focus').is('input[type=text]')
@@ -85,11 +85,11 @@ const KeyboardShortcut = {
      * @param {boolean} value - the new value.
      */
     enable(value) {
-        enabled = value;
+        jitsiLocalStorage.setItem(ENABLE_SHORTCUTS, value);
     },
 
     getEnabled() {
-        return enabled;
+        return jitsiLocalStorage.getItem(ENABLE_SHORTCUTS) === 'true';
     },
 
     /**

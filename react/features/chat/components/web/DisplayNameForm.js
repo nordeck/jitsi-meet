@@ -70,9 +70,10 @@ class DisplayNameForm extends Component<Props, State> {
 
         return (
             <div id = 'nickname'>
-                <span>{ this.props.t('chat.nickname.title') }</span>
+                <span id = 'nickname.title'>{ this.props.t('chat.nickname.title') }</span>
                 <form onSubmit = { this._onSubmit }>
                     <FieldTextStateless
+                        aria-describedby = 'nickname.title'
                         autoFocus = { true }
                         id = 'nickinput'
                         onChange = { this._onDisplayNameChange }

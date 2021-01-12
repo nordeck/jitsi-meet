@@ -264,6 +264,7 @@
 }
 
 .smileys-panel {
+    display: none;
     bottom: 100%;
     box-sizing: border-box;
     background-color: rgba(0, 0, 0, .6) !important;
@@ -282,6 +283,7 @@
     transition: max-height 0.3s;
 
     &.show-smileys {
+        display: inline;
         max-height: 500%;
     }
 

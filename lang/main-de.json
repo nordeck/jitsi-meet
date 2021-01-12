@@ -68,7 +68,7 @@
         "messageTo": "Private Nachricht an {{recipient}}",
         "noMessagesMessage": "Es gibt noch keine Nachricht in dieser Konferenz. Starten Sie hier eine Unterhaltung!",
         "nickname": {
-            "popover": "Name",
+            "popover": "Alias",
             "title": "Geben Sie einen Alias zum Chatten ein"
         },
         "privateNotice": "Private Nachricht an {{recipient}}",

@@ -27,12 +27,14 @@ function Header({ onClose, t }: Props) {
     return (
         <div
             aria-label = { t('speakerStats.speakerStats') }
-            className = 'invite-more-dialog header'
-            tabIndex = { 0 }>
+            className = 'invite-more-dialog header'>
             { t('speakerStats.speakerStats') }
             <Icon
+                ariaLabel = { 'close' }
                 onClick = { onClose }
-                src = { IconClose } />
+                onKeypress = { onClose }
+                src = { IconClose }
+                tabIndex = { 0 } />
         </div>
     );
 }

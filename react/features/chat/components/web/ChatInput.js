@@ -114,10 +114,10 @@ class ChatInput extends Component<Props, State> {
                     <div id = 'smileysarea'>
                         <div id = 'smileys'>
                             <Emoji
-                                aria-label = 'smileys'
+                                aria-checked = { this.state.showSmileysPanel ? true : false }
                                 onClick = { this._onToggleSmileysPanel }
                                 onKeyPress = { this._onToggleSmileysPanel }
-                                role = 'button'
+                                role = 'switch'
                                 tabIndex = { 0 }
                                 text = ':)' />
                         </div>
