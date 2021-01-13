@@ -206,6 +206,7 @@
         "e2eeLabel": "Enable End-to-End Encryption",
         "e2eeWarning": "WARNING: Not all participants in this meeting seem to have support for End-to-End encryption. If you enable it they won't be able to see nor hear you.",
         "enterDisplayName": "Please enter your name here",
+        "embedMeeting": "embed meeting",
         "error": "Error",
         "gracefulShutdown": "Our service is currently down for maintenance. Please try again later.",
         "grantModeratorDialog": "Are you sure you want to make this participant a moderator?",
@@ -329,7 +330,8 @@
         "good": "Good",
         "rateExperience": "Rate your meeting experience",
         "veryBad": "Very Bad",
-        "veryGood": "Very Good"
+        "veryGood": "Very Good",
+        "star": "star"
     },
     "incomingCall": {
         "answer": "Answer",
@@ -576,6 +578,7 @@
         "ringing": "Ringing..."
     },
     "profile": {
+        "avatar": "avatar",
         "setDisplayNameLabel": "Set your display name",
         "setEmailInput": "Enter e-mail",
         "setEmailLabel": "Set your gravatar email",
@@ -735,6 +738,8 @@
             "videomute": "Turn off video",
             "videoblur": "Toggle video blur"
         },
+        "audioSetting":"audio setting",
+        "videoSetting": "Video setting",
         "addPeople": "Add people to your call",
         "audioOnlyOff": "Disable low bandwidth mode",
         "audioOnlyOn": "Enable low bandwidth mode",
@@ -820,6 +825,7 @@
         "react-nativeGrantPermissions": "Select <b><i>Allow</i></b> when your browser asks for permissions.",
         "safariGrantPermissions": "Select <b><i>OK</i></b> when your browser asks for permissions."
     },
+    "volumeSlider": "volume slider",
     "videoSIPGW": {
         "busy": "We're working on freeing resources. Please try again in a few minutes.",
         "busyTitle": "The Room service is currently busy",
@@ -860,6 +866,7 @@
         "videomute": "Participant has stopped the camera"
     },
     "welcomepage": {
+        "addMeetingName": "add Meeting name",
         "accessibilityLabel": {
             "join": "Tap to join",
             "roomname": "Enter room name"
@@ -896,7 +903,15 @@
         "sendFeedback": "Send feedback",
         "startMeeting": "Start meeting",
         "terms": "Terms",
-        "title": "Secure, fully featured, and completely free video conferencing"
+        "title": "Secure, fully featured, and completely free video conferencing",
+        "logo":{
+           "calendar":"calendar",
+           "microsoftLogo":"microsoft Logo",
+           "logoDeepLinking":"logo Deep Linking",
+           "desktopPreviewThumbnail":"desktop preview thumbnail",
+           "googleLogo":"google Logo",
+           "policyOLogo":"policy logo"
+        }
     },
     "lonelyMeetingExperience": {
         "button": "Invite others",

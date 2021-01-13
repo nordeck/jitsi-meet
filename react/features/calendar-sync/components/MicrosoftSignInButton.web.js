@@ -2,6 +2,9 @@
 
 import React, { Component } from 'react';
 
+import { translate } from '../../base/i18n';
+
+
 /**
  * The type of the React {@code Component} props of
  * {@link MicrosoftSignInButton}.
@@ -12,7 +15,9 @@ type Props = {
     onClick: Function,
 
     // The text to display within {@code MicrosoftSignInButton}.
-    text: string
+    text: string,
+
+    t: Function
 };
 
 /**
@@ -20,7 +25,7 @@ type Props = {
  *
  * @extends Component
  */
-export default class MicrosoftSignInButton extends Component<Props> {
+class MicrosoftSignInButton extends Component<Props> {
     /**
      * Implements React's {@link Component#render()}.
      *
@@ -33,7 +38,7 @@ export default class MicrosoftSignInButton extends Component<Props> {
                 className = 'microsoft-sign-in'
                 onClick = { this.props.onClick }>
                 <img
-                    alt = 'microsoft-logo'
+                    alt = { this.props.t('welcomepage.logo.microsoftLogo') }
                     className = 'microsoft-logo'
                     src = 'images/microsoftLogo.svg' />
                 <div className = 'microsoft-cta'>
@@ -43,3 +48,5 @@ export default class MicrosoftSignInButton extends Component<Props> {
         );
     }
 }
+
+export default translate(MicrosoftSignInButton);

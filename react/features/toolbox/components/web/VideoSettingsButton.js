@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 
 import { isMobileBrowser } from '../../../base/environment/utils';
+import { translate } from '../../../base/i18n';
 import { IconArrowDown } from '../../../base/icons';
 import JitsiMeetJS from '../../../base/lib-jitsi-meet/_';
 import { connect } from '../../../base/redux';
@@ -44,6 +45,8 @@ type Props = {
      * camera at a time.
      */
     visible: boolean,
+
+    t: Function
 };
 
 type State = {
@@ -143,7 +146,7 @@ class VideoSettingsButton extends Component<Props, State> {
         return visible ? (
             <VideoSettingsPopup>
                 <ToolboxButtonWithIcon
-                    ariaLabel = 'Video setting'
+                    ariaLabel = { this.props.t('toolbar.videoSetting') }
                     icon = { IconArrowDown }
                     iconDisabled = { this._isIconDisabled() }
                     onIconClick = { onVideoOptionsClick }>
@@ -173,7 +176,7 @@ const mapDispatchToProps = {
     onVideoOptionsClick: toggleVideoSettings
 };
 
-export default connect(
+export default translate(connect(
     mapStateToProps,
     mapDispatchToProps,
-)(VideoSettingsButton);
+)(VideoSettingsButton));

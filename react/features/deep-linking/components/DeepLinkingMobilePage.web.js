@@ -119,7 +119,7 @@ class DeepLinkingMobilePage extends Component<Props> {
                         HIDE_DEEP_LINKING_LOGO
                             ? null
                             : <img
-                                alt = 'logo-deep-linking'
+                                alt = { t('welcomepage.logo.logoDeepLinking') }
                                 className = 'logo'
                                 src = 'images/logo-deep-linking.png' />
                     }
@@ -128,7 +128,7 @@ class DeepLinkingMobilePage extends Component<Props> {
                     {
                         SHOW_DEEP_LINKING_IMAGE
                             ? <img
-                                alt = 'deep-linking-image'
+                                alt = { t('welcomepage.logo.logoDeepLinking') }
                                 className = 'image'
                                 src = 'images/deep-linking-image.png' />
                             : null

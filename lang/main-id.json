@@ -178,6 +178,7 @@
         "displayNameRequired": "Hi! What’s your name?",
         "done": "Done",
         "enterDisplayName": "Please enter your name here",
+        "embedMeeting": "embed meeting",
         "error": "Error",
         "externalInstallationMsg": "You need to install our desktop sharing extension.",
         "externalInstallationTitle": "Extension required",
@@ -299,7 +300,8 @@
         "good": "Good",
         "rateExperience": "Rate your meeting experience",
         "veryBad": "Very Bad",
-        "veryGood": "Very Good"
+        "veryGood": "Very Good",
+        "star": "star"
     },
     "incomingCall": {
         "answer": "Answer",
@@ -486,6 +488,7 @@
         "ringing": "Ringing..."
     },
     "profile": {
+        "avatar": "avatar",
         "setDisplayNameLabel": "Set your display name",
         "setEmailInput": "Enter e-mail",
         "setEmailLabel": "Set your gravatar email",
@@ -629,6 +632,8 @@
             "videomute": "Toggle mute video",
             "videoblur": "Toggle video blur"
         },
+        "audioSetting":"audio setting",
+        "videoSetting": "Video setting",
         "addPeople": "Add people to your call",
         "audioOnlyOff": "Disable low bandwidth mode",
         "audioOnlyOn": "Enable low bandwidth mode",
@@ -709,6 +714,7 @@
         "react-nativeGrantPermissions": "Select <b><i>Allow</i></b> when your browser asks for permissions.",
         "safariGrantPermissions": "Select <b><i>OK</i></b> when your browser asks for permissions."
     },
+    "volumeSlider": "volume slider",
     "videoSIPGW": {
         "busy": "We're working on freeing resources. Please try again in a few minutes.",
         "busyTitle": "The Room service is currently busy",
@@ -750,6 +756,7 @@
         "videomute": "Participant has stopped the camera"
     },
     "welcomepage": {
+        "addMeetingName": "add Meeting name",
         "accessibilityLabel": {
             "join": "Tap to join",
             "roomname": "Enter room name"
@@ -778,7 +785,15 @@
         "roomnameHint": "Enter the name or URL of the room you want to join. You may make a name up, just let the people you are meeting know it so that they enter the same name.",
         "sendFeedback": "Send feedback",
         "terms": "Terms",
-        "title": "Secure, fully featured, and completely free video conferencing"
+        "title": "Secure, fully featured, and completely free video conferencing",
+        "logo":{
+           "calendar":"calendar",
+           "microsoftLogo":"microsoft Logo",
+           "logoDeepLinking":"logo Deep Linking",
+           "desktopPreviewThumbnail":"desktop preview thumbnail",
+           "googleLogo":"google Logo",
+           "policyOLogo":"policy logo"
+        }
     },
     "lonelyMeetingExperience": {
         "button": "Invite others",

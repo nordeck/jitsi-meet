@@ -74,7 +74,7 @@ class UserMediaPermissionsOverlay extends AbstractUserMediaPermissionsOverlay {
             return (
                 <div className = 'policy__logo'>
                     <img
-                        alt = 'policy__logo'
+                        alt = { this.props.t('welcomepage.logo.policyOLogo') }
                         src = { policyLogoSrc } />
                 </div>
             );

@@ -206,6 +206,7 @@
         "e2eeLabel": "Ende-zu-Ende-Verschlüsselung aktivieren",
         "e2eeWarning": "WARNUNG: Nicht alle Teilnehmer dieser Konferenz scheinen Ende-zu-Ende-Verschlüsselung zu unterstützen. Wenn Sie diese aktivieren, können die entsprechenden Teilnehmer nichts mehr sehen oder hören.",
         "enterDisplayName": "Bitte geben Sie hier Ihren Namen ein",
+        "embedMeeting": "Besprechung einbetten",
         "error": "Fehler",
         "gracefulShutdown": "Der Dienst steht momentan wegen Wartungsarbeiten nicht zur Verfügung. Bitte versuchen Sie es später noch einmal.",
         "grantModeratorDialog": "Möchten Sie diesen Teilnehmer wirklich zum Moderator machen?",
@@ -331,7 +332,8 @@
         "good": "Gut",
         "rateExperience": "Bitte bewerten Sie diese Konferenz",
         "veryBad": "Sehr schlecht",
-        "veryGood": "Sehr gut"
+        "veryGood": "Sehr gut",
+        "star": "sterne"
     },
     "incomingCall": {
         "answer": "Antworten",
@@ -579,6 +581,7 @@
         "ringing": "Es klingelt …"
     },
     "profile": {
+        "avatar": "Benutzerbild",
         "setDisplayNameLabel": "Anzeigename festlegen",
         "setEmailInput": "E-Mail eingeben",
         "setEmailLabel": "E-Mail-Adresse für Gravatar",
@@ -737,6 +740,8 @@
             "videomute": "Kamera starten / stoppen",
             "videoblur": "Video-Unschärfe ein-/ausschalten"
         },
+        "audioSetting":"Audioeinstellung",
+        "videoSetting": "Videoeinstellung",
         "addPeople": "Teilnehmer zur Konferenz hinzufügen",
         "audioOnlyOff": "Modus „Nur Audio“ deaktivieren",
         "audioOnlyOn": "Modus „Nur Audio“ aktivieren",
@@ -822,6 +827,7 @@
         "react-nativeGrantPermissions": "Wählen Sie <b><i>Erlauben</i></b>, wenn der Browser um Berechtigungen bittet.",
         "safariGrantPermissions": "Wählen Sie <b><i>OK</i></b>, wenn der Browser um Berechtigungen bittet."
     },
+    "volumeSlider": "Lautstärkeregler",
     "videoSIPGW": {
         "busy": "Es stehen keine freien Ressourcen zur Verfügung. Bitte versuchen Sie es später noch einmal.",
         "busyTitle": "Keine freien Ressourcen",
@@ -864,6 +870,7 @@
         "videomute": "Teilnehmer hat die Kamera angehalten"
     },
     "welcomepage": {
+        "addMeetingName": "Besprechungsnamen hinzufügen",
         "accessibilityLabel": {
             "join": "Zum Teilnehmen tippen",
             "roomname": "Konferenzname eingeben"
@@ -896,7 +903,15 @@
         "roomnameHint": "Name oder URL der Konferenz, der Sie beitreten möchten. Sie können einen Namen erfinden, er muss nur den anderen Teilnehmern übermittelt werden, damit diese der gleichen Konferenz beitreten.",
         "sendFeedback": "Feedback senden",
         "terms": "AGB",
-        "title": "Sichere, voll funktionale und komplett kostenlose Videokonferenzen"
+        "title": "Sichere, voll funktionale und komplett kostenlose Videokonferenzen",
+        "logo":{
+           "calendar":"Kalender",
+           "microsoftLogo":"microsoft Logo",
+           "logoDeepLinking":"logo Deep Linking",
+           "desktopPreviewThumbnail":"Desktop-Vorschau Thumbnail",
+           "googleLogo":"google Logo",
+           "policyOLogo":"Richtlinienlogo"
+        }
     },
     "lonelyMeetingExperience": {
         "button": "Andere einladen",

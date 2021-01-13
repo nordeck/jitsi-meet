@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 
+import { translate } from '../../../base/i18n';
 import { Icon, IconVolume } from '../../../base/icons';
 
 /**
@@ -26,7 +27,9 @@ type Props = {
     /**
      * The callback to invoke when the audio slider value changes.
      */
-    onChange: Function
+    onChange: Function,
+
+    t: Function
 };
 
 /**
@@ -74,7 +77,7 @@ class VolumeSlider extends Component<Props, State> {
     render() {
         return (
             <li
-                aria-label = 'VOLUME_SLIDER_SCALE'
+                aria-label = { this.props.t('volumeSlider') }
                 className = 'popupmenu__item'>
                 <div className = 'popupmenu__contents'>
                     <span className = 'popupmenu__icon'>
@@ -116,4 +119,4 @@ class VolumeSlider extends Component<Props, State> {
     }
 }
 
-export default VolumeSlider;
+export default translate(VolumeSlider);

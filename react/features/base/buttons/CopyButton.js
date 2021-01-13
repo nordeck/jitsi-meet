@@ -32,7 +32,9 @@ type Props = {
     /**
      * The text displayed on copy success
      */
-    textOnCopySuccess: string
+    textOnCopySuccess: string,
+
+    t: Function
 };
 
 /**

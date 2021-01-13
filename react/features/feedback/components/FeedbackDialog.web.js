@@ -240,7 +240,7 @@ class FeedbackDialog extends Component<Props, State> {
                 <div className = 'feedback-dialog'>
                     <div className = 'rating'>
                         <div
-                            aria-label = 'Sterne'
+                            aria-label = { this.props.t('feedback.star') }
                             className = 'star-label' >
                             <p id = 'starLabel'>
                                 { t(SCORES[scoreToDisplayAsSelected]) }

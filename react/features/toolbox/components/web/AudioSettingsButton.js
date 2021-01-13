@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 
 import { isMobileBrowser } from '../../../base/environment/utils';
+import { translate } from '../../../base/i18n';
 import { IconArrowDown } from '../../../base/icons';
 import JitsiMeetJS from '../../../base/lib-jitsi-meet/_';
 import { connect } from '../../../base/redux';
@@ -35,6 +36,8 @@ type Props = {
      * AudioSettings popup is disabled on mobile browsers.
      */
     visible: boolean,
+
+    t: Function
 };
 
 type State = {
@@ -126,7 +129,7 @@ class AudioSettingsButton extends Component<Props, State> {
         return visible ? (
             <AudioSettingsPopup>
                 <ToolboxButtonWithIcon
-                    ariaLabel = 'audio setting'
+                    ariaLabel = { this.props.t('toolbar.audioSetting') }
                     icon = { IconArrowDown }
                     iconDisabled = { settingsDisabled }
                     onIconClick = { onAudioOptionsClick }>
@@ -155,7 +158,7 @@ const mapDispatchToProps = {
     onAudioOptionsClick: toggleAudioSettings
 };
 
-export default connect(
+export default translate(connect(
     mapStateToProps,
     mapDispatchToProps,
-)(AudioSettingsButton);
+)(AudioSettingsButton));

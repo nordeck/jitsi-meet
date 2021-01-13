@@ -46,7 +46,7 @@ function EmbedMeeting({ t, url }: Props) {
             width = 'small'>
             <div className = 'embed-meeting-dialog'>
                 <textarea
-                    aria-label = 'embed-meeting-dialog'
+                    aria-label = { t('dialog.embedMeeting') }
                     className = 'embed-meeting-code'
                     readOnly = { true }
                     value = { getEmbedCode() } />

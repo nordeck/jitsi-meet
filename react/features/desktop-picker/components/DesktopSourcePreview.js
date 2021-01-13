@@ -2,6 +2,9 @@
 
 import React, { Component } from 'react';
 
+import { translate } from '../../base/i18n';
+
+
 /**
  * The type of the React {@code Component} props of
  * {@link DesktopSourcePreview}.
@@ -35,7 +38,9 @@ type Props = {
     /**
      * The source type of the DesktopCapturerSources to display.
      */
-    type: string
+    type: string,
+
+    t: Function
 };
 
 /**
@@ -74,7 +79,7 @@ class DesktopSourcePreview extends Component<Props> {
                 onDoubleClick = { this._onDoubleClick }>
                 <div className = 'desktop-source-preview-image-container'>
                     <img
-                        alt = 'desktop-source-preview-thumbnail'
+                        alt = { this.props.t('welcomepage.logo.desktopPreviewThumbnail') }
                         className = 'desktop-source-preview-thumbnail'
                         src = { this.props.source.thumbnail.toDataURL() } />
                 </div>
@@ -112,4 +117,4 @@ class DesktopSourcePreview extends Component<Props> {
     }
 }
 
-export default DesktopSourcePreview;
+export default translate(DesktopSourcePreview);
