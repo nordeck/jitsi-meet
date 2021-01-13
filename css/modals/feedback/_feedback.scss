@@ -94,5 +94,10 @@
             };
 
         }
+        .star-btn:focus,
+        .star-btn:active {
+            border: 2px solid #B8C7E0;
+            border-radius: 3px;
+        }
     }
 }
