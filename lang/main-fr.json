@@ -30,7 +30,8 @@
         "shareStream": "Partager le lien de diffusion en direct",
         "telephone": "Téléphone : {{number}}",
         "title": "Inviter une personne à cette réunion",
-        "yahooEmail": "Yahoo"
+        "yahooEmail": "Yahoo",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

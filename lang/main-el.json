@@ -30,7 +30,8 @@
         "shareStream": "Κοινή χρήση του συνδέσμου ζωντανής μετάδοσης",
         "telephone": "Τηλέφωνο: {{number}}",
         "title": "Καλέστε ανθρώπους σε αυτή τη συνάντηση",
-        "yahooEmail": "Yahoo Email"
+        "yahooEmail": "Yahoo Email",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

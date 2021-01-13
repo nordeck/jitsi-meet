@@ -30,7 +30,8 @@
         "shareStream": "Sdílet odkaz na živý přenos",
         "telephone": "Telefonní číslo: {{number}}",
         "title": "Pozvěte lidi na toto setkání",
-        "yahooEmail": "E-mail Yahoo"
+        "yahooEmail": "E-mail Yahoo",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

@@ -15,7 +15,8 @@
         "searchPeople": "Išči kontakte",
         "searchPeopleAndNumbers": "Išči kontakte in njihove telefonske številke",
         "telephone": "Telefon: {{number}}",
-        "title": "Povabite osebe na srečanje"
+        "title": "Povabite osebe na srečanje",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

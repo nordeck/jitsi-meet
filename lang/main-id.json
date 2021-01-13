@@ -15,7 +15,8 @@
         "searchPeople": "Mencari orang",
         "searchPeopleAndNumbers": "Cari orang beserta nomor teleponnya",
         "telephone": "Telepon: {{number}}",
-        "title": "Undang orang-orang ke sini."
+        "title": "Undang orang-orang ke sini.",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

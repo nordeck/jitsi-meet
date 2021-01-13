@@ -15,7 +15,8 @@
         "searchPeople": "Потражитe особe",
         "searchPeopleAndNumbers": "Потражитe особe или додајтe њиховe тeлeфонскe бројeвe",
         "telephone": "Тeлeфон: {{number}}",
-        "title": "Позовитe људe на овај састанак"
+        "title": "Позовитe људe на овај састанак",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

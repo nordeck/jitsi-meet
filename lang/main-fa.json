@@ -15,7 +15,8 @@
         "searchPeople": "جستجوی افراد",
         "searchPeopleAndNumbers": "جستجوی افراد یا اضافه کردن شماره تلفن آن ها",
         "telephone": "",
-        "title": "دعوت افراد به این جلسه"
+        "title": "دعوت افراد به این جلسه",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "بلوتوث",

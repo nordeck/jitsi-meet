@@ -15,7 +15,8 @@
         "searchPeople": "Bilatu jendea",
         "searchPeopleAndNumbers": "Bilatu jendea edo gehitu beren telefono zenbakiak",
         "telephone": "Telefonoa: {{number}}",
-        "title": "Gonbidatu jendea bilera honetara"
+        "title": "Gonbidatu jendea bilera honetara",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

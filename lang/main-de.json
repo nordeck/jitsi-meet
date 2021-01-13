@@ -30,7 +30,8 @@
         "shareStream": "Den Livestreaminglink freigeben",
         "telephone": "Telefon: {{number}}",
         "title": "Teilnehmer zu dieser Konferenz einladen",
-        "yahooEmail": "Yahoo-E-Mail"
+        "yahooEmail": "Yahoo-E-Mail",
+        "closeButton": "schließen"
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

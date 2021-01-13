@@ -15,7 +15,8 @@
         "searchPeople": "Søk etter folk",
         "searchPeopleAndNumbers": "Søk etter folk eller legg til telefonnumrene deres",
         "telephone": "Telefon: {{number}}",
-        "title": "Inviter folk til dette møtet"
+        "title": "Inviter folk til dette møtet",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Blåtann",

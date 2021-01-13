@@ -30,7 +30,8 @@
         "defaultEmail": "Vòstre email per defaut",
         "copyLink": "Copiar lo ligam de la conferéncia",
         "copyInvite": "Copiar l’invitacion a la conferéncia",
-        "addContacts": "Convidatz vòstres contactes"
+        "addContacts": "Convidatz vòstres contactes",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

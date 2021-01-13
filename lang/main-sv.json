@@ -15,7 +15,8 @@
         "searchPeople": "Sök efter personer",
         "searchPeopleAndNumbers": "Sök efter personer eller lägg till deras telefonnummer",
         "telephone": "Telefon: {{number}}",
-        "title": "Bjud in andra till mötet"
+        "title": "Bjud in andra till mötet",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

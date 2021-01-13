@@ -15,7 +15,8 @@
         "searchPeople": "Személyek keresése",
         "searchPeopleAndNumbers": "Személyek keresése vagy telefonszámaik hozzáadása",
         "telephone": "Telefon: {{number}}",
-        "title": "Személyek meghívása az értekezletre"
+        "title": "Személyek meghívása az értekezletre",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

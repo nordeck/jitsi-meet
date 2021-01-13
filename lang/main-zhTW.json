@@ -15,7 +15,8 @@
         "searchPeople": "尋找人員",
         "searchPeopleAndNumbers": "尋找人員或新增電話號碼",
         "telephone": "電話： {{number}}",
-        "title": "邀請人員參加會議"
+        "title": "邀請人員參加會議",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "藍牙",

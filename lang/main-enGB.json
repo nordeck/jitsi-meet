@@ -15,7 +15,8 @@
         "searchPeople": "Search for people",
         "searchPeopleAndNumbers": "Search for people or add their phone numbers",
         "telephone": "Telephone: {{number}}",
-        "title": "Invite people to this meeting"
+        "title": "Invite people to this meeting",
+        "closeButton": "close"
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

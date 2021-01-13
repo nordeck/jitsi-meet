@@ -15,7 +15,8 @@
         "searchPeople": "Serĉi homojn",
         "searchPeopleAndNumbers": "Serĉi homojn aŭ aldoni iliajn telefonnumerojn",
         "telephone": "Telefono: {{number}}",
-        "title": "Inviti homojn al ĉi tiu kunveno"
+        "title": "Inviti homojn al ĉi tiu kunveno",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bludento",

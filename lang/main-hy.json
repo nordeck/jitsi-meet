@@ -15,7 +15,8 @@
         "searchPeople": "",
         "searchPeopleAndNumbers": "",
         "telephone": "",
-        "title": ""
+        "title": "",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

@@ -15,7 +15,8 @@
         "searchPeople": "Etsi henkilöitä",
         "searchPeopleAndNumbers": "Etsi henkilöitä tai lisää heidän puhelinnumeronsa",
         "telephone": "Puhelin: {{number}}",
-        "title": "Kutsu henkilöitä tähän kokoukseen"
+        "title": "Kutsu henkilöitä tähän kokoukseen",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

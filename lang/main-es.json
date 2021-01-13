@@ -30,7 +30,8 @@
         "shareStream": "Compartir el link de la transmición en vivo",
         "telephone": "Teléfono: {{number}}",
         "title": "Invitar a otras personas a esta reunión",
-        "yahooEmail": "Correo de Yahoo"
+        "yahooEmail": "Correo de Yahoo",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

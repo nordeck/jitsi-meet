@@ -15,7 +15,8 @@
         "searchPeople": "Chirca gente",
         "searchPeopleAndNumbers": "Chirca gente o agiunghe is nùmeros de telèfonu issoro",
         "telephone": "Telèfonu: {{number}}",
-        "title": "Invita gente a custa riunione"
+        "title": "Invita gente a custa riunione",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

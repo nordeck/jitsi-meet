@@ -15,7 +15,8 @@
         "searchPeople": "Căutați persoane",
         "searchPeopleAndNumbers": "Căutați după nume sau după numărul de telefon",
         "telephone": "Telefon: {{number}}",
-        "title": "Adăugați persoane în acest apel video"
+        "title": "Adăugați persoane în acest apel video",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

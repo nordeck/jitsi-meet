@@ -30,7 +30,7 @@ function Header({ onClose, t }: Props) {
             className = 'invite-more-dialog header'>
             { t('speakerStats.speakerStats') }
             <Icon
-                ariaLabel = { 'close' }
+                ariaLabel = { t('addPeople.closeButton') }
                 onClick = { onClose }
                 onKeypress = { onClose }
                 src = { IconClose }

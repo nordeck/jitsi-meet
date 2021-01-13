@@ -15,7 +15,8 @@
         "searchPeople": "חפש אנשים",
         "searchPeopleAndNumbers": "חפש אנשים או הזן את מספר הטלפון שלהם",
         "telephone": "טלפון: {{number}}",
-        "title": "הזמן אנשים לפגישה זו"
+        "title": "הזמן אנשים לפגישה זו",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "בלוטות'",

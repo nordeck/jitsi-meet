@@ -15,7 +15,8 @@
         "searchPeople": "Kontaktide otsimine",
         "searchPeopleAndNumbers": "Otsi kontakti või lisa telefoninumber",
         "telephone": "Telefoninumber: {{number}}",
-        "title": "Lisa kontakte kõnesse"
+        "title": "Lisa kontakte kõnesse",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

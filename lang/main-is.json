@@ -15,7 +15,8 @@
         "searchPeople": "Leita að fólki",
         "searchPeopleAndNumbers": "Leita að fólki og bæta við símanúmerum þess",
         "telephone": "Símanúmer: {{number}}",
-        "title": "Bjóða fólki á þennan fund"
+        "title": "Bjóða fólki á þennan fund",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

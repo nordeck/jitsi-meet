@@ -30,7 +30,8 @@
         "shareStream": "ライブ配信へのリンクを共有する",
         "telephone": "電話: {{number}}",
         "title": "このミーティングに人を招待する",
-        "yahooEmail": "Yahoo! メール"
+        "yahooEmail": "Yahoo! メール",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

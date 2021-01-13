@@ -15,7 +15,8 @@
         "searchPeople": "Cerca-hi persones",
         "searchPeopleAndNumbers": "Cerca persones o n'afegeix els números de telèfon",
         "telephone": "Telèfon: {{number}}",
-        "title": "Convida persones a aquesta reunió"
+        "title": "Convida persones a aquesta reunió",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

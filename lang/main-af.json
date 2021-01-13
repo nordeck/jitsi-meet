@@ -15,7 +15,8 @@
         "searchPeople": "Soek mense",
         "searchPeopleAndNumbers": "Soek mense of voeg hulle foonnommers by",
         "telephone": "Telefoon: {{number}}",
-        "title": "Nooi mense na dié vergadering"
+        "title": "Nooi mense na dié vergadering",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

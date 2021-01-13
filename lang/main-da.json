@@ -15,7 +15,8 @@
         "searchPeople": "Søg efter personer",
         "searchPeopleAndNumbers": "Søg efter personer eller tilføj deres telefonnummer",
         "telephone": "Telefon: {{number}}",
-        "title": "Inviter personer til dette møde"
+        "title": "Inviter personer til dette møde",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

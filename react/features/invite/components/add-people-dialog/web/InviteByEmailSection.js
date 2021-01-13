@@ -137,7 +137,7 @@ function InviteByEmailSection({ inviteSubject, inviteText, t }: Props) {
                     className = { `invite-more-dialog email-container${isActive ? ' active' : ''}` }
                     onClick = { _onToggleActiveState }
                     onKeyPress = { _onToggleActiveState }
-                    role = 'switch'
+                    role = 'button'
                     tabIndex = { 0 }>
                     <span>{t('addPeople.shareInvite')}</span>
                     <Icon src = { IconArrowDownSmall } />

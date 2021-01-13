@@ -15,7 +15,8 @@
         "searchPeople": "Žmonių paieška",
         "searchPeopleAndNumbers": "Ieškoti žmonių arba pridėti jų telefonų numerius",
         "telephone": "Tel. nr.: {{number}}",
-        "title": "Pakvieskite žmones į šį susitikimą"
+        "title": "Pakvieskite žmones į šį susitikimą",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

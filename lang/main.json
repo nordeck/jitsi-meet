@@ -30,7 +30,8 @@
         "shareStream": "Share the live streaming link",
         "telephone": "Telephone: {{number}}",
         "title": "Invite people to this meeting",
-        "yahooEmail": "Yahoo Email"
+        "yahooEmail": "Yahoo Email",
+        "closeButton": "close"
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

@@ -15,7 +15,8 @@
         "searchPeople": "Пошук людзей",
         "searchPeopleAndNumbers": "Пошук людзей або даданне іх тэлефонаў",
         "telephone": "Нумар: {{number}}",
-        "title": "Запрасіць людзей на гэтую сустрэчу"
+        "title": "Запрасіць людзей на гэтую сустрэчу",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

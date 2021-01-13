@@ -30,7 +30,8 @@
         "shareStream": "라이브 스트리밍 링크 공유",
         "telephone": "전화: {{number}}",
         "title": "이 회의에 사람들을 초대하십시오",
-        "yahooEmail": "Yahoo 이메일"
+        "yahooEmail": "Yahoo 이메일",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "블루투스",

@@ -30,7 +30,8 @@
         "shareStream": "Поделиться ссылкой на прямую трансляцию",
         "telephone": "Номер: {{number}}",
         "title": "Пригласить людей на эту встречу",
-        "yahooEmail": "Электронная почта Yahoo"
+        "yahooEmail": "Электронная почта Yahoo",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

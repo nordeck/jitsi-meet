@@ -15,7 +15,8 @@
         "searchPeople": "Tìm người",
         "searchPeopleAndNumbers": "Tìm người và thêm số",
         "telephone": "Số:{{number}}",
-        "title": "Mời người tham dự cuộc họp này"
+        "title": "Mời người tham dự cuộc họp này",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

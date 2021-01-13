@@ -30,7 +30,8 @@
         "shareStream": "Deel de link naar de livestream",
         "telephone": "Telefoon: {{number}}",
         "title": "Personen uitnodigen voor deze vergadering",
-        "yahooEmail": "Yahoo E-mail"
+        "yahooEmail": "Yahoo E-mail",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

@@ -28,7 +28,8 @@
         "shareStream": "Bḍu aseɣwen n usuddem usrid",
         "shareInvite": "Bḍu tinubga n temlilit",
         "outlookEmail": "Imayl n Outlook",
-        "copyLink": "Nɣel aseɣwen n temlilit"
+        "copyLink": "Nɣel aseɣwen n temlilit",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

@@ -15,7 +15,8 @@
         "searchPeople": "查找人员",
         "searchPeopleAndNumbers": "搜索成员或添加其电话号码",
         "telephone": "电话号码： {{number}}",
-        "title": "会议标题"
+        "title": "会议标题",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "蓝牙",

@@ -30,7 +30,8 @@
         "shareStream": "Zdieľať odkaz na živé vysielanie",
         "telephone": "Telefón: {{number}}",
         "title": "Pozvať ľudí do tejto konferencie",
-        "yahooEmail": "Yahoo email"
+        "yahooEmail": "Yahoo email",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

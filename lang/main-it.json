@@ -30,7 +30,8 @@
         "shareStream": "Condividi il collegamento alla diretta",
         "telephone": "Telefono: {{number}}",
         "title": "Invita persone a questa riunione",
-        "yahooEmail": "Email Yahoo"
+        "yahooEmail": "Email Yahoo",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

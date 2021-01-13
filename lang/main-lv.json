@@ -15,7 +15,8 @@
         "searchPeople": "Cilvēku meklēšana",
         "searchPeopleAndNumbers": "Cilvēku meklēšana vai viņu telefona numuru pievienošāna",
         "telephone": "Telefons: {{number}}",
-        "title": "Uzaicināt cilvēkus uz šo sapulci"
+        "title": "Uzaicināt cilvēkus uz šo sapulci",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

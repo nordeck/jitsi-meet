@@ -15,7 +15,8 @@
         "searchPeople": "Хүмүүс хайх",
         "searchPeopleAndNumbers": "Хүмүүсээс хайх эсвэл утасны дугаар нэмнэ үү",
         "telephone": "Утас: {{number}}",
-        "title": "Хүмүүсийг хуралд урих"
+        "title": "Хүмүүсийг хуралд урих",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",

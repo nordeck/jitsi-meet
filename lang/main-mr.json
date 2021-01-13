@@ -15,7 +15,8 @@
         "searchPeople": "लोकांचा शोध घ्या",
         "searchPeopleAndNumbers": "लोक शोधा किंवा त्यांचा फोन नंबर जोडा",
         "telephone": "दूरध्वनी: {{number}}",
-        "title": "या संमेलनात लोकांना आमंत्रित करा"
+        "title": "या संमेलनात लोकांना आमंत्रित करा",
+        "closeButton": ""
     },
     "audioDevices": {
         "bluetooth": "ब्लूटुथ",
