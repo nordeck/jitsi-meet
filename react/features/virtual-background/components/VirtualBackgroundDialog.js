@@ -104,18 +104,21 @@ function VirtualBackground({ _jitsiTrack, _selectedThumbnail, dispatch, t }: Pro
     const [ loading, setLoading ] = useState(false);
     const uploadImageButton: Object = useRef(null);
 
+    const useKeyPressHandler = fn =>
+        useCallback(e => {
+            if (e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                fn(e);
+            }
+        }, [ fn ]);
+
     const deleteStoredImage = useCallback(e => {
         const imageId = e.currentTarget.getAttribute('data-imageid');
 
         setStoredImages(storedImages.filter(item => item.id !== imageId));
     }, [ storedImages ]);
 
-    const deleteStoredImageKeyPress = useCallback(e => {
-        if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            deleteStoredImage(e);
-        }
-    }, [ deleteStoredImage ]);
+    const deleteStoredImageKeyPress = useKeyPressHandler(deleteStoredImage);
 
     /**
      * Updates stored images on local storage.
@@ -142,12 +145,7 @@ function VirtualBackground({ _jitsiTrack, _selectedThumbnail, dispatch, t }: Pro
         });
     }, []);
 
-    const enableBlurKeyPress = useCallback(e => {
-        if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            enableBlur();
-        }
-    }, [ enableBlur ]);
+    const enableBlurKeyPress = useKeyPressHandler(enableBlur);
 
     const enableSlideBlur = useCallback(async () => {
         setOptions({
@@ -158,12 +156,7 @@ function VirtualBackground({ _jitsiTrack, _selectedThumbnail, dispatch, t }: Pro
         });
     }, []);
 
-    const enableSlideBlurKeyPress = useCallback(e => {
-        if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            enableSlideBlur();
-        }
-    }, [ enableBlur ]);
+    const enableSlideBlurKeyPress = useKeyPressHandler(enableSlideBlur);
 
     const removeBackground = useCallback(async () => {
         setOptions({
@@ -172,12 +165,7 @@ function VirtualBackground({ _jitsiTrack, _selectedThumbnail, dispatch, t }: Pro
         });
     }, []);
 
-    const removeBackgroundKeyPress = useCallback(e => {
-        if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            removeBackground();
-        }
-    }, [ removeBackground ]);
+    const removeBackgroundKeyPress = useKeyPressHandler(removeBackground);
 
     const setUploadedImageBackground = useCallback(async e => {
         const imageId = e.currentTarget.getAttribute('data-imageid');
@@ -246,19 +234,9 @@ function VirtualBackground({ _jitsiTrack, _selectedThumbnail, dispatch, t }: Pro
         }
     }, [ uploadImageButton.current ]);
 
-    const setImageBackgroundKeyPress = useCallback(e => {
-        if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            setImageBackground(e);
-        }
-    }, [ setImageBackground ]);
+    const setImageBackgroundKeyPress = useKeyPressHandler(setImageBackground);
 
-    const setUploadedImageBackgroundKeyPress = useCallback(e => {
-        if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            setUploadedImageBackground(e);
-        }
-    }, [ setUploadedImageBackground ]);
+    const setUploadedImageBackgroundKeyPress = useKeyPressHandler(setUploadedImageBackground);
 
     const applyVirtualBackground = useCallback(async () => {
         setLoading(true);
