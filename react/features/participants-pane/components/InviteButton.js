@@ -26,7 +26,7 @@ export const InviteButton = () => {
             <Icon
                 size = { 20 }
                 src = { IconInviteMore } />
-            <span>{ t('toolbar.accessibilityLabel.invite') }</span>
+            <span>{t('participantsPane.actions.invite')}</span>
         </ParticipantInviteButton>
     );
 };

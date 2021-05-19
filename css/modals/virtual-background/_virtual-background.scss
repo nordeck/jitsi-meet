@@ -1,4 +1,5 @@
 .virtual-background-dialog {
+    position: relative;
     max-height: 300px;
     color: white;
     display: inline-grid;
@@ -67,6 +68,7 @@
         border: 2px solid #246FE5;
         padding: 0 10px;
     }
+
     @media (min-width: 432px) and (max-width: 632px) {
         font-size: 1.5vw;
         .virtual-background-none, .thumbnail, .thumbnail-selected, .none-selected, .blur, .blur-selected, .slight-blur, .slight-blur-selected{
@@ -145,8 +147,20 @@
  }
 
  .video-preview-loader{
+     border-radius: 6px;
+     background-color: transparent;
+     height: 250px;
+     margin-bottom: 8px;
+     width: 572px;
      position: fixed;
-     left: 50%;
-     top: 35%;
-     transform: translate(-50%,-35%);
+     z-index: 2;
+     @media (min-width: 432px) and (max-width: 632px) {
+         width: 340px;
+     }
+ }
+
+ .video-preview-loader svg{
+    position: absolute;
+    top: 40%;
+    left: 45%;
  }
