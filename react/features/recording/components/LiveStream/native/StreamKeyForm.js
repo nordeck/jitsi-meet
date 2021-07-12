@@ -10,7 +10,6 @@ import { StyleType } from '../../../../base/styles';
 import AbstractStreamKeyForm, {
     type Props as AbstractProps
 } from '../AbstractStreamKeyForm';
-import { GOOGLE_PRIVACY_POLICY, YOUTUBE_TERMS_URL } from '../constants';
 
 type Props = AbstractProps & {
 
