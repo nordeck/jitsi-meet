@@ -2,6 +2,7 @@
 
 import debounce from 'lodash/debounce';
 import { Component } from 'react';
+
 import { GOOGLE_PRIVACY_POLICY, YOUTUBE_TERMS_URL } from './constants';
 
 declare var interfaceConfig: Object;
