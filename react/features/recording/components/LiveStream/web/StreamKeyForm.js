@@ -9,18 +9,12 @@ import AbstractStreamKeyForm, {
 } from '../AbstractStreamKeyForm';
 import { GOOGLE_PRIVACY_POLICY, YOUTUBE_TERMS_URL } from '../constants';
 
-declare var interfaceConfig: Object;
-
 /**
  * A React Component for entering a key for starting a YouTube live stream.
  *
  * @extends Component
  */
 class StreamKeyForm extends AbstractStreamKeyForm<Props> {
-
-    termsURL: string;
-    dataPrivacyURL: string;
-    streamLinkRegexp: RegExp;
 
     /**
      * Initializes a new {@code StreamKeyForm} instance.
@@ -30,19 +24,6 @@ class StreamKeyForm extends AbstractStreamKeyForm<Props> {
      */
     constructor(props: Props) {
         super(props);
-
-        const fourGroupsDashSeparated = /^(?:[a-zA-Z0-9]{4}(?:-(?!$)|$)){4}/;
-
-        const {
-            LIVE_STREAMING_TERMS_LINK,
-            LIVE_STREAMING_DATA_PRIVACY_LINK,
-            LIVE_STREAMING_REGEXP
-        } = interfaceConfig;
-
-        this.termsURL = LIVE_STREAMING_TERMS_LINK || YOUTUBE_TERMS_URL;
-        this.dataPrivacyURL = LIVE_STREAMING_DATA_PRIVACY_LINK || GOOGLE_PRIVACY_POLICY;
-        this.streamLinkRegexp = (LIVE_STREAMING_REGEXP && new RegExp(LIVE_STREAMING_REGEXP))
-            || fourGroupsDashSeparated;
 
         // Bind event handlers so they are only bound once per instance.
         this._onOpenHelp = this._onOpenHelp.bind(this);
@@ -116,19 +97,6 @@ class StreamKeyForm extends AbstractStreamKeyForm<Props> {
     _onInputChange: Object => void
 
     _onOpenHelp: () => void
-
-
-    /**
-     * Overrides  {@code AbstractStreamKeyForm#_validateStreamKey}.
-     *
-     * @inheritdoc
-     */
-    _validateStreamKey(streamKey = '') {
-        const trimmedKey = streamKey.trim();
-        const match = this.streamLinkRegexp.exec(trimmedKey);
-
-        return Boolean(match);
-    }
 
     /**
      * Opens a new tab with information on how to manually locate a YouTube
