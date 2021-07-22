@@ -70,6 +70,9 @@ var config = {
         // callStatsThreshold: 5 // enable callstats for 5% of the users.
     },
 
+    // Enables reactions feature.
+    enableReactions: false,
+
     // Disables ICE/UDP by filtering out local and remote UDP candidates in
     // signalling.
     // webrtcIceUdpDisable: false,
@@ -100,6 +103,10 @@ var config = {
     // used to collect debug information (XMPP IQs, SDP offer/answer cycles)
     // about the call.
     // enableSaveLogs: false,
+
+    // Enabling this will hide the "Show More" link in the GSM popover that can be
+    // used to display more statistics about the connection (IP, Port, protocol, etc).
+    // disableShowMoreStats: true,
 
     // Enabling this will run the lib-jitsi-meet noise detection module which will
     // notify the user if there is noise, other than voice, coming from the current
@@ -456,7 +463,7 @@ var config = {
     // - if `toolbarButtons` is undefined, we fallback to enabling all buttons on the UI
     // toolbarButtons: [
     //    'microphone', 'camera', 'closedcaptions', 'desktop', 'embedmeeting', 'fullscreen',
-    //    'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
+    //    'fodeviceselection', 'hangup', 'profile', 'participants-pane', 'chat', 'recording',
     //    'livestreaming', 'etherpad', 'sharedvideo', 'shareaudio', 'settings', 'raisehand',
     //    'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts',
     //    'tileview', 'select-background', 'download', 'help', 'mute-everyone', 'mute-video-everyone', 'security'
@@ -509,6 +516,9 @@ var config = {
         // 3rd participant joins the conference will be moved back to the JVB
         // connection.
         enabled: true,
+
+        // Enable unified plan implementation support on Chromium for p2p connection.
+        // enableUnifiedOnChrome: false,
 
         // Sets the ICE transport policy for the p2p connection. At the time
         // of this writing the list of possible values are 'all' and 'relay',
@@ -595,6 +605,9 @@ var config = {
     // Disables the sounds that play when other participants join or leave the
     // conference (if set to true, these sounds will not be played).
     // disableJoinLeaveSounds: false,
+
+    // Disables the sounds that play when a chat message is received.
+    // disableIncomingMessageSound: false,
 
     // Information for the chrome extension banner
     // chromeExtensionBanner: {
@@ -725,6 +738,9 @@ var config = {
     // Hides the conference subject
     // hideConferenceSubject: true,
 
+    // Hides the recording label
+    // hideRecordingLabel: false,
+
     // Hides the conference timer.
     // hideConferenceTimer: true,
 
@@ -739,6 +755,18 @@ var config = {
     // is not persisting the local storage inside the iframe.
     // useHostPageLocalStorage: true,
 
+    // etherpad ("shared document") integration.
+    //
+
+    // If set, add a "Open shared document" link to the bottom right menu that
+    // will open an etherpad document.
+    // etherpad_base: 'https://your-etherpad-installati.on/p/',
+
+    // If etherpad_base is set, and useRoomAsSharedDocumentName is set to true,
+    // open a pad with the name of the room (lowercased) instead of a pad with a
+    // random UUID.
+    // useRoomAsSharedDocumentName: true,
+
     // List of undocumented settings used in jitsi-meet
     /**
      _immediateReloadThreshold
@@ -751,7 +779,6 @@ var config = {
      dialOutCodesUrl
      disableRemoteControl
      displayJids
-     etherpad_base
      externalConnectUrl
      firefox_fake_device
      googleApiApplicationClientID
@@ -793,6 +820,11 @@ var config = {
      websocketKeepAlive
      websocketKeepAliveUrl
      */
+
+    /**
+     * Default interval (milliseconds) for triggering mouseMoved iframe API event
+     */
+    mouseMoveCallbackInterval: 1000,
 
     /**
         Use this array to configure which notifications will be shown to the user
@@ -855,8 +887,8 @@ var config = {
     //     'transcribing.failedToStart' // shown when transcribing fails to start
     // ],
 
-    // Automatically hides the filmstrip when screen width is under a certain threshold
-    autohideFilmstrip: true,
+    // Prevent the filmstrip from autohiding when screen width is under a certain threshold
+    // disableFilmstripAutohiding: false,
 
     // Allow all above example options to include a trailing comma and
     // prevent fear when commenting out the last value.
