@@ -134,6 +134,7 @@ export default [
     'hideLobbyButton',
     'hosts',
     'iAmRecorder',
+    'recorderTileViewByDefault',
     'iAmSipGateway',
     'iceTransportPolicy',
     'ignoreStartMuted',
