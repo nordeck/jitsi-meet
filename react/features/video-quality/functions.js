@@ -1,5 +1,7 @@
 // @flow
 
+import _ from 'lodash';
+
 import { CFG_LVL_TO_APP_QUALITY_LVL, VIDEO_QUALITY_LEVELS } from './constants';
 
 const { LOW, STANDARD, HIGH, ULTRA } = VIDEO_QUALITY_LEVELS;
@@ -43,6 +45,42 @@ export function getReceiverVideoQualityLevel(availableHeight: number, heightToLe
     return selectedLevel;
 }
 
+const validateKeysAreNumbers = (o: Object): boolean => !(typeof o !== 'object'
+        || Object.keys(o)
+            .map(lvl => Number(lvl))
+            .find(lvl => lvl === null || isNaN(lvl) || lvl < 0));
+
+/**
+ * Converts {@code Object} passed in the config which represents height thresholds to vide quality level mapping to
+ * a {@code Map}.
+ *
+ * @param {Object} object -  See restrictVideoHeightByParticipants in config.js for more details.
+ * @returns {Map<number, number>|undefined} - A mapping of video height required for given minimum partiipant count  or
+ * {@code undefined} if the map contains invalid values.
+ */
+export function validateRestrictVideoHeightByParticipants(object: Object): ?Map<number, number> {
+    if (!validateKeysAreNumbers(object)) {
+        return undefined;
+    }
+
+    const map = new Map();
+    const participants = Object.keys(object);
+
+    for (const participantString of participants) {
+        const participant = Number(participantString);
+        let height = Number(object[participant]);
+
+        if (height) {
+            height = _.clamp(height, LOW, ULTRA);
+            map.set(participant, height);
+        } else {
+            return undefined;
+        }
+    }
+
+    return map;
+}
+
 /**
  * Converts {@code Object} passed in the config which represents height thresholds to vide quality level mapping to
  * a {@code Map}.
@@ -53,9 +91,7 @@ export function getReceiverVideoQualityLevel(availableHeight: number, heightToLe
  * {@code undefined} if the map contains invalid values.
  */
 export function validateMinHeightForQualityLvl(minHeightForQualityLvl: Object): ?Map<number, number> {
-    if (typeof minHeightForQualityLvl !== 'object'
-        || Object.keys(minHeightForQualityLvl).map(lvl => Number(lvl))
-            .find(lvl => lvl === null || isNaN(lvl) || lvl < 0)) {
+    if (!validateKeysAreNumbers(minHeightForQualityLvl)) {
         return undefined;
     }
 

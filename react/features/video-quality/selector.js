@@ -9,3 +9,13 @@
 export function getMinHeightForQualityLvlMap(state: Object): Map<number, number> {
     return state['features/video-quality'].minHeightForQualityLvl;
 }
+
+/**
+ * Selects the participant count to video quality (height) mapping from the config.
+ *
+ * @param {Object} state - The redux state.
+ * @returns {Map<number,number>}
+ */
+export function getRestrictVideoHeightByParticipantsMap(state: Object): Map<number, number> {
+    return state['features/video-quality'].restrictVideoHeightByParticipants;
+}

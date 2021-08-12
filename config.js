@@ -340,6 +340,19 @@ var config = {
     //        720: 'high'
     //    },
     //
+    //    // If this option is provided, the video height will change if the participant threshold is reached.
+    //    // Height can be a number between 180 (LOW) and 2160 (ULTRA).
+    //    // In this example the quality of the video will change as follows
+    //    //    0-9 participants: no extra changes to video quality, other changes to quality may be applied
+    //    //                      from minHeightForQualityLvl or maxFullResolutionParticipants  parameters
+    //    //    10-29: video height is set to 360
+    //    //    30+ : height is set to 180
+    //    restrictVideoHeightByParticipants: {
+    //        10: 360,
+    //        30: 180
+    //    },
+    //
+    //
     //    // Provides a way to resize the desktop track to 720p (if it is greater than 720p) before creating a canvas
     //    // for the presenter mode (camera picture-in-picture mode with screenshare).
     //    resizeDesktopForPresenter: false
