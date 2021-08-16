@@ -768,6 +768,7 @@ var config = {
      firefox_fake_device
      googleApiApplicationClientID
      iAmRecorder
+     recorderTileViewByDefault
      iAmSipGateway
      microsoftApiApplicationClientID
      peopleSearchQueryTypes
