@@ -12,7 +12,10 @@ import { setMaxReceiverVideoQuality } from './actions';
 import { VIDEO_QUALITY_LEVELS } from './constants';
 import { getReceiverVideoQualityLevel } from './functions';
 import logger from './logger';
-import { getMinHeightForQualityLvlMap } from './selector';
+import {
+    getMinHeightForQualityLvlMap,
+    getRestrictVideoHeightByParticipantsMap
+} from './selector';
 
 declare var APP: Object;
 
@@ -110,6 +113,20 @@ StateListenerRegistry.register(
                     newMaxRecvVideoQuality = VIDEO_QUALITY_LEVELS.STANDARD;
                 }
             }
+        }
+
+        // override max video height if participant limit reached
+        const restrictVideoHeightByParticipants = getRestrictVideoHeightByParticipantsMap(state);
+
+        if (restrictVideoHeightByParticipants) {
+            for (const [ participantCountFromConfig, height ] of restrictVideoHeightByParticipants.entries()) {
+                if (participantCount >= participantCountFromConfig) {
+                    newMaxRecvVideoQuality = height;
+                }
+            }
+
+            logger.info(`Video height is set to: ${newMaxRecvVideoQuality}, `
+                    + `participantCount: ${participantCount}, `);
         }
 
         if (maxReceiverVideoQuality !== newMaxRecvVideoQuality) {

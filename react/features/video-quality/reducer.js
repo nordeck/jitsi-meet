@@ -3,7 +3,7 @@ import { PersistenceRegistry, ReducerRegistry, set } from '../base/redux';
 
 import { SET_MAX_RECEIVER_VIDEO_QUALITY, SET_PREFERRED_VIDEO_QUALITY } from './actionTypes';
 import { VIDEO_QUALITY_LEVELS } from './constants';
-import { validateMinHeightForQualityLvl } from './functions';
+import { validateMinHeightForQualityLvl, validateRestrictVideoHeightByParticipants } from './functions';
 import logger from './logger';
 
 const DEFAULT_STATE = {
@@ -69,9 +69,29 @@ function _setConfig(state, { config }) {
     const configuredMap = config?.videoQuality?.minHeightForQualityLvl;
     const convertedMap = validateMinHeightForQualityLvl(configuredMap);
 
+    const heightByParticipant = config?.videoQuality?.restrictVideoHeightByParticipants;
+    const heightByParticipantMap = validateRestrictVideoHeightByParticipants(heightByParticipant);
+
     if (configuredMap && !convertedMap) {
         logger.error('Invalid config value videoQuality.minHeightForQualityLvl');
     }
 
-    return convertedMap ? set(state, 'minHeightForQualityLvl', convertedMap) : state;
+    logger.error(heightByParticipant);
+    logger.error(heightByParticipantMap);
+
+    if (heightByParticipant && !heightByParticipantMap) {
+        logger.error('Invalid config value videoQuality.restrictVideoHeightByParticipants');
+    }
+
+    let newState = state;
+
+    newState = convertedMap
+        ? set(newState, 'minHeightForQualityLvl', convertedMap)
+        : newState;
+
+    newState = heightByParticipantMap
+        ? set(newState, 'restrictVideoHeightByParticipants', heightByParticipantMap)
+        : newState;
+
+    return newState;
 }
