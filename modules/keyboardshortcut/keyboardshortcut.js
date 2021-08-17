@@ -62,7 +62,6 @@ const _focusedElementsSelector = `:focus:is(${_elementsBlacklist.join(',')})`;
  * Maps keycode to character, id of popover for given function and function.
  */
 const KeyboardShortcut = {
-    isPushToTalkActive: false,
 
     init() {
         this._initGlobalShortcuts();
@@ -97,7 +96,6 @@ const KeyboardShortcut = {
                             PRESSED));
                         logger.log('Talk shortcut pressed');
                         APP.conference.muteAudio(false);
-                        this.isPushToTalkActive = true;
                     }
                 }
             } else if (this._getKeyboardKey(e).toUpperCase() === 'ESCAPE') {
@@ -144,20 +142,23 @@ const KeyboardShortcut = {
      * @param exec the function to be executed when the shortcut is pressed
      * @param helpDescription the description of the shortcut that would appear
      * in the help menu
+     * @param altKey whether or not the alt key must be pressed.
      */
     registerShortcut(// eslint-disable-line max-params
             shortcutChar,
             shortcutAttr,
             exec,
-            helpDescription) {
-        _shortcuts.set(shortcutChar, {
+            helpDescription,
+            altKey = false) {
+        _shortcuts.set(altKey ? `:${shortcutChar}` : shortcutChar, {
             character: shortcutChar,
             function: exec,
-            shortcutAttr
+            shortcutAttr,
+            altKey
         });
 
         if (helpDescription) {
-            this._addShortcutToHelp(shortcutChar, helpDescription);
+            this._addShortcutToHelp(altKey ? `:${shortcutChar}` : shortcutChar, helpDescription);
         }
     },
 
@@ -166,9 +167,10 @@ const KeyboardShortcut = {
      *
      * @param shortcutChar unregisters the given shortcut, which means it will
      * no longer be usable
+     * @param altKey whether or not shortcut is combo with alt key
      */
-    unregisterShortcut(shortcutChar) {
-        _shortcuts.delete(shortcutChar);
+    unregisterShortcut(shortcutChar, altKey = false) {
+        _shortcuts.delete(altKey ? `:${shortcutChar}` : shortcutChar);
         _shortcutsHelp.delete(shortcutChar);
     },
 
@@ -177,6 +179,15 @@ const KeyboardShortcut = {
      * @returns {string} e.key or something close if not supported
      */
     _getKeyboardKey(e) {
+        // If alt is pressed a different char can be returned so this takes
+        // the char from the code. It also prefixes with a colon to differentiate
+        // alt combo from simple keypress.
+        if (e.altKey) {
+            const key = e.code.replace('Key', '');
+
+            return `:${key}`;
+        }
+
         // If e.key is a string, then it is assumed it already plainly states
         // the key pressed. This may not be true in all cases, such as with Edge
         // and "?", when the browser cannot properly map a key press event to a
@@ -232,12 +243,9 @@ const KeyboardShortcut = {
         // register SPACE shortcut in two steps to insure visibility of help
         // message
         this.registerShortcut(' ', null, () => {
-            if (this.isPushToTalkActive) {
-                sendAnalytics(createShortcutEvent('push.to.talk', RELEASED));
-                logger.log('Talk shortcut released');
-                APP.conference.muteAudio(true);
-                this.isPushToTalkActive = false;
-            }
+            sendAnalytics(createShortcutEvent('push.to.talk', RELEASED));
+            logger.log('Talk shortcut released');
+            APP.conference.muteAudio(true);
         });
         this._addShortcutToHelp('SPACE', 'keyboardShortcuts.pushToTalk');
 
