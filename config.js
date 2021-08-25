@@ -462,6 +462,22 @@ var config = {
     //    'tileview', 'select-background', 'download', 'help', 'mute-everyone', 'mute-video-everyone', 'security'
     // ],
 
+    // Customize the Live Streaming dialog. Can be modified for a non-Youtube provider.
+    liveStreaming: {
+        // Terms link
+        // termsLink: 'https://www.youtube.com/t/terms',
+
+        // Data privacy link
+        // dataPrivacyLink: 'https://policies.google.com/privacy',
+
+        // RegExp string that validates the stream key input field
+        // validatorRegExpString: '^(?:[a-zA-Z0-9]{4}(?:-(?!$)|$)){4}',
+
+        // Moved from interfaceConfig(LIVE_STREAMING_HELP_LINK).
+        // Documentation reference for the live streaming feature.
+        helpLink: 'https://jitsi.org/live'
+    },
+
     // Stats
     //
 

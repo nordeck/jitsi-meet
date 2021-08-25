@@ -201,6 +201,14 @@ function _translateLegacyConfig(oldValue: Object) {
         };
     }
 
+    // Migrate interfaceConfig.LIVE_STREAMING_HELP_LINK
+    if (!oldValue.liveStreaming?.helpLink && interfaceConfig?.LIVE_STREAMING_HELP_LINK) {
+        newValue.liveStreaming = {
+            ...oldValue.liveStreaming,
+            helpLink: interfaceConfig.LIVE_STREAMING_HELP_LINK
+        };
+    }
+
     return newValue;
 }
 

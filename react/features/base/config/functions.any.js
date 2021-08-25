@@ -43,6 +43,18 @@ export function createFakeConfig(baseURL: string) {
 /* eslint-disable max-params, no-shadow */
 
 /**
+ * Selector used to get the live streaming options.
+ *
+ * @param {Object} state - The global state.
+ * @returns {Object}
+ */
+export function getLiveStreaming(state: Object) {
+    const { liveStreaming } = state['features/base/config'];
+
+    return liveStreaming;
+}
+
+/**
  * Overrides JSON properties in {@code config} and
  * {@code interfaceConfig} Objects with the values from {@code newConfig}.
  * Overrides only the whitelisted keys.

@@ -4,8 +4,9 @@ import { FieldTextStateless } from '@atlaskit/field-text';
 import React from 'react';
 
 import { translate } from '../../../../base/i18n';
+import { connect } from '../../../../base/redux';
 import AbstractStreamKeyForm, {
-    type Props
+    type Props, _mapStateToProps
 } from '../AbstractStreamKeyForm';
 
 /**
@@ -127,4 +128,4 @@ class StreamKeyForm extends AbstractStreamKeyForm<Props> {
     }
 }
 
-export default translate(StreamKeyForm);
+export default translate(connect(_mapStateToProps)(StreamKeyForm));

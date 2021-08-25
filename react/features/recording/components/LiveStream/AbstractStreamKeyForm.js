@@ -3,9 +3,9 @@
 import debounce from 'lodash/debounce';
 import { Component } from 'react';
 
-import { GOOGLE_PRIVACY_POLICY, YOUTUBE_TERMS_URL } from './constants';
+import { getLiveStreaming } from '../../../base/config';
 
-declare var interfaceConfig: Object;
+import { GOOGLE_PRIVACY_POLICY, YOUTUBE_TERMS_URL } from './constants';
 
 /**
  * The live streaming help link to display. On web it comes from
@@ -14,6 +14,13 @@ declare var interfaceConfig: Object;
  * FIXME: This is in props now to prepare for the Redux-based interfaceConfig
  */
 const LIVE_STREAMING_HELP_LINK = 'https://jitsi.org/live';
+
+export type LiveStreaming = {
+    helpLink: string, // Documentation reference for the live streaming feature.
+    termsLink: string, // Terms link
+    dataPrivacyLink: string, // Data privacy link
+    validatorRegExpString: string // RegExp string that validates the stream key input field
+}
 
 /**
  * The props of the component.
@@ -33,7 +40,12 @@ export type Props = {
     /**
      * The stream key value to display as having been entered so far.
      */
-    value: string
+    value: string,
+
+    /**
+     * The live streaming form configurations
+     */
+    _liveStreaming: LiveStreaming
 };
 
 /**
@@ -76,22 +88,17 @@ export default class AbstractStreamKeyForm<P: Props>
                 && !this._validateStreamKey(this.props.value)
         };
 
-        this.helpURL = (typeof interfaceConfig !== 'undefined'
-            && interfaceConfig.LIVE_STREAMING_HELP_LINK)
-            || LIVE_STREAMING_HELP_LINK;
+        const liveStreaming = this.props._liveStreaming || {};
 
-        const {
-            LIVE_STREAMING_TERMS_LINK,
-            LIVE_STREAMING_DATA_PRIVACY_LINK,
-            LIVE_STREAMING_REGEXP
-        } = interfaceConfig;
+        this.helpURL = liveStreaming.helpLink || LIVE_STREAMING_HELP_LINK;
+        this.termsURL = liveStreaming.termsLink || YOUTUBE_TERMS_URL;
+        this.dataPrivacyURL = liveStreaming.dataPrivacyLink || GOOGLE_PRIVACY_POLICY;
 
         const fourGroupsDashSeparated = /^(?:[a-zA-Z0-9]{4}(?:-(?!$)|$)){4}/;
+        const regexpFromConfig = liveStreaming.validatorRegExpString
+            && new RegExp(liveStreaming.validatorRegExpString);
 
-        this.termsURL = LIVE_STREAMING_TERMS_LINK || YOUTUBE_TERMS_URL;
-        this.dataPrivacyURL = LIVE_STREAMING_DATA_PRIVACY_LINK || GOOGLE_PRIVACY_POLICY;
-        this.streamLinkRegexp = (LIVE_STREAMING_REGEXP && new RegExp(LIVE_STREAMING_REGEXP))
-            || fourGroupsDashSeparated;
+        this.streamLinkRegexp = regexpFromConfig || fourGroupsDashSeparated;
 
         this._debouncedUpdateValidationErrorVisibility = debounce(
             this._updateValidationErrorVisibility.bind(this),
@@ -173,4 +180,18 @@ export default class AbstractStreamKeyForm<P: Props>
 
         return Boolean(match);
     }
+}
+
+/**
+ * Maps part of the Redux state to the component's props.
+ *
+ * @param {Object} state - The Redux state.
+ * @returns {{
+ *     _liveStreaming: LiveStreaming
+ * }}
+ */
+export function _mapStateToProps(state: Object) {
+    return {
+        _liveStreaming: getLiveStreaming(state)
+    };
 }

@@ -3,12 +3,13 @@
 import React from 'react';
 import { Linking, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
+import { getLiveStreaming } from '../../../../base/config';
 import { _abstractMapStateToProps } from '../../../../base/dialog';
 import { translate } from '../../../../base/i18n';
 import { connect } from '../../../../base/redux';
 import { StyleType } from '../../../../base/styles';
 import AbstractStreamKeyForm, {
-    type Props as AbstractProps
+    type Props as AbstractProps, _mapStateToProps
 } from '../AbstractStreamKeyForm';
 
 type Props = AbstractProps & {
@@ -179,4 +180,4 @@ class StreamKeyForm extends AbstractStreamKeyForm<Props> {
     }
 }
 
-export default translate(connect(_abstractMapStateToProps)(StreamKeyForm));
+export default translate(connect(_mapStateToProps)(StreamKeyForm));
