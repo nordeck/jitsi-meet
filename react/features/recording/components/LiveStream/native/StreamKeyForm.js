@@ -3,8 +3,6 @@
 import React from 'react';
 import { Linking, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-import { getLiveStreaming } from '../../../../base/config';
-import { _abstractMapStateToProps } from '../../../../base/dialog';
 import { translate } from '../../../../base/i18n';
 import { connect } from '../../../../base/redux';
 import { StyleType } from '../../../../base/styles';
