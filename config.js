@@ -27,9 +27,6 @@ var config = {
     // Websocket URL
     // websocket: 'wss://jitsi-meet.example.com/xmpp-websocket',
 
-    // The name of client node advertised in XEP-0115 'c' stanza
-    clientNode: 'http://jitsi.org/jitsimeet',
-
     // The real JID of focus participant - can be overridden here
     // Do not change username - FIXME: Make focus username configurable
     // https://github.com/jitsi/jitsi-meet/issues/7376
@@ -172,9 +169,10 @@ var config = {
     // Enable / disable simulcast support.
     // disableSimulcast: false,
 
-    // Enable / disable layer suspension.  If enabled, endpoints whose HD
-    // layers are not in use will be suspended (no longer sent) until they
-    // are requested again.
+    // Enable / disable layer suspension.  If enabled, endpoints whose HD layers are not in use will be suspended
+    // (no longer sent) until they are requested again. This is enabled by default. This must be enabled for screen
+    // sharing to work as expected on Chrome. Disabling this might result in low resolution screenshare being sent
+    // by the client.
     // enableLayerSuspension: false,
 
     // Every participant after the Nth will start video muted.
@@ -323,7 +321,7 @@ var config = {
     //          VP9: {
     //              low: 100000,
     //              standard: 300000,
-    //              high:  1200000
+    //              high: 1200000
     //          }
     //    },
     //
@@ -387,6 +385,11 @@ var config = {
     // we filter out TURN/UDP because it is usually not needed since the
     // bridge itself is reachable via UDP)
     // useTurnUdp: false
+
+    // Enable support for encoded transform in supported browsers. This allows
+    // E2EE to work in Safari if the corresponding flag is enabled in the browser.
+    // Experimental.
+    // enableEncodedTransformSupport: false,
 
     // UI
     //
@@ -512,6 +515,10 @@ var config = {
     //    'videoquality',
     //    '__end'
     // ],
+
+    // List of pre meeting screens buttons to hide. The values must be one or more of the 5 allowed buttons:
+    // 'microphone', 'camera', 'select-background', 'invite', 'settings'
+    // hiddenPremeetingButtons: [],
 
     // Stats
     //
@@ -788,7 +795,11 @@ var config = {
          // The anchor url used when clicking the logo image
          logoClickUrl: 'https://example-company.org',
          // The url used for the image used as logo
-         logoImageUrl: 'https://example.com/logo-img.png'
+         logoImageUrl: 'https://example.com/logo-img.png',
+         // Overwrite for pool of background images for avatars
+         avatarBackgrounds: ['url(https://example.com/avatar-background-1.png)', '#FFF'],
+         // The lobby/prejoin screen background
+         premeetingBackground: 'url(https://example.com/premeeting-background.png)'
      }
     */
     // dynamicBrandingUrl: '',
@@ -849,6 +860,7 @@ var config = {
      disableRemoteControl
      displayJids
      externalConnectUrl
+     e2eeLabel
      firefox_fake_device
      googleApiApplicationClientID
      iAmRecorder
@@ -933,6 +945,11 @@ var config = {
     //     'notify.invitedThreePlusMembers', // shown when 3+ participants have been invited
     //     'notify.invitedTwoMembers', // shown when 2 participants have been invited
     //     'notify.kickParticipant', // shown when a participant is kicked
+    //     'notify.moderationStartedTitle', // shown when AV moderation is activated
+    //     'notify.moderationStoppedTitle', // shown when AV moderation is deactivated
+    //     'notify.moderationInEffectTitle', // shown when user attempts to unmute audio during AV moderation
+    //     'notify.moderationInEffectVideoTitle', // shown when user attempts to enable video during AV moderation
+    //     'notify.moderationInEffectCSTitle', // shown when user attempts to share content during AV moderation
     //     'notify.mutedRemotelyTitle', // shown when user is muted by a remote party
     //     'notify.mutedTitle', // shown when user has been muted upon joining,
     //     'notify.newDeviceAudioTitle', // prompts the user to use a newly detected audio device
@@ -941,6 +958,7 @@ var config = {
     //     'notify.passwordSetRemotely', // shown when a password has been set remotely
     //     'notify.raisedHand', // shown when a partcipant used raise hand,
     //     'notify.startSilentTitle', // shown when user joined with no audio
+    //     'notify.unmute', // shown to moderator when user raises hand during AV moderation
     //     'prejoin.errorDialOut',
     //     'prejoin.errorDialOutDisconnected',
     //     'prejoin.errorDialOutFailed',

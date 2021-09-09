@@ -1,13 +1,12 @@
 // @flow
 import type { Dispatch } from 'redux';
 
-import { getLocalParticipant, getRemoteParticipants, pinParticipant } from '../base/participants';
+import { getLocalParticipant, getParticipantById, pinParticipant } from '../base/participants';
 
 import {
     SET_HORIZONTAL_VIEW_DIMENSIONS,
     SET_TILE_VIEW_DIMENSIONS,
     SET_VERTICAL_VIEW_DIMENSIONS,
-    SET_VISIBLE_REMOTE_PARTICIPANTS,
     SET_VOLUME
 } from './actionTypes';
 import {
@@ -24,6 +23,8 @@ import {
     calculateThumbnailSizeForTileView,
     calculateThumbnailSizeForVerticalView
 } from './functions';
+
+export * from './actions.any';
 
 /**
  * Sets the dimensions of the tile view grid.
@@ -128,9 +129,12 @@ export function setHorizontalViewDimensions() {
 export function clickOnVideo(n: number) {
     return (dispatch: Function, getState: Function) => {
         const state = getState();
-        const participants = [ getLocalParticipant(state), ...getRemoteParticipants(state).values() ];
-        const nThParticipant = participants[n];
-        const { id, pinned } = nThParticipant;
+        const { id: localId } = getLocalParticipant(state);
+
+        // Use the list that correctly represents the current order of the participants as visible in the UI.
+        const { remoteParticipants } = state['features/filmstrip'];
+        const participants = [ localId, ...remoteParticipants ];
+        const { id, pinned } = getParticipantById(state, participants[n]);
 
         dispatch(pinParticipant(pinned ? null : id));
     };
@@ -154,25 +158,3 @@ export function setVolume(participantId: string, volume: number) {
         volume
     };
 }
-
-/**
- * Sets the list of the visible participants in the filmstrip by storing the start and end index from the remote
- * participants array.
- *
- * @param {number} startIndex - The start index from the remote participants array.
- * @param {number} endIndex - The end index from the remote participants array.
- * @returns {{
- *      type: SET_VISIBLE_REMOTE_PARTICIPANTS,
- *      startIndex: number,
- *      endIndex: number
- * }}
- */
-export function setVisibleRemoteParticipants(startIndex: number, endIndex: number) {
-    return {
-        type: SET_VISIBLE_REMOTE_PARTICIPANTS,
-        startIndex,
-        endIndex
-    };
-}
-
-export * from './actions.native';

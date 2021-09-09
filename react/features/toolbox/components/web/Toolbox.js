@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import keyboardShortcut from '../../../../../modules/keyboardshortcut/keyboardshortcut';
 import {
@@ -17,6 +17,7 @@ import { translate } from '../../../base/i18n';
 import JitsiMeetJS from '../../../base/lib-jitsi-meet';
 import {
     getLocalParticipant,
+    getParticipantCount,
     haveParticipantWithScreenSharingFeature,
     raiseHand
 } from '../../../base/participants';
@@ -28,6 +29,7 @@ import { DominantSpeakerName } from '../../../display-name';
 import { EmbedMeetingButton } from '../../../embed-meeting';
 import { SharedDocumentButton } from '../../../etherpad';
 import { FeedbackButton } from '../../../feedback';
+import { InviteButton } from '../../../invite/components/add-people-dialog';
 import { isVpaasMeeting } from '../../../jaas/functions';
 import { KeyboardShortcutsButton } from '../../../keyboard-shortcuts';
 import { LocalRecordingButton } from '../../../local-recording';
@@ -40,6 +42,7 @@ import { getParticipantsPaneOpen } from '../../../participants-pane/functions';
 import { addReactionToBuffer } from '../../../reactions/actions.any';
 import { ReactionsMenuButton } from '../../../reactions/components';
 import { REACTIONS } from '../../../reactions/constants';
+import { isReactionsEnabled } from '../../../reactions/functions.any';
 import {
     LiveStreamButton,
     RecordButton
@@ -66,7 +69,6 @@ import { VideoQualityDialog, VideoQualityButton } from '../../../video-quality/c
 import { VideoBackgroundButton } from '../../../virtual-background';
 import { toggleBackgroundEffect } from '../../../virtual-background/actions';
 import { VIRTUAL_BACKGROUND_TYPE } from '../../../virtual-background/constants';
-import { checkBlurSupport } from '../../../virtual-background/functions';
 import {
     setFullScreen,
     setOverflowMenuVisible,
@@ -152,10 +154,6 @@ type Props = {
      */
     _isProfileDisabled: boolean,
 
-    /**
-     * Whether or not the tile view is enabled.
-     */
-    _tileViewEnabled: boolean,
 
     /**
      * Whether or not the current meeting belongs to a JaaS user.
@@ -178,6 +176,11 @@ type Props = {
     _overflowMenuVisible: boolean,
 
     /**
+     * Number of participants in the conference.
+     */
+    _participantCount: number,
+
+    /**
      * Whether or not the participants pane is open.
      */
     _participantsPaneOpen: boolean,
@@ -186,6 +189,11 @@ type Props = {
      * Whether or not the local participant's hand is raised.
      */
     _raisedHand: boolean,
+
+    /**
+     * Whether or not reactions feature is enabled.
+     */
+    _reactionsEnabled: boolean,
 
     /**
      * Whether or not the local participant is screenSharing.
@@ -198,6 +206,11 @@ type Props = {
     _sharingVideo: boolean,
 
     /**
+     * Whether or not the tile view is enabled.
+     */
+    _tileViewEnabled: boolean,
+
+    /**
      * The enabled buttons.
      */
     _toolbarButtons: Array<string>,
@@ -208,19 +221,9 @@ type Props = {
     _visible: boolean,
 
     /**
-     * Array with the buttons which this Toolbox should display.
-     */
-    _visibleButtons: Array<string>,
-
-    /**
      * Returns the selected virtual source object.
      */
     _virtualSource: Object,
-
-    /**
-     * Whether or not reactions feature is enabled.
-     */
-    _reactionsEnabled: boolean,
 
     /**
      * Invoked to active other features of the app.
@@ -228,19 +231,34 @@ type Props = {
     dispatch: Function,
 
     /**
+     * If the dominant speaker name should be displayed or not.
+     */
+    showDominantSpeakerName?: boolean,
+
+    /**
      * Invoked to obtain translated strings.
      */
-    t: Function
+    t: Function,
+
+    /**
+     * Explicitly passed array with the buttons which this Toolbox should display.
+     */
+    toolbarButtons: Array<string>,
+
 };
 
 declare var APP: Object;
+
+type State = {
+    reactionsShortcutsRegistered: boolean
+};
 
 /**
  * Implements the conference toolbox on React/Web.
  *
  * @extends Component
  */
-class Toolbox extends Component<Props> {
+class Toolbox extends Component<Props, State> {
     /**
      * Initializes a new {@code Toolbox} instance.
      *
@@ -249,6 +267,10 @@ class Toolbox extends Component<Props> {
      */
     constructor(props: Props) {
         super(props);
+
+        this.state = {
+            reactionsShortcutsRegistered: false
+        };
 
         // Bind event handlers so they are only bound once per instance.
         this._onMouseOut = this._onMouseOut.bind(this);
@@ -279,7 +301,7 @@ class Toolbox extends Component<Props> {
      * @returns {void}
      */
     componentDidMount() {
-        const { _toolbarButtons, t, dispatch, _reactionsEnabled } = this.props;
+        const { _toolbarButtons, t, dispatch, _reactionsEnabled, _participantCount } = this.props;
         const KEYBOARD_SHORTCUTS = [
             isToolbarButtonEnabled('videoquality', _toolbarButtons) && {
                 character: 'A',
@@ -328,7 +350,7 @@ class Toolbox extends Component<Props> {
             }
         });
 
-        if (_reactionsEnabled) {
+        if (_reactionsEnabled && _participantCount > 1) {
             const REACTION_SHORTCUTS = Object.keys(REACTIONS).map(key => {
                 const onShortcutSendReaction = () => {
                     dispatch(addReactionToBuffer(key));
@@ -373,6 +395,41 @@ class Toolbox extends Component<Props> {
             this._onSetOverflowVisible(false);
             this.props.dispatch(setToolbarHovered(false));
         }
+
+        if (!this.state.reactionsShortcutsRegistered
+            && (prevProps._reactionsEnabled !== this.props._reactionsEnabled
+            || prevProps._participantCount !== this.props._participantCount)) {
+            if (this.props._reactionsEnabled && this.props._participantCount > 1) {
+                // eslint-disable-next-line react/no-did-update-set-state
+                this.setState({
+                    reactionsShortcutsRegistered: true
+                });
+                const REACTION_SHORTCUTS = Object.keys(REACTIONS).map(key => {
+                    const onShortcutSendReaction = () => {
+                        this.props.dispatch(addReactionToBuffer(key));
+                        sendAnalytics(createShortcutEvent(
+                            `reaction.${key}`
+                        ));
+                    };
+
+                    return {
+                        character: REACTIONS[key].shortcutChar,
+                        exec: onShortcutSendReaction,
+                        helpDescription: this.props.t(`toolbar.reaction${key.charAt(0).toUpperCase()}${key.slice(1)}`),
+                        altKey: true
+                    };
+                });
+
+                REACTION_SHORTCUTS.forEach(shortcut => {
+                    APP.keyboardshortcut.registerShortcut(
+                        shortcut.character,
+                        null,
+                        shortcut.exec,
+                        shortcut.helpDescription,
+                        shortcut.altKey);
+                });
+            }
+        }
     }
 
     /**
@@ -385,7 +442,7 @@ class Toolbox extends Component<Props> {
         [ 'A', 'C', 'D', 'R', 'S' ].forEach(letter =>
             APP.keyboardshortcut.unregisterShortcut(letter));
 
-        if (this.props._reactionsEnabled) {
+        if (this.props._reactionsEnabled && this.state.reactionsShortcutsRegistered) {
             Object.keys(REACTIONS).map(key => REACTIONS[key].shortcutChar)
                 .forEach(letter =>
                     APP.keyboardshortcut.unregisterShortcut(letter, true));
@@ -399,9 +456,9 @@ class Toolbox extends Component<Props> {
      * @returns {ReactElement}
      */
     render() {
-        const { _chatOpen, _visible, _visibleButtons } = this.props;
+        const { _chatOpen, _visible, _toolbarButtons } = this.props;
         const rootClassNames = `new-toolbox ${_visible ? 'visible' : ''} ${
-            _visibleButtons.length ? '' : 'no-buttons'} ${_chatOpen ? 'shift-right' : ''}`;
+            _toolbarButtons.length ? '' : 'no-buttons'} ${_chatOpen ? 'shift-right' : ''}`;
 
         return (
             <div
@@ -598,9 +655,14 @@ class Toolbox extends Component<Props> {
 
         const participants = {
             key: 'participants-pane',
-            alias: 'invite',
             Content: ParticipantsPaneButton,
             handleClick: this._onToolbarToggleParticipantsPane,
+            group: 2
+        };
+
+        const invite = {
+            key: 'invite',
+            Content: InviteButton,
             group: 2
         };
 
@@ -691,7 +753,7 @@ class Toolbox extends Component<Props> {
             group: 3
         };
 
-        const virtualBackground = !_screenSharing && checkBlurSupport() && {
+        const virtualBackground = !_screenSharing && {
             key: 'select-background',
             Content: VideoBackgroundButton,
             group: 3
@@ -747,6 +809,7 @@ class Toolbox extends Component<Props> {
             chat,
             raisehand,
             participants,
+            invite,
             tileview,
             toggleCamera,
             videoQuality,
@@ -1165,6 +1228,7 @@ class Toolbox extends Component<Props> {
             _isMobile,
             _overflowMenuVisible,
             _toolbarButtons,
+            showDominantSpeakerName,
             t,
             _reactionsEnabled
         } = this.props;
@@ -1183,7 +1247,9 @@ class Toolbox extends Component<Props> {
                         onMouseOut: this._onMouseOut,
                         onMouseOver: this._onMouseOver
                     }) }>
-                    <DominantSpeakerName />
+
+                    { showDominantSpeakerName && <DominantSpeakerName /> }
+
                     <div className = 'toolbox-content-items'>
                         {mainMenuButtons.map(({ Content, key, ...rest }) => Content !== Separator && (
                             <Content
@@ -1209,13 +1275,13 @@ class Toolbox extends Component<Props> {
                                         const showSeparator = index > 0 && arr[index - 1].group !== group;
 
                                         return (key !== 'raisehand' || !_reactionsEnabled)
-                                            && <>
+                                            && <Fragment key = { `f${key}` }>
                                                 {showSeparator && <Separator key = { `hr${group}` } />}
                                                 <Content
                                                     { ...rest }
                                                     key = { key }
                                                     showLabel = { true } />
-                                            </>
+                                            </Fragment>
                                         ;
                                     })}
                                 </ul>
@@ -1238,10 +1304,11 @@ class Toolbox extends Component<Props> {
  * props.
  *
  * @param {Object} state - The redux store/state.
+ * @param {Object} ownProps - The props explicitly passed.
  * @private
  * @returns {{}}
  */
-function _mapStateToProps(state) {
+function _mapStateToProps(state, ownProps) {
     const { conference } = state['features/base/conference'];
     let desktopSharingEnabled = JitsiMeetJS.isDesktopSharingEnabled();
     const {
@@ -1255,7 +1322,6 @@ function _mapStateToProps(state) {
     const localParticipant = getLocalParticipant(state);
     const localVideo = getLocalVideoTrack(state['features/base/tracks']);
     const { clientWidth } = state['features/base/responsive-ui'];
-    const { enableReactions } = state['features/base/config'];
 
     let desktopSharingDisabledTooltipKey;
 
@@ -1268,31 +1334,40 @@ function _mapStateToProps(state) {
         }
     }
 
+    let { toolbarButtons } = ownProps;
+    const stateToolbarButtons = getToolbarButtons(state);
+
+    if (toolbarButtons) {
+        toolbarButtons = toolbarButtons.filter(name => isToolbarButtonEnabled(name, stateToolbarButtons));
+    } else {
+        toolbarButtons = stateToolbarButtons;
+    }
+
     return {
+        _backgroundType: state['features/virtual-background'].backgroundType,
         _chatOpen: state['features/chat'].isOpen,
         _clientWidth: clientWidth,
         _conference: conference,
         _desktopSharingEnabled: desktopSharingEnabled,
-        _backgroundType: state['features/virtual-background'].backgroundType,
-        _virtualSource: state['features/virtual-background'].virtualSource,
         _desktopSharingDisabledTooltipKey: desktopSharingDisabledTooltipKey,
         _dialog: Boolean(state['features/base/dialog'].component),
         _feedbackConfigured: Boolean(callStatsID),
+        _fullScreen: fullScreen,
         _isProfileDisabled: Boolean(state['features/base/config'].disableProfile),
         _isMobile: isMobileBrowser(),
         _isVpaasMeeting: isVpaasMeeting(state),
-        _fullScreen: fullScreen,
-        _tileViewEnabled: shouldDisplayTileView(state),
         _localParticipantID: localParticipant?.id,
         _localVideo: localVideo,
         _overflowMenuVisible: overflowMenuVisible,
+        _participantCount: getParticipantCount(state),
         _participantsPaneOpen: getParticipantsPaneOpen(state),
         _raisedHand: localParticipant?.raisedHand,
+        _reactionsEnabled: isReactionsEnabled(state),
         _screenSharing: isScreenVideoShared(state),
-        _toolbarButtons: getToolbarButtons(state),
-        _visible: isToolboxVisible(state),
-        _visibleButtons: getToolbarButtons(state),
-        _reactionsEnabled: enableReactions
+        _tileViewEnabled: shouldDisplayTileView(state),
+        _toolbarButtons: toolbarButtons,
+        _virtualSource: state['features/virtual-background'].virtualSource,
+        _visible: isToolboxVisible(state)
     };
 }
 

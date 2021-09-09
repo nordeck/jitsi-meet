@@ -106,11 +106,13 @@ class ReactionsMenu extends Component<Props> {
      * @returns {void}
      */
     _onToolbarToggleRaiseHand() {
+        const { dispatch, _raisedHand } = this.props;
+
         sendAnalytics(createToolbarEvent(
             'raise.hand',
-            { enable: !this.props._raisedHand }));
+            { enable: !_raisedHand }));
         this._doToggleRaiseHand();
-        this.props.dispatch(toggleReactionsMenuVisibility());
+        dispatch(toggleReactionsMenuVisibility());
     }
 
     /**

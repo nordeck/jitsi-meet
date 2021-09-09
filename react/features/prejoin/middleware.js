@@ -1,7 +1,9 @@
 // @flow
 
+import { CONFERENCE_JOINED } from '../base/conference';
 import { updateConfig } from '../base/config';
-import { SET_AUDIO_MUTED, SET_VIDEO_MUTED } from '../base/media';
+import { isIosMobileBrowser } from '../base/environment/utils';
+import { MEDIA_TYPE, SET_AUDIO_MUTED, SET_VIDEO_MUTED } from '../base/media';
 import { MiddlewareRegistry } from '../base/redux';
 import { updateSettings } from '../base/settings';
 import {
@@ -17,6 +19,7 @@ import {
     setDeviceStatusWarning,
     setPrejoinPageVisibility
 } from './actions';
+import { PREJOIN_SCREEN_STATES } from './constants';
 import { isPrejoinPageVisible } from './functions';
 
 declare var APP: Object;
@@ -44,7 +47,10 @@ MiddlewareRegistry.register(store => next => async action => {
 
         // Do not signal audio/video tracks if the user joins muted.
         for (const track of localTracks) {
-            if (track.muted) {
+            // Always add the audio track on mobile Safari because of a known issue where audio playout doesn't happen
+            // if the user joins audio and video muted.
+            if (track.muted
+                && !(isIosMobileBrowser() && track.jitsiTrack && track.jitsiTrack.getType() === MEDIA_TYPE.AUDIO)) {
                 await dispatch(replaceLocalTrack(track.jitsiTrack, null));
             }
         }
@@ -56,7 +62,8 @@ MiddlewareRegistry.register(store => next => async action => {
 
         const jitsiTracks = localTracks.map(t => t.jitsiTrack);
 
-        dispatch(setPrejoinPageVisibility(false));
+        dispatch(setPrejoinPageVisibility(PREJOIN_SCREEN_STATES.LOADING));
+
         APP.conference.prejoinStart(jitsiTracks);
 
         break;
@@ -103,8 +110,23 @@ MiddlewareRegistry.register(store => next => async action => {
         }
         break;
     }
-
+    case CONFERENCE_JOINED:
+        return _conferenceJoined(store, next, action);
     }
 
     return next(action);
 });
+
+/**
+ * Handles cleanup of prejoin state when a conference is joined.
+ *
+ * @param {Object} store - The Redux store.
+ * @param {Function} next - The Redux next function.
+ * @param {Object} action - The Redux action.
+ * @returns {Object}
+ */
+function _conferenceJoined({ dispatch }, next, action) {
+    dispatch(setPrejoinPageVisibility(PREJOIN_SCREEN_STATES.HIDDEN));
+
+    return next(action);
+}

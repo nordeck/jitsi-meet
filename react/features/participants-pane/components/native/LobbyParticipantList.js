@@ -2,12 +2,12 @@
 
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { Button, withTheme } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { admitMultiple } from '../../../lobby/actions.native';
-import { getLobbyState } from '../../../lobby/functions';
+import { getKnockingParticipants, getLobbyEnabled } from '../../../lobby/functions';
 
 import { LobbyParticipantItem } from './LobbyParticipantItem';
 import styles from './styles';
@@ -21,10 +21,9 @@ type Props = {
 };
 
 const LobbyParticipantList = ({ theme }: Props) => {
-    const {
-        lobbyEnabled,
-        knockingParticipants: participants
-    } = useSelector(getLobbyState);
+    const lobbyEnabled = useSelector(getLobbyEnabled);
+    const participants = useSelector(getKnockingParticipants);
+
     const dispatch = useDispatch();
     const admitAll = useCallback(() =>
         dispatch(admitMultiple(participants)),
@@ -55,13 +54,15 @@ const LobbyParticipantList = ({ theme }: Props) => {
                     )
                 }
             </View>
-            {
-                participants.map(p => (
-                    <LobbyParticipantItem
-                        key = { p.id }
-                        participant = { p } />)
-                )
-            }
+            <ScrollView>
+                {
+                    participants.map(p => (
+                        <LobbyParticipantItem
+                            key = { p.id }
+                            participant = { p } />)
+                    )
+                }
+            </ScrollView>
         </View>
     );
 };

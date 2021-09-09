@@ -8,9 +8,14 @@ import { translate } from '../../base/i18n';
 import { Switch } from '../../base/react';
 import { connect } from '../../base/redux';
 import { toggleE2EE } from '../actions';
-
+import { doesEveryoneSupportE2EE } from '../functions';
 
 type Props = {
+
+    /**
+     * Custom e2ee label.
+     */
+    _e2eeLabel: string,
 
     /**
      * Whether E2EE is currently enabled or not.
@@ -38,12 +43,7 @@ type State = {
     /**
      * True if the switch is toggled on.
      */
-    enabled: boolean,
-
-    /**
-     * True if the section description should be expanded, false otherwise.
-     */
-    expand: boolean
+    enabled: boolean
 };
 
 /**
@@ -78,13 +78,10 @@ class E2EESection extends Component<Props, State> {
         super(props);
 
         this.state = {
-            enabled: false,
-            expand: false
+            enabled: false
         };
 
         // Bind event handlers so they are only bound once for every instance.
-        this._onExpand = this._onExpand.bind(this);
-        this._onExpandKeyPress = this._onExpandKeyPress.bind(this);
         this._onToggle = this._onToggle.bind(this);
     }
 
@@ -95,9 +92,21 @@ class E2EESection extends Component<Props, State> {
      * @returns {ReactElement}
      */
     render() {
-        const { _everyoneSupportE2EE, t } = this.props;
-        const { enabled, expand } = this.state;
-        const description = t('dialog.e2eeDescription');
+        const { _e2eeLabel, _everyoneSupportE2EE, t } = this.props;
+        const { enabled } = this.state;
+        let description;
+        let label;
+        let warning;
+
+        if (_e2eeLabel) {
+            description = t('dialog.e2eeDescriptionCustom', { label: _e2eeLabel });
+            label = t('dialog.e2eeLabelCustom', { label: _e2eeLabel });
+            warning = t('dialog.e2eeWarningCustom', { label: _e2eeLabel });
+        } else {
+            description = t('dialog.e2eeDescription');
+            label = t('dialog.e2eeLabel');
+            warning = t('dialog.e2eeWarning');
+        }
 
         return (
             <div id = 'e2ee-section'>
@@ -105,28 +114,13 @@ class E2EESection extends Component<Props, State> {
                     aria-live = 'polite'
                     className = 'description'
                     id = 'e2ee-section-description'>
-                    { expand && description }
-                    { !expand && description.substring(0, 100) }
-                    { !expand && <span
-                        aria-controls = 'e2ee-section-description'
-                        aria-expanded = { expand }
-                        className = 'read-more'
-                        onClick = { this._onExpand }
-                        onKeyPress = { this._onExpandKeyPress }
-                        role = 'button'
-                        tabIndex = { 0 }>
-                            ... { t('dialog.readMore') }
-                    </span> }
+                    { description }
+                    { !_everyoneSupportE2EE && <br /> }
+                    { !_everyoneSupportE2EE && warning }
                 </p>
-                {
-                    !_everyoneSupportE2EE
-                        && <span className = 'warning'>
-                            { t('dialog.e2eeWarning') }
-                        </span>
-                }
                 <div className = 'control-row'>
                     <label htmlFor = 'e2ee-section-switch'>
-                        { t('dialog.e2eeLabel') }
+                        { label }
                     </label>
                     <Switch
                         id = 'e2ee-section-switch'
@@ -135,35 +129,6 @@ class E2EESection extends Component<Props, State> {
                 </div>
             </div>
         );
-    }
-
-    _onExpand: () => void;
-
-    /**
-     * Callback to be invoked when the description is expanded.
-     *
-     * @returns {void}
-     */
-    _onExpand() {
-        this.setState({
-            expand: true
-        });
-    }
-
-    _onExpandKeyPress: (Object) => void;
-
-    /**
-     * KeyPress handler for accessibility.
-     *
-     * @param {Object} e - The key event to handle.
-     *
-     * @returns {void}
-     */
-    _onExpandKeyPress(e) {
-        if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            this._onExpand();
-        }
     }
 
     _onToggle: () => void;
@@ -194,11 +159,13 @@ class E2EESection extends Component<Props, State> {
  * @returns {Props}
  */
 function mapStateToProps(state) {
-    const { enabled, everyoneSupportE2EE } = state['features/e2ee'];
+    const { enabled } = state['features/e2ee'];
+    const { e2eeLabel } = state['features/base/config'];
 
     return {
+        _e2eeLabel: e2eeLabel,
         _enabled: enabled,
-        _everyoneSupportE2EE: everyoneSupportE2EE
+        _everyoneSupportE2EE: doesEveryoneSupportE2EE(state)
     };
 }
 

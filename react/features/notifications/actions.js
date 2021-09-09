@@ -4,6 +4,7 @@ import throttle from 'lodash/throttle';
 import type { Dispatch } from 'redux';
 
 import { NOTIFICATIONS_ENABLED, getFeatureFlag } from '../base/flags';
+import { getParticipantCount } from '../base/participants/functions';
 
 import {
     CLEAR_NOTIFICATIONS,
@@ -11,7 +12,11 @@ import {
     SET_NOTIFICATIONS_ENABLED,
     SHOW_NOTIFICATION
 } from './actionTypes';
-import { NOTIFICATION_TIMEOUT, NOTIFICATION_TYPE } from './constants';
+import {
+    NOTIFICATION_TIMEOUT,
+    NOTIFICATION_TYPE,
+    SILENT_JOIN_THRESHOLD
+} from './constants';
 
 /**
  * Clears (removes) all the notifications.
@@ -105,13 +110,15 @@ export function showNotification(props: Object = {}, timeout: ?number) {
  * Queues a warning notification for display.
  *
  * @param {Object} props - The props needed to show the notification component.
+ * @param {number} timeout - How long the notification should display before
+ * automatically being hidden.
  * @returns {Object}
  */
-export function showWarningNotification(props: Object) {
+export function showWarningNotification(props: Object, timeout: ?number) {
     return showNotification({
         ...props,
         appearance: NOTIFICATION_TYPE.WARNING
-    });
+    }, timeout);
 }
 
 /**
@@ -131,7 +138,16 @@ let joinedParticipantsNames = [];
  * @private
  * @type {Function}
  */
-const _throttledNotifyParticipantConnected = throttle((dispatch: Dispatch<any>) => {
+const _throttledNotifyParticipantConnected = throttle((dispatch: Dispatch<any>, getState: Function) => {
+    const participantCount = getParticipantCount(getState());
+
+    // Skip join notifications altogether for large meetings.
+    if (participantCount > SILENT_JOIN_THRESHOLD) {
+        joinedParticipantsNames = [];
+
+        return;
+    }
+
     const joinedParticipantsCount = joinedParticipantsNames.length;
 
     let notificationProps;
@@ -139,8 +155,7 @@ const _throttledNotifyParticipantConnected = throttle((dispatch: Dispatch<any>) 
     if (joinedParticipantsCount >= 3) {
         notificationProps = {
             titleArguments: {
-                name: joinedParticipantsNames[0],
-                count: joinedParticipantsCount - 1
+                name: joinedParticipantsNames[0]
             },
             titleKey: 'notify.connectedThreePlusMembers'
         };
@@ -168,7 +183,7 @@ const _throttledNotifyParticipantConnected = throttle((dispatch: Dispatch<any>) 
 
     joinedParticipantsNames = [];
 
-}, 500, { leading: false });
+}, 2000, { leading: false });
 
 /**
  * Queues the display of a notification of a participant having connected to
@@ -181,5 +196,5 @@ const _throttledNotifyParticipantConnected = throttle((dispatch: Dispatch<any>) 
 export function showParticipantJoinedNotification(displayName: string) {
     joinedParticipantsNames.push(displayName);
 
-    return (dispatch: Dispatch<any>) => _throttledNotifyParticipantConnected(dispatch);
+    return (dispatch: Dispatch<any>, getState: Function) => _throttledNotifyParticipantConnected(dispatch, getState);
 }
