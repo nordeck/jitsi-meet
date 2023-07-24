@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { makeStyles } from 'tss-react/mui';
@@ -46,63 +46,68 @@ export const RoomList = ({ searchString }: IProps) => {
     const { classes } = useStyles();
     const { t } = useTranslation();
     const currentRoomId = useSelector(getCurrentRoomId);
+    const [isOpen, setIsOpen] = useState(false);
     const rooms = Object.values(useSelector(getBreakoutRooms, equals))
-                    .filter((room: IRoom) => room.id !== currentRoomId)
-                    .sort((p1?: IRoom, p2?: IRoom) => (p1?.name || '').localeCompare(p2?.name || ''));
+        .filter((room: IRoom) => room.id !== currentRoomId)
+        .sort((p1?: IRoom, p2?: IRoom) => (p1?.name || '').localeCompare(p2?.name || ''));
     const inBreakoutRoom = useSelector(isInBreakoutRoom);
     const isLocalModerator = useSelector(isLocalParticipantModerator);
     const showAutoAssign = useSelector(isAutoAssignParticipantsVisible);
     const { hideJoinRoomButton } = useSelector(getBreakoutRoomsConfig);
     const overflowDrawer = useSelector(showOverflowDrawer);
-    const [ lowerMenu, raiseMenu, toggleMenu, menuEnter, menuLeave, raiseContext ] = useContextMenu<IRoom>();
-    const [ lowerParticipantMenu, raiseParticipantMenu, toggleParticipantMenu,
-        participantMenuEnter, participantMenuLeave, raiseParticipantContext ] = useContextMenu<{
+    const [lowerMenu, raiseMenu, toggleMenu, menuEnter, menuLeave, raiseContext] = useContextMenu<IRoom>();
+    const [lowerParticipantMenu, raiseParticipantMenu, toggleParticipantMenu,
+        participantMenuEnter, participantMenuLeave, raiseParticipantContext] = useContextMenu<{
             jid: string;
             participantName: string;
             room: IRoom;
         }>();
-    const hideMenu = useCallback(() => !overflowDrawer && lowerMenu(), [ overflowDrawer, lowerMenu ]);
-    const onRaiseMenu = useCallback(room => (target: HTMLElement) => raiseMenu(room, target), [ raiseMenu ]);
+    const hideMenu = useCallback(() => !overflowDrawer && lowerMenu(), [overflowDrawer, lowerMenu]);
+    const onRaiseMenu = useCallback(room => (target: HTMLElement) => raiseMenu(room, target), [raiseMenu]);
+
+    const openContextMenu = useCallback(() => setIsOpen(true), []);
+    const closeContextMenu = useCallback(() => setIsOpen(false), []);
 
     return (
         <>
-            {inBreakoutRoom && <LeaveButton className = { classes.topMargin } />}
-            {showAutoAssign && <AutoAssignButton className = { classes.topMargin } />}
+            {inBreakoutRoom && <LeaveButton className={classes.topMargin} />}
+            {showAutoAssign && <AutoAssignButton className={classes.topMargin} />}
             <div
-                aria-label = { t('breakoutRooms.breakoutList', 'breakout list') }
-                className = { classes.topMargin }
-                id = 'breakout-rooms-list'
-                role = 'list' >
+                aria-label={t('breakoutRooms.breakoutList', 'breakout list')}
+                className={classes.topMargin}
+                id='breakout-rooms-list'
+                role='list' >
                 {rooms.map(room => (
-                    <React.Fragment key = { room.id }>
+                    <React.Fragment key={room.id}>
                         <CollapsibleRoom
-                            isHighlighted = { raiseContext.entity === room }
-                            onLeave = { hideMenu }
-                            onRaiseMenu = { onRaiseMenu(room) }
-                            participantContextEntity = { raiseParticipantContext.entity }
-                            raiseParticipantContextMenu = { raiseParticipantMenu }
-                            room = { room }
-                            searchString = { searchString }
-                            toggleParticipantMenu = { toggleParticipantMenu }>
+                            isHighlighted={raiseContext.entity === room}
+                            onLeave={hideMenu}
+                            onRaiseMenu={onRaiseMenu(room)}
+                            participantContextEntity={raiseParticipantContext.entity}
+                            raiseParticipantContextMenu={raiseParticipantMenu}
+                            room={room}
+                            searchString={searchString}
+                            toggleParticipantMenu={toggleParticipantMenu}>
                             {!isMobileBrowser() && <>
-                                {!hideJoinRoomButton && <JoinActionButton room = { room } />}
+                                {!hideJoinRoomButton && <JoinActionButton room={room} />}
                                 {isLocalModerator && !room.isMainRoom
-                                    && <RoomActionEllipsis onClick = { toggleMenu(room) } />}
+                                    && <RoomActionEllipsis onClick={openContextMenu} />}
                             </>}
                         </CollapsibleRoom>
                     </React.Fragment>
                 ))}
             </div>
             <RoomContextMenu
-                onEnter = { menuEnter }
-                onLeave = { menuLeave }
-                onSelect = { lowerMenu }
-                { ...raiseContext } />
+                onEnter={menuEnter}
+                onLeave={closeContextMenu}
+                isOpen={isOpen}
+                onSelect={lowerMenu}
+                {...raiseContext} />
             <RoomParticipantContextMenu
-                onEnter = { participantMenuEnter }
-                onLeave = { participantMenuLeave }
-                onSelect = { lowerParticipantMenu }
-                { ...raiseParticipantContext } />
+                onEnter={participantMenuEnter}
+                onLeave={participantMenuLeave}
+                onSelect={lowerParticipantMenu}
+                {...raiseParticipantContext} />
         </>
     );
 };

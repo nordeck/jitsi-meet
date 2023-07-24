@@ -38,6 +38,8 @@ interface IProps {
      * Callback for making a selection in the menu.
      */
     onSelect: (e?: React.MouseEvent | boolean) => void;
+
+    isOpen?: boolean;
 }
 
 export const RoomContextMenu = ({
@@ -45,7 +47,8 @@ export const RoomContextMenu = ({
     offsetTarget,
     onEnter,
     onLeave,
-    onSelect
+    onSelect,
+    isOpen
 }: IProps) => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
@@ -55,15 +58,15 @@ export const RoomContextMenu = ({
     const onJoinRoom = useCallback(() => {
         sendAnalytics(createBreakoutRoomsEvent('join'));
         dispatch(moveToRoom(room?.jid));
-    }, [ dispatch, room ]);
+    }, [dispatch, room]);
 
     const onRemoveBreakoutRoom = useCallback(() => {
         dispatch(removeBreakoutRoom(room?.jid ?? ''));
-    }, [ dispatch, room ]);
+    }, [dispatch, room]);
 
     const onCloseBreakoutRoom = useCallback(() => {
         dispatch(closeBreakoutRoom(room?.id ?? ''));
-    }, [ dispatch, room ]);
+    }, [dispatch, room]);
 
     const isRoomEmpty = !(room?.participants && Object.keys(room.participants).length > 0);
 
@@ -87,17 +90,18 @@ export const RoomContextMenu = ({
 
     return (
         <ContextMenu
-            accessibilityLabel = { t('breakoutRooms.settings', 'Settings') }
-            entity = { room }
-            isDrawerOpen = { Boolean(room) }
-            offsetTarget = { offsetTarget }
-            onClick = { lowerMenu }
-            onDrawerClose = { onSelect }
-            onMouseEnter = { onEnter }
-            onMouseLeave = { onLeave }
-            role = 'menu'>
+            accessibilityLabel={t('breakoutRooms.settings', 'Settings')}
+            entity={room}
+            isDrawerOpen={Boolean(room)}
+            offsetTarget={offsetTarget}
+            onClick={lowerMenu}
+            hidden={!isOpen}
+            onDrawerClose={onSelect}
+            //onMouseEnter={onEnter}
+            onMouseLeave={onLeave}
+            role='menu'>
             {/* @ts-ignore */}
-            <ContextMenuItemGroup actions = { actions } />
+            <ContextMenuItemGroup actions={actions} />
         </ContextMenu>
     );
 };

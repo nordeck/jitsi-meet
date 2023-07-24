@@ -11,6 +11,7 @@ import { withPixelLineHeight } from '../../../styles/functions.web';
 import { spacing } from '../../Tokens';
 import useContextMenu from '../../hooks/useContextMenu.web';
 import { IRoom } from '../../../../breakout-rooms/types';
+import { isElementInTheViewport } from '../../functions.web';
 
 /**
  * Get a style property from a style declaration as a float.
@@ -187,7 +188,6 @@ const ContextMenu = ({
     const containerRef = useRef<HTMLDivElement | null>(null);
     const { classes: styles, cx } = useStyles();
     const _overflowDrawer = useSelector(showOverflowDrawer);
-    const [menuLeave, lowerMenu] = useContextMenu<IRoom>();
 
 
     // console.log('\\PPPPPP', hidden)
@@ -195,7 +195,6 @@ const ContextMenu = ({
         if (_overflowDrawer) {
             return;
         }
-        console.log('\\LLLL', entity, offsetTarget, containerRef.current, offsetTarget?.offsetParent);
         if (entity && offsetTarget
             && containerRef.current
             && offsetTarget?.offsetParent
@@ -224,10 +223,10 @@ const ContextMenu = ({
 
             setIsHidden(false);
 
-            console.log('\\FFFF', offsetTarget, isHidden)
+            console.log('\\FFFF')
         } else {
             hidden === undefined && setIsHidden(true);
-            console.log('\\CCCCC', offsetTarget, isHidden)
+            console.log('\\CCCCC')
         }
     }, [entity, offsetTarget, _overflowDrawer]);
 
@@ -344,7 +343,7 @@ const ContextMenu = ({
             // Close the menu or perform desired action
             console.log('\\AAA', 'Escape');
             event.preventDefault();
-            menuLeave();
+            setIsHidden(true);
 
             // lowerMenu();
             // list!.className = styles.contextMenuHidden;
@@ -379,28 +378,29 @@ const ContextMenu = ({
             </Drawer>
         </JitsiPortal>
         : <>
-            {!isHidden && (
-
-                <FocusOn autoFocus={false} >
-                    <div
-                        {...aria}
-                        aria-label={accessibilityLabel}
-                        className={cx(styles.contextMenu,
-                            isHidden && styles.contextMenuHidden,
-                            className
-                        )}
-                        id={id}
-                        onClick={onClick}
-                        onKeyDown={handleKeyDown}
-                        onMouseEnter={onMouseEnter}
-                        onMouseLeave={onMouseLeave}
-                        ref={containerRef}
-                        role={role}
-                        tabIndex={tabIndex}>
-                        {children}
-                    </div>
-                </FocusOn >
-            )}
+            <FocusOn autoFocus={false}
+                // Use the `enabled` prop instead of conditionally rendering ReactFocusOn
+                // to prevent UI stutter on dialog appearance. It seems the focus guards generated annoy
+                // our DialogPortal positioning calculations.
+                enabled={!isHidden}>
+                <div
+                    {...aria}
+                    aria-label={accessibilityLabel}
+                    className={cx(styles.contextMenu,
+                        isHidden && styles.contextMenuHidden,
+                        className
+                    )}
+                    id={id}
+                    onClick={onClick}
+                    onKeyDown={handleKeyDown}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    ref={containerRef}
+                    role={role}
+                    tabIndex={tabIndex}>
+                    {children}
+                </div>
+            </FocusOn >
         </>;
 };
 
