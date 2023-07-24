@@ -66,8 +66,6 @@ const STATUS_REQ_FREQUENCY = 2000;
  */
 const STATUS_REQ_CAP = 45;
 
-export * from './actions.any';
-
 /**
  * Polls for status change after dial out.
  * Changes dialog message based on response, closes the dialog if there is an error,
@@ -213,9 +211,12 @@ export function initPrejoin(tracks: Object[], errors: Object) {
  *
  * @param {Object} options - The config options that override the default ones (if any).
  * @param {boolean} ignoreJoiningInProgress - If true we won't check the joiningInProgress flag.
+ * @param {string?} jid - The XMPP user's ID (e.g. {@code user@server.com}).
+ * @param {string?} password - The XMPP user's password.
  * @returns {Function}
  */
-export function joinConference(options?: Object, ignoreJoiningInProgress = false) {
+export function joinConference(options?: Object, ignoreJoiningInProgress = false,
+        jid?: string, password?: string) {
     return async function(dispatch: IStore['dispatch'], getState: IStore['getState']) {
         if (!ignoreJoiningInProgress) {
             const state = getState();
@@ -230,7 +231,7 @@ export function joinConference(options?: Object, ignoreJoiningInProgress = false
 
         options && dispatch(updateConfig(options));
 
-        dispatch(connect()).then(async () => {
+        dispatch(connect(jid, password)).then(async () => {
             // TODO keep this here till we move tracks and conference management from
             // conference.js to react.
             const state = getState();

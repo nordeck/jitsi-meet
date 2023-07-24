@@ -826,6 +826,42 @@ var config = {
     //     'whiteboard',
     // ],
 
+    // Participant context menu buttons which have their click/tap event exposed through the API on
+    // `participantMenuButtonClick`. Passing a string for the button key will
+    // prevent execution of the click/tap routine; passing an object with `key` and
+    // `preventExecution` flag on false will not prevent execution of the click/tap
+    // routine. Below array with mixed mode for passing the buttons.
+    // participantMenuButtonsWithNotifyClick: [
+    //     'allow-video',
+    //     {
+    //         key: 'ask-unmute',
+    //         preventExecution: false
+    //     },
+    //     'conn-status',
+    //     'flip-local-video',
+    //     'grant-moderator',
+    //     {
+    //         key: 'kick',
+    //         preventExecution: true
+    //     },
+    //     {
+    //         key: 'hide-self-view',
+    //         preventExecution: false
+    //     },
+    //     'mute',
+    //     'mute-others',
+    //     'mute-others-video',
+    //     'mute-video',
+    //     'pinToStage',
+    //     'privateMessage',
+    //     {
+    //         key: 'remote-control',
+    //         preventExecution: false
+    //     },
+    //     'send-participant-to-room',
+    //     'verify',
+    // ],
+
     // List of pre meeting screens buttons to hide. The values must be one or more of the 5 allowed buttons:
     // 'microphone', 'camera', 'select-background', 'invite', 'settings'
     // hiddenPremeetingButtons: [],
@@ -1008,6 +1044,11 @@ var config = {
         //      "libs/analytics-ga.min.js", // google-analytics
         //      "https://example.com/my-custom-analytics.js",
         // ],
+
+        // By enabling watchRTCEnabled option you would want to use watchRTC feature
+        // This would also require to configure watchRTCConfigParams.
+        // Please remember to keep rtcstatsEnabled disabled for watchRTC to work.
+        // watchRTCEnabled: false,
     },
 
     // Logs that should go be passed through the 'log' event if a handler is defined for it
@@ -1306,6 +1347,9 @@ var config = {
     //     hideJoinRoomButton: false,
     // },
 
+    // When true, virtual background feature will be disabled.
+    // disableVirtualBackground: false,
+
     // When true the user cannot add more images to be used as virtual background.
     // Only the default ones from will be available.
     // disableAddingBackgroundImages: false,
@@ -1598,6 +1642,40 @@ var config = {
     //     // The server used to support whiteboard collaboration.
     //     // https://github.com/jitsi/excalidraw-backend
     //     collabServerBaseUrl: 'https://excalidraw-backend.example.com',
+    // },
+
+    // The watchRTC initialize config params as described :
+    // https://testrtc.com/docs/installing-the-watchrtc-javascript-sdk/#h-set-up-the-sdk
+    // https://www.npmjs.com/package/@testrtc/watchrtc-sdk
+    // watchRTCConfigParams: {
+    //         /** Watchrtc api key */
+    //         rtcApiKey: string;
+    //         /** Identifier for the session */
+    //         rtcRoomId?: string;
+    //         /** Identifier for the current peer */
+    //         rtcPeerId?: string;
+    //         /**
+    //          * ["tag1", "tag2", "tag3"]
+    //          * @deprecated use 'keys' instead
+    //          */
+    //         rtcTags?: string[];
+    //         /** { "key1": "value1", "key2": "value2"} */
+    //         keys?: any;
+    //         /** Enables additional logging */
+    //         debug?: boolean;
+    //         rtcToken?: string;
+    //         /**
+    //          * @deprecated No longer needed. Use "proxyUrl" instead.
+    //          */
+    //         wsUrl?: string;
+    //         proxyUrl?: string;
+    //         console?: {
+    //             level: string;
+    //             override: boolean;
+    //         };
+    //         allowBrowserLogCollection?: boolean;
+    //         collectionInterval?: number;
+    //         logGetStats?: boolean;
     // },
 };
 
