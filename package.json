@@ -2,6 +2,7 @@
   "name": "jitsi-meet",
   "version": "0.0.0",
   "description": "A sample app for the Jitsi Videobridge",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git://github.com/jitsi/jitsi-meet"
@@ -65,7 +66,7 @@
     "js-md5": "0.6.1",
     "js-sha512": "0.8.0",
     "jwt-decode": "2.2.0",
-    "lib-jitsi-meet": "https://github.com/jitsi/lib-jitsi-meet/releases/download/v1659.0.0+5d322ea5/lib-jitsi-meet.tgz",
+    "lib-jitsi-meet": "https://github.com/jitsi/lib-jitsi-meet/releases/download/v1665.0.0+9ffab6aa/lib-jitsi-meet.tgz",
     "lodash": "4.17.21",
     "moment": "2.29.4",
     "moment-duration-format": "2.2.2",
@@ -79,7 +80,7 @@
     "react-focus-on": "3.8.1",
     "react-i18next": "10.11.4",
     "react-linkify": "1.0.0-alpha",
-    "react-native": "0.69.10",
+    "react-native": "0.69.11",
     "react-native-background-timer": "2.4.1",
     "react-native-calendar-events": "2.2.0",
     "react-native-callstats": "3.73.7",
@@ -88,7 +89,7 @@
     "react-native-dialog": "https://github.com/jitsi/react-native-dialog/releases/download/v9.2.2-jitsi.1/react-native-dialog-9.2.2.tgz",
     "react-native-gesture-handler": "2.9.0",
     "react-native-get-random-values": "1.7.2",
-    "react-native-immersive": "2.0.0",
+    "react-native-immersive-mode": "2.0.1",
     "react-native-keep-awake": "4.0.0",
     "react-native-orientation-locker": "1.5.0",
     "react-native-pager-view": "5.4.9",
@@ -107,7 +108,7 @@
     "react-native-webrtc": "111.0.3",
     "react-native-webview": "11.15.1",
     "react-native-youtube-iframe": "2.2.1",
-    "react-redux": "7.1.0",
+    "react-redux": "7.2.9",
     "react-textarea-autosize": "8.3.0",
     "react-window": "1.8.6",
     "react-youtube": "10.1.0",
@@ -179,9 +180,7 @@
     "webpack-dev-server": "4.7.3"
   },
   "overrides": {
-    "strophe.js@1.5.0": {
-      "@xmldom/xmldom": "0.8.7"
-    }
+    "@xmldom/xmldom": "0.8.7"
   },
   "engines": {
     "node": ">=14.0.0",

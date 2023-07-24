@@ -24,7 +24,7 @@ import { overwriteConfig } from '../config/actions';
 import { CONNECTION_ESTABLISHED, CONNECTION_FAILED } from '../connection/actionTypes';
 import { connect, connectionDisconnected, disconnect } from '../connection/actions';
 import { validateJwt } from '../jwt/functions';
-import { JitsiConferenceErrors } from '../lib-jitsi-meet';
+import { JitsiConferenceErrors, JitsiConnectionErrors } from '../lib-jitsi-meet';
 import { PARTICIPANT_UPDATED, PIN_PARTICIPANT } from '../participants/actionTypes';
 import { PARTICIPANT_ROLE } from '../participants/constants';
 import {
@@ -35,6 +35,7 @@ import {
 import MiddlewareRegistry from '../redux/MiddlewareRegistry';
 import { TRACK_ADDED, TRACK_REMOVED } from '../tracks/actionTypes';
 import { destroyLocalTracks } from '../tracks/actions.any';
+import { getLocalTracks } from '../tracks/functions.any';
 
 import {
     CONFERENCE_FAILED,
@@ -204,10 +205,19 @@ function _conferenceFailed({ dispatch, getState }: IStore, next: Function, actio
 
         if (newConfig) {
             dispatch(overwriteConfig(newConfig)) // @ts-ignore
-                .then(dispatch(conferenceWillLeave(conference)))
-                .then(conference.leave())
-                .then(dispatch(disconnect()))
-                .then(dispatch(connect()));
+                .then(() => dispatch(conferenceWillLeave(conference)))
+                .then(() => conference.leave())
+                .then(() => dispatch(disconnect()))
+                .then(() => dispatch(connect()))
+                .then(() => {
+                    // FIXME: Workaround for the web version. To be removed once we get rid of conference.js
+                    if (typeof APP !== 'undefined') {
+                        const localTracks = getLocalTracks(getState()['features/base/tracks']);
+                        const jitsiTracks = localTracks.map((t: any) => t.jitsiTrack);
+
+                        APP.conference.startConference(jitsiTracks).catch(logger.error);
+                    }
+                });
         }
 
         break;
@@ -227,16 +237,20 @@ function _conferenceFailed({ dispatch, getState }: IStore, next: Function, actio
         const [ vnode ] = error.params;
 
         dispatch(overwriteConfig(newConfig)) // @ts-ignore
-            .then(dispatch(conferenceWillLeave(conference)))
-            .then(dispatch(disconnect()))
-            .then(dispatch(setIAmVisitor(Boolean(vnode))))
+            .then(() => dispatch(conferenceWillLeave(conference)))
+            .then(() => dispatch(disconnect()))
+            .then(() => dispatch(setIAmVisitor(Boolean(vnode))))
 
             // we do not clear local tracks on error, so we need to manually clear them
-            .then(dispatch(destroyLocalTracks()))
+            .then(() => dispatch(destroyLocalTracks()))
+            .then(() => dispatch(conferenceWillInit()))
+            .then(() => dispatch(connect()))
             .then(() => {
-                dispatch(conferenceWillInit());
-            })
-            .then(dispatch(connect()));
+                // FIXME: Workaround for the web version. To be removed once we get rid of conference.js
+                if (typeof APP !== 'undefined') {
+                    APP.conference.startConference([]);
+                }
+            });
         break;
     }
     }
@@ -388,17 +402,21 @@ function _logJwtErrors(message: string, state: IReduxState) {
 function _connectionFailed({ dispatch, getState }: IStore, next: Function, action: AnyAction) {
     _logJwtErrors(action.error.message, getState());
 
-    dispatch(showErrorNotification({
-        descriptionKey: 'dialog.tokenAuthFailed',
-        titleKey: 'dialog.tokenAuthFailedTitle'
-    }, NOTIFICATION_TIMEOUT_TYPE.LONG));
+    const { connection, error } = action;
+
+    // do not show the notification when we will prompt the user
+    // for username and password
+    if (error.name === JitsiConnectionErrors.PASSWORD_REQUIRED
+        && getState()['features/base/jwt'].jwt) {
+        dispatch(showErrorNotification({
+            descriptionKey: 'dialog.tokenAuthFailed',
+            titleKey: 'dialog.tokenAuthFailedTitle'
+        }, NOTIFICATION_TIMEOUT_TYPE.LONG));
+    }
 
     const result = next(action);
 
     _removeUnloadHandler(getState);
-
-    const { connection } = action;
-    const { error } = action;
 
     forEachConference(getState, conference => {
         // TODO: revisit this

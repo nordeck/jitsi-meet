@@ -15,6 +15,7 @@ export default [
     '_peerConnStatusRtcMuteTimeout',
     'analytics.disabled',
     'analytics.rtcstatsEnabled',
+    'analytics.watchRTCEnabled',
     'audioLevelsInterval',
     'audioQuality',
     'autoKnockLobby',
@@ -193,6 +194,7 @@ export default [
     'openSharedDocumentOnJoin',
     'opusMaxAverageBitrate',
     'p2p',
+    'participantMenuButtonsWithNotifyClick',
     'participantsPane',
     'pcStatsInterval',
     'prejoinConfig',
@@ -227,6 +229,7 @@ export default [
     'useHostPageLocalStorage',
     'useTurnUdp',
     'videoQuality',
+    'watchRTCConfigParams',
     'webrtcIceTcpDisable',
     'webrtcIceUdpDisable',
     'whiteboard.enabled'
