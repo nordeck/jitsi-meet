@@ -103,7 +103,8 @@ const useStyles = makeStyles()(theme => {
             marginRight: '16px',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            border: 'none'
         }
     };
 });
@@ -133,11 +134,14 @@ export const CollapsibleRoom = ({
     const overflowDrawer: boolean = useSelector(showOverflowDrawer);
     const moderator = useSelector(isLocalParticipantModerator);
 
-    const arrow = (<div className = { styles.arrowContainer }>
+    const arrow = (<button
+        aria-label = { collapsed ? t('breakoutRooms.showParticipantList', 'Show participant list')
+            : t('breakoutRooms.hideParticipantList', 'Hide participant list') }
+        className = { styles.arrowContainer }>
         <Icon
             size = { 14 }
             src = { collapsed ? IconArrowDown : IconArrowUp } />
-    </div>);
+    </button>);
 
     const roomName = (<span className = { styles.roomName }>
         {`${room.name || t('breakoutRooms.mainRoom')} (${Object.keys(room?.participants
@@ -145,16 +149,18 @@ export const CollapsibleRoom = ({
     </span>);
 
     const raiseParticipantMenu = useCallback(({ participantID, displayName }) => moderator
-    && raiseParticipantContextMenu({
-        room,
-        jid: participantID,
-        participantName: displayName
-    }), [ room, moderator ]);
+        && raiseParticipantContextMenu({
+            room,
+            jid: participantID,
+            participantName: displayName
+        }), [ room, moderator ]);
 
     return (<>
         <ListItem
             actions = { children }
             className = { cx(styles.container, 'breakout-room-container') }
+            defaultName = { `${room.name || t('breakoutRooms.mainRoom')} (${Object.keys(room?.participants
+                || {}).length})` }
             icon = { arrow }
             isHighlighted = { isHighlighted }
             onClick = { toggleCollapsed }
@@ -178,9 +184,11 @@ export const CollapsibleRoom = ({
                         {!overflowDrawer && moderator && (
                             <ParticipantActionEllipsis
                                 accessibilityLabel = { t('breakoutRoom.more') }
-                                onClick = { toggleParticipantMenu({ room,
+                                onClick = { toggleParticipantMenu({
+                                    room,
                                     jid: p.jid,
-                                    participantName: p.displayName }) } />
+                                    participantName: p.displayName
+                                }) } />
                         )}
                     </ParticipantItem>
                 ))

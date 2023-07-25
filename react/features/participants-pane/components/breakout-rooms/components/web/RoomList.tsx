@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { makeStyles } from 'tss-react/mui';
 
@@ -42,10 +43,11 @@ const useStyles = makeStyles()(theme => {
 
 export const RoomList = ({ searchString }: IProps) => {
     const { classes } = useStyles();
+    const { t } = useTranslation();
     const currentRoomId = useSelector(getCurrentRoomId);
     const rooms = Object.values(useSelector(getBreakoutRooms, equals))
-                    .filter((room: IRoom) => room.id !== currentRoomId)
-                    .sort((p1?: IRoom, p2?: IRoom) => (p1?.name || '').localeCompare(p2?.name || ''));
+        .filter((room: IRoom) => room.id !== currentRoomId)
+        .sort((p1?: IRoom, p2?: IRoom) => (p1?.name || '').localeCompare(p2?.name || ''));
     const inBreakoutRoom = useSelector(isInBreakoutRoom);
     const isLocalModerator = useSelector(isLocalParticipantModerator);
     const showAutoAssign = useSelector(isAutoAssignParticipantsVisible);
@@ -66,8 +68,10 @@ export const RoomList = ({ searchString }: IProps) => {
             {inBreakoutRoom && <LeaveButton className = { classes.topMargin } />}
             {showAutoAssign && <AutoAssignButton className = { classes.topMargin } />}
             <div
+                aria-label = { t('breakoutRooms.breakoutList', 'breakout list') }
                 className = { classes.topMargin }
-                id = 'breakout-rooms-list'>
+                id = 'breakout-rooms-list'
+                role = 'list'>
                 {rooms.map(room => (
                     <React.Fragment key = { room.id }>
                         <CollapsibleRoom

@@ -80,7 +80,7 @@ export interface IProps {
      * If no onClick handler is provided, we assume the context menu item is
      * not interactive and no role will be set.
      */
-    role?: 'tab' | 'button';
+    role?: 'tab' | 'button' | 'menuitem';
 
     /**
      * Whether the item is marked as selected.
@@ -211,10 +211,10 @@ const ContextMenuItem = ({
             aria-label = { accessibilityLabel }
             aria-selected = { role === 'tab' ? selected : undefined }
             className = { cx(styles.contextMenuItem,
-                    _overflowDrawer && styles.contextMenuItemDrawer,
-                    disabled && styles.contextMenuItemDisabled,
-                    selected && styles.selected,
-                    className
+                _overflowDrawer && styles.contextMenuItemDrawer,
+                disabled && styles.contextMenuItemDisabled,
+                selected && styles.selected,
+                className
             ) }
             data-testid = { testId }
             id = { id }
@@ -232,8 +232,8 @@ const ContextMenuItem = ({
             {text && (
                 <TextWithOverflow
                     className = { cx(styles.text,
-                    _overflowDrawer && styles.drawerText,
-                    textClassName) }
+                        _overflowDrawer && styles.drawerText,
+                        textClassName) }
                     overflowType = { overflowType } >
                     {text}
                 </TextWithOverflow>
