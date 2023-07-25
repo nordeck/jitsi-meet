@@ -1,4 +1,5 @@
 import React, { KeyboardEvent, MouseEvent, ReactNode, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { FocusOn } from 'react-focus-on';
 import { useSelector } from 'react-redux';
 import { makeStyles } from 'tss-react/mui';
 
@@ -8,7 +9,6 @@ import { showOverflowDrawer } from '../../../../toolbox/functions.web';
 import participantsPaneTheme from '../../../components/themes/participantsPaneTheme.json';
 import { withPixelLineHeight } from '../../../styles/functions.web';
 import { spacing } from '../../Tokens';
-import { FocusOn } from 'react-focus-on';
 
 /**
  * Get a style property from a style declaration as a float.
@@ -218,7 +218,7 @@ const ContextMenu = ({
 
             setIsHidden(false);
         } else {
-            //hidden === undefined && setIsHidden(true);
+            // hidden === undefined && setIsHidden(true);
         }
     }, [entity, offsetTarget, _overflowDrawer]);
 
@@ -340,13 +340,16 @@ const ContextMenu = ({
         }
     }, []);
 
-    const handleOnClick = useCallback((event: MouseEvent) => {
-        if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-            console.log('\\Clicked outside the Combination component.');
-        }
-        //onClick(event);
-    }, []);
+    const handleOnMouseLeave = useCallback(() => {
+        onMouseLeave && onMouseLeave();
+        setIsHidden(true);
+    }, [onMouseLeave]);
 
+
+    /*  const handleOnClick = useCallback(() => {
+          onClick && onClick();
+      }, [onClick]);
+   */
 
     if (_overflowDrawer && inDrawer) {
         return (<div
@@ -368,7 +371,9 @@ const ContextMenu = ({
                 </div>
             </Drawer>
         </JitsiPortal>
-        : <FocusOn autoFocus={!isHidden ? true : false}
+        : <FocusOn
+            autoFocus={!isHidden ? true : false}
+
             // Use the `enabled` prop instead of conditionally rendering ReactFocusOn
             // to prevent UI stutter on dialog appearance. It seems the focus guards generated annoy
             // our DialogPortal positioning calculations.
@@ -384,7 +389,7 @@ const ContextMenu = ({
                 onClick={onClick}
                 onKeyDown={handleKeyDown}
                 onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
+                onMouseLeave={handleOnMouseLeave}
                 ref={containerRef}
                 role={role}
                 tabIndex={tabIndex}>

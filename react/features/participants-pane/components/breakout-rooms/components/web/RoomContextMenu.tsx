@@ -49,22 +49,21 @@ export const RoomContextMenu = ({
 }: IProps) => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
-    const [hidden, setHidden] = useState(true);
     const isLocalModerator = useSelector(isLocalParticipantModerator);
     const _overflowDrawer = useSelector(showOverflowDrawer);
 
     const onJoinRoom = useCallback(() => {
         sendAnalytics(createBreakoutRoomsEvent('join'));
         dispatch(moveToRoom(room?.jid));
-    }, [dispatch, room]);
+    }, [ dispatch, room ]);
 
     const onRemoveBreakoutRoom = useCallback(() => {
         dispatch(removeBreakoutRoom(room?.jid ?? ''));
-    }, [dispatch, room]);
+    }, [ dispatch, room ]);
 
     const onCloseBreakoutRoom = useCallback(() => {
         dispatch(closeBreakoutRoom(room?.id ?? ''));
-    }, [dispatch, room]);
+    }, [ dispatch, room ]);
 
     const isRoomEmpty = !(room?.participants && Object.keys(room.participants).length > 0);
 
@@ -84,23 +83,19 @@ export const RoomContextMenu = ({
         } : null
     ].filter(Boolean);
 
-    const lowerMenu = useCallback(() => {
-        onSelect(true);
-        setHidden(false)
-    }, []);
+    const lowerMenu = useCallback(() => onSelect(true), []);
 
     return (
         <ContextMenu
-            entity={room}
-            isDrawerOpen={Boolean(room)}
-            offsetTarget={offsetTarget}
-            onClick={lowerMenu}
-            hidden={hidden}
-            onDrawerClose={onSelect}
-            onMouseEnter={onEnter}
-            onMouseLeave={onLeave}>
+            entity = { room }
+            isDrawerOpen = { Boolean(room) }
+            offsetTarget = { offsetTarget }
+            onClick = { lowerMenu }
+            onDrawerClose = { onSelect }
+            onMouseEnter = { onEnter }
+            onMouseLeave = { onLeave }>
             {/* @ts-ignore */}
-            <ContextMenuItemGroup actions={actions} />
+            <ContextMenuItemGroup actions = { actions } />
         </ContextMenu>
     );
 };
