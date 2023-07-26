@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { FocusOn } from 'react-focus-on';
 import { useSelector } from 'react-redux';
 import { makeStyles } from 'tss-react/mui';
 
@@ -247,23 +248,28 @@ const ContextMenu = ({
                 </div>
             </Drawer>
         </JitsiPortal>
-        : <div
-            { ...aria }
-            aria-label = { accessibilityLabel }
-            className = { cx(styles.contextMenu,
-                isHidden && styles.contextMenuHidden,
-                className
-            ) }
-            id = { id }
-            onClick = { onClick }
-            onKeyDown = { onKeyDown }
-            onMouseEnter = { onMouseEnter }
-            onMouseLeave = { onMouseLeave }
-            ref = { containerRef }
-            role = { role }
-            tabIndex = { tabIndex }>
-            {children}
-        </div>;
+        : <FocusOn
+            enabled = { !isHidden }
+            onClickOutside = { () => onDrawerClose?.() }
+            onEscapeKey = { () => onDrawerClose?.() }>
+            <div
+                { ...aria }
+                aria-label = { accessibilityLabel }
+                className = { cx(styles.contextMenu,
+                    isHidden && styles.contextMenuHidden,
+                    className
+                ) }
+                id = { id }
+                onClick = { onClick }
+                onKeyDown = { onKeyDown }
+                onMouseEnter = { onMouseEnter }
+                onMouseLeave = { onMouseLeave }
+                ref = { containerRef }
+                role = { role }
+                tabIndex = { tabIndex }>
+                {children}
+            </div>
+        </FocusOn>;
 };
 
 export default ContextMenu;

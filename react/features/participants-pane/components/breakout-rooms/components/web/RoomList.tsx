@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from 'tss-react/mui';
 
@@ -14,7 +14,6 @@ import {
     isInBreakoutRoom
 } from '../../../../../breakout-rooms/functions';
 import { IRoom } from '../../../../../breakout-rooms/types';
-import { showOverflowDrawer } from '../../../../../toolbox/functions.web';
 
 import { AutoAssignButton } from './AutoAssignButton';
 import { CollapsibleRoom } from './CollapsibleRoom';
@@ -44,13 +43,12 @@ export const RoomList = ({ searchString }: IProps) => {
     const { classes } = useStyles();
     const currentRoomId = useSelector(getCurrentRoomId);
     const rooms = Object.values(useSelector(getBreakoutRooms, equals))
-                    .filter((room: IRoom) => room.id !== currentRoomId)
-                    .sort((p1?: IRoom, p2?: IRoom) => (p1?.name || '').localeCompare(p2?.name || ''));
+        .filter((room: IRoom) => room.id !== currentRoomId)
+        .sort((p1?: IRoom, p2?: IRoom) => (p1?.name || '').localeCompare(p2?.name || ''));
     const inBreakoutRoom = useSelector(isInBreakoutRoom);
     const isLocalModerator = useSelector(isLocalParticipantModerator);
     const showAutoAssign = useSelector(isAutoAssignParticipantsVisible);
     const { hideJoinRoomButton } = useSelector(getBreakoutRoomsConfig);
-    const overflowDrawer = useSelector(showOverflowDrawer);
     const [ lowerMenu, raiseMenu, toggleMenu, menuEnter, menuLeave, raiseContext ] = useContextMenu<IRoom>();
     const [ lowerParticipantMenu, raiseParticipantMenu, toggleParticipantMenu,
         participantMenuEnter, participantMenuLeave, raiseParticipantContext ] = useContextMenu<{
@@ -58,8 +56,14 @@ export const RoomList = ({ searchString }: IProps) => {
             participantName: string;
             room: IRoom;
         }>();
-    const hideMenu = useCallback(() => !overflowDrawer && lowerMenu(), [ overflowDrawer, lowerMenu ]);
     const onRaiseMenu = useCallback(room => (target: HTMLElement) => raiseMenu(room, target), [ raiseMenu ]);
+
+    // close the menu when the room vanishes
+    useEffect(() => {
+        if (raiseContext.entity && !rooms.some(r => r.id === raiseContext.entity?.id)) {
+            lowerMenu();
+        }
+    }, [ raiseContext, rooms, lowerMenu ]);
 
     return (
         <>
@@ -72,7 +76,6 @@ export const RoomList = ({ searchString }: IProps) => {
                     <React.Fragment key = { room.id }>
                         <CollapsibleRoom
                             isHighlighted = { raiseContext.entity === room }
-                            onLeave = { hideMenu }
                             onRaiseMenu = { onRaiseMenu(room) }
                             participantContextEntity = { raiseParticipantContext.entity }
                             raiseParticipantContextMenu = { raiseParticipantMenu }
