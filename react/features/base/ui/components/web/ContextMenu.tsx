@@ -217,8 +217,6 @@ const ContextMenu = ({
                 : `${offsetTop}`;
 
             setIsHidden(false);
-        } else {
-            // hidden === undefined && setIsHidden(true);
         }
     }, [entity, offsetTarget, _overflowDrawer]);
 
@@ -340,16 +338,10 @@ const ContextMenu = ({
         }
     }, []);
 
-    const handleOnMouseLeave = useCallback(() => {
-        onMouseLeave && onMouseLeave();
+    const removeFocus = useCallback(() => {
         setIsHidden(true);
     }, [onMouseLeave]);
 
-
-    /*  const handleOnClick = useCallback(() => {
-          onClick && onClick();
-      }, [onClick]);
-   */
 
     if (_overflowDrawer && inDrawer) {
         return (<div
@@ -372,7 +364,9 @@ const ContextMenu = ({
             </Drawer>
         </JitsiPortal>
         : <FocusOn
-            autoFocus={!isHidden ? true : false}
+            autoFocus={true}
+            onClickOutside={removeFocus}
+            onEscapeKey={removeFocus}
 
             // Use the `enabled` prop instead of conditionally rendering ReactFocusOn
             // to prevent UI stutter on dialog appearance. It seems the focus guards generated annoy
@@ -389,7 +383,7 @@ const ContextMenu = ({
                 onClick={onClick}
                 onKeyDown={handleKeyDown}
                 onMouseEnter={onMouseEnter}
-                onMouseLeave={handleOnMouseLeave}
+                onMouseLeave={onMouseLeave}
                 ref={containerRef}
                 role={role}
                 tabIndex={tabIndex}>
