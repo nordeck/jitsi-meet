@@ -135,7 +135,7 @@ export const CollapsibleRoom = ({
     const moderator = useSelector(isLocalParticipantModerator);
 
     const arrow = (<button
-        aria-label = { collapsed ? t('breakoutRooms.showParticipantList', 'Show participant list')
+        aria-label = { !collapsed ? t('breakoutRooms.showParticipantList', 'Show participant list')
             : t('breakoutRooms.hideParticipantList', 'Hide participant list') }
         className = { styles.arrowContainer }>
         <Icon
