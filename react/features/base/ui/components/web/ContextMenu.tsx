@@ -198,7 +198,8 @@ const ContextMenu = ({
             const { current: container } = containerRef;
 
             // make sure the max height is not set
-            container.style.maxHeight = 'none';
+            container.style.maxHeight
+                = 'none';
             const { offsetTop, offsetParent: { offsetHeight, scrollTop } } = offsetTarget;
             let outerHeight = getComputedOuterHeight(container);
             let height = Math.min(MAX_HEIGHT, outerHeight);
