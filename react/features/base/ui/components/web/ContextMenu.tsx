@@ -1,4 +1,5 @@
-import React, { KeyboardEvent, MouseEvent, ReactNode, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { KeyboardEvent, ReactNode,
+    useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { FocusOn } from 'react-focus-on';
 import { useSelector } from 'react-redux';
 import { makeStyles } from 'tss-react/mui';
@@ -367,13 +368,13 @@ const ContextMenu = ({
             </Drawer>
         </JitsiPortal>
         : <FocusOn
-            enabled={!isHidden}
-            onEscapeKey={removeFocus}
 
             // Use the `enabled` prop instead of conditionally rendering ReactFocusOn
             // to prevent UI stutter on dialog appearance. It seems the focus guards generated annoy
             // our DialogPortal positioning calculations.
-            onClickOutside={removeFocus}>
+            enabled = { !isHidden }
+            onClickOutside = { removeFocus }
+            onEscapeKey = { removeFocus }>
             <div
                 { ...aria }
                 aria-label = { accessibilityLabel }
