@@ -65,16 +65,16 @@
             "remove": "Remove",
             "sendToBreakoutRoom": "Send participant to:"
         },
-        "breakoutList":"breakout list",
+        "breakoutList": "breakout list",
         "defaultName": "Breakout room #{{index}}",
-        "hideParticipantList":"Hide participant list",
+        "hideParticipantList": "Hide participant list",
         "mainRoom": "Main room",
         "notifications": {
             "joined": "Joining the \"{{name}}\" breakout room",
             "joinedMainRoom": "Joining the main room",
             "joinedTitle": "Breakout Rooms"
         },
-        "showParticipantList":"Show participant list"
+        "showParticipantList": "Show participant list"
     },
     "calendarSync": {
         "addMeetingURL": "Add a meeting link",
