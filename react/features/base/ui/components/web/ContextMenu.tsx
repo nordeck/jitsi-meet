@@ -276,8 +276,14 @@ const ContextMenu = ({
                 list: Element | null,
                 item: Element | null
         ): Element | null => {
+            /**
+            * To find the last child.
+            * @param {Element | null} element
+            * @returns {Element | null}
+            */
             function lastChild(element: Element | null): Element | null {
                 while (element?.lastElementChild) {
+                    /* eslint-disable no-param-reassign */
                     element = element.lastElementChild;
                 }
 
@@ -318,6 +324,7 @@ const ContextMenu = ({
                 return item.nextElementSibling;
             }
             while (item && item.parentElement !== list) {
+                /* eslint-disable no-param-reassign */
                 item = item.parentElement;
                 if (item && item.nextElementSibling) {
                     return item.nextElementSibling;
