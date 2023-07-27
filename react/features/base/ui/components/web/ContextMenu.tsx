@@ -231,8 +231,8 @@ const ContextMenu = ({
     }, [ hidden ]);
 
     const handleKeyDown = useCallback((event: KeyboardEvent) => {
-        const { current: list } = containerRef;
-        const currentFocus = document.activeElement;
+        const { current: listRef } = containerRef;
+        const currentFocusElement = document.activeElement;
 
         const moveFocus = (
                 list: Element | null,
@@ -245,7 +245,7 @@ const ContextMenu = ({
             let wrappedOnce = false;
             let nextFocus = traversalFunction(list, currentFocus);
 
-            while (list && nextFocus) {
+            while (list && nextFocus) { // eslint-disable-next-line no-extra-parens
                 // Prevent infinite loop.
                 if (nextFocus === list.firstChild) {
                     if (wrappedOnce) {
@@ -256,6 +256,7 @@ const ContextMenu = ({
 
                 // Same logic as useAutocomplete.js
                 const nextFocusDisabled
+                    /* eslint-disable no-extra-parens */
                     = (nextFocus as HTMLInputElement).disabled
                     || nextFocus.getAttribute('aria-disabled') === 'true';
 
@@ -263,6 +264,7 @@ const ContextMenu = ({
                     // Move to the next element.
                     nextFocus = traversalFunction(list, nextFocus);
                 } else {
+                    /* eslint-disable no-extra-parens */
                     (nextFocus as HTMLElement).focus();
 
                     return;
@@ -333,12 +335,12 @@ const ContextMenu = ({
         } else if (event.key === 'ArrowUp') {
             // Move focus to the previous menu item
             event.preventDefault();
-            moveFocus(list, currentFocus, previousItem);
+            moveFocus(listRef, currentFocusElement, previousItem);
 
         } else if (event.key === 'ArrowDown') {
             // Move focus to the next menu item
             event.preventDefault();
-            moveFocus(list, currentFocus, nextItem);
+            moveFocus(listRef, currentFocusElement, nextItem);
         }
     }, []);
 
@@ -384,7 +386,7 @@ const ContextMenu = ({
                 ) }
                 id = { id }
                 onClick = { onClick }
-                onKeyDown = { handleKeyDown }
+                onKeyDown = { onKeyDown ?? handleKeyDown }
                 onMouseEnter = { onMouseEnter }
                 onMouseLeave = { onMouseLeave }
                 ref = { containerRef }
