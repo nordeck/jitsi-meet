@@ -181,7 +181,7 @@ const ContextMenu = ({
     tabIndex,
     ...aria
 }: IProps) => {
-    const [isHidden, setIsHidden] = useState(true);
+    const [ isHidden, setIsHidden ] = useState(true);
     const containerRef = useRef<HTMLDivElement | null>(null);
     const { classes: styles, cx } = useStyles();
     const _overflowDrawer = useSelector(showOverflowDrawer);
@@ -221,22 +221,22 @@ const ContextMenu = ({
         } else {
             hidden === undefined && setIsHidden(true);
         }
-    }, [entity, offsetTarget, _overflowDrawer]);
+    }, [ entity, offsetTarget, _overflowDrawer ]);
 
     useEffect(() => {
         if (hidden !== undefined) {
             setIsHidden(hidden);
         }
-    }, [hidden]);
+    }, [ hidden ]);
 
     const handleKeyDown = useCallback((event: KeyboardEvent) => {
         const { current: list } = containerRef;
         const currentFocus = document.activeElement;
 
         const moveFocus = (
-            list: Element | null,
-            currentFocus: Element | null,
-            traversalFunction: (
+                list: Element | null,
+                currentFocus: Element | null,
+                traversalFunction: (
                 list: Element | null,
                 currentFocus: Element | null
             ) => Element | null
@@ -270,8 +270,8 @@ const ContextMenu = ({
         };
 
         const previousItem = (
-            list: Element | null,
-            item: Element | null
+                list: Element | null,
+                item: Element | null
         ): Element | null => {
             function lastChild(element: Element | null): Element | null {
                 while (element?.lastElementChild) {
@@ -298,8 +298,8 @@ const ContextMenu = ({
         };
 
         const nextItem = (
-            list: Element | null,
-            item: Element | null
+                list: Element | null,
+                item: Element | null
         ): Element | null => {
             if (!list) {
                 return null;
@@ -343,13 +343,13 @@ const ContextMenu = ({
 
     const removeFocus = useCallback(() => {
         onDrawerClose && onDrawerClose();
-    }, [onMouseLeave]);
+    }, [ onMouseLeave ]);
 
 
     if (_overflowDrawer && inDrawer) {
         return (<div
-            className={styles.drawer}
-            onClick={onDrawerClose}>
+            className = { styles.drawer }
+            onClick = { onDrawerClose }>
             {children}
         </div>);
     }
@@ -357,11 +357,11 @@ const ContextMenu = ({
     return _overflowDrawer
         ? <JitsiPortal>
             <Drawer
-                isOpen={Boolean(isDrawerOpen && _overflowDrawer)}
-                onClose={onDrawerClose}>
+                isOpen = { Boolean(isDrawerOpen && _overflowDrawer) }
+                onClose = { onDrawerClose }>
                 <div
-                    className={styles.drawer}
-                    onClick={onDrawerClose}>
+                    className = { styles.drawer }
+                    onClick = { onDrawerClose }>
                     {children}
                 </div>
             </Drawer>
@@ -375,20 +375,20 @@ const ContextMenu = ({
             // our DialogPortal positioning calculations.
             onClickOutside={removeFocus}>
             <div
-                {...aria}
-                aria-label={accessibilityLabel}
-                className={cx(styles.contextMenu,
+                { ...aria }
+                aria-label = { accessibilityLabel }
+                className = { cx(styles.contextMenu,
                     isHidden && styles.contextMenuHidden,
                     className
-                )}
-                id={id}
-                onClick={onClick}
-                onKeyDown={handleKeyDown}
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
-                ref={containerRef}
-                role={role}
-                tabIndex={tabIndex}>
+                ) }
+                id = { id }
+                onClick = { onClick }
+                onKeyDown = { handleKeyDown }
+                onMouseEnter = { onMouseEnter }
+                onMouseLeave = { onMouseLeave }
+                ref = { containerRef }
+                role = { role }
+                tabIndex = { tabIndex }>
                 {children}
             </div>
         </FocusOn >;
