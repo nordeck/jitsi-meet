@@ -217,6 +217,8 @@ const ContextMenu = ({
                 : `${offsetTop}`;
 
             setIsHidden(false);
+        } else {
+            hidden === undefined && setIsHidden(true);
         }
     }, [entity, offsetTarget, _overflowDrawer]);
 
@@ -339,7 +341,7 @@ const ContextMenu = ({
     }, []);
 
     const removeFocus = useCallback(() => {
-        setIsHidden(true);
+        onDrawerClose && onDrawerClose();
     }, [onMouseLeave]);
 
 
@@ -364,14 +366,13 @@ const ContextMenu = ({
             </Drawer>
         </JitsiPortal>
         : <FocusOn
-            autoFocus={true}
-            onClickOutside={removeFocus}
+            enabled={!isHidden}
             onEscapeKey={removeFocus}
 
             // Use the `enabled` prop instead of conditionally rendering ReactFocusOn
             // to prevent UI stutter on dialog appearance. It seems the focus guards generated annoy
             // our DialogPortal positioning calculations.
-            enabled={!isHidden}>
+            onClickOutside={removeFocus}>
             <div
                 {...aria}
                 aria-label={accessibilityLabel}

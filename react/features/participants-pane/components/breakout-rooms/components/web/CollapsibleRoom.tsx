@@ -123,27 +123,28 @@ export const CollapsibleRoom = ({
 }: IProps) => {
     const { t } = useTranslation();
     const { classes: styles, cx } = useStyles();
-    const [ collapsed, setCollapsed ] = useState(false);
+    const [collapsed, setCollapsed] = useState(false);
     const toggleCollapsed = useCallback(() => {
         setCollapsed(!collapsed);
-    }, [ collapsed ]);
+    }, [collapsed]);
     const raiseMenu = useCallback(target => {
         onRaiseMenu(target);
-    }, [ onRaiseMenu ]);
+    }, [onRaiseMenu]);
     const { defaultRemoteDisplayName } = useSelector((state: IReduxState) => state['features/base/config']);
     const overflowDrawer: boolean = useSelector(showOverflowDrawer);
     const moderator = useSelector(isLocalParticipantModerator);
 
     const arrow = (<button
-        aria-label = { !collapsed ? t('breakoutRooms.showParticipantList', 'Show participant list')
-            : t('breakoutRooms.hideParticipantList', 'Hide participant list') }
-        className = { styles.arrowContainer }>
+        aria-label={collapsed ? t('breakoutRooms.hideParticipantList', 'Hide participant list')
+            : t('breakoutRooms.showParticipantList', 'Show participant list')
+        }
+        className={styles.arrowContainer}>
         <Icon
-            size = { 14 }
-            src = { collapsed ? IconArrowDown : IconArrowUp } />
+            size={14}
+            src={collapsed ? IconArrowDown : IconArrowUp} />
     </button>);
 
-    const roomName = (<span className = { styles.roomName }>
+    const roomName = (<span className={styles.roomName}>
         {`${room.name || t('breakoutRooms.mainRoom')} (${Object.keys(room?.participants
             || {}).length})`}
     </span>);
@@ -153,42 +154,42 @@ export const CollapsibleRoom = ({
             room,
             jid: participantID,
             participantName: displayName
-        }), [ room, moderator ]);
+        }), [room, moderator]);
 
     return (<>
         <ListItem
-            actions = { children }
-            className = { cx(styles.container, 'breakout-room-container') }
-            defaultName = { `${room.name || t('breakoutRooms.mainRoom')} (${Object.keys(room?.participants
-                || {}).length})` }
-            icon = { arrow }
-            isHighlighted = { isHighlighted }
-            onClick = { toggleCollapsed }
-            onLongPress = { raiseMenu }
-            onMouseLeave = { onLeave }
-            testId = { room.id }
-            textChildren = { roomName }
-            trigger = { actionsTrigger } />
+            actions={children}
+            className={cx(styles.container, 'breakout-room-container')}
+            defaultName={`${room.name || t('breakoutRooms.mainRoom')} (${Object.keys(room?.participants
+                || {}).length})`}
+            icon={arrow}
+            isHighlighted={isHighlighted}
+            onClick={toggleCollapsed}
+            onLongPress={raiseMenu}
+            onMouseLeave={onLeave}
+            testId={room.id}
+            textChildren={roomName}
+            trigger={actionsTrigger} />
         {!collapsed && room?.participants
             && Object.values(room?.participants || {}).map(p =>
                 participantMatchesSearch(p, searchString) && (
                     <ParticipantItem
-                        actionsTrigger = { ACTION_TRIGGER.HOVER }
-                        displayName = { p.displayName || defaultRemoteDisplayName }
-                        isHighlighted = { participantContextEntity?.jid === p.jid }
-                        key = { p.jid }
-                        local = { false }
-                        openDrawerForParticipant = { raiseParticipantMenu }
-                        overflowDrawer = { overflowDrawer }
-                        participantID = { p.jid }>
+                        actionsTrigger={ACTION_TRIGGER.HOVER}
+                        displayName={p.displayName || defaultRemoteDisplayName}
+                        isHighlighted={participantContextEntity?.jid === p.jid}
+                        key={p.jid}
+                        local={false}
+                        openDrawerForParticipant={raiseParticipantMenu}
+                        overflowDrawer={overflowDrawer}
+                        participantID={p.jid}>
                         {!overflowDrawer && moderator && (
                             <ParticipantActionEllipsis
-                                accessibilityLabel = { t('breakoutRoom.more') }
-                                onClick = { toggleParticipantMenu({
+                                accessibilityLabel={t('breakoutRoom.more')}
+                                onClick={toggleParticipantMenu({
                                     room,
                                     jid: p.jid,
                                     participantName: p.displayName
-                                }) } />
+                                })} />
                         )}
                     </ParticipantItem>
                 ))

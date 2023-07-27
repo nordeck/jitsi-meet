@@ -116,7 +116,15 @@ const useStyles = makeStyles()(theme => {
         },
 
         highlighted: {
-            backgroundColor: theme.palette.ui02
+            backgroundColor: theme.palette.ui02,
+
+            '& .actions': {
+                display: 'flex',
+                position: 'relative',
+                top: 'auto',
+                boxShadow: `-15px 0px 10px -5px ${theme.palette.ui02}`,
+                backgroundColor: theme.palette.ui02
+            }
         },
 
         detailsContainer: {

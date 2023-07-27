@@ -24,7 +24,7 @@ const useContextMenu = <T>(): [(force?: boolean | Object) => void,
     () => void,
     () => void,
     RaiseContext<T>] => {
-    const [ raiseContext, setRaiseContext ] = useState < RaiseContext<T> >(initialState);
+    const [ raiseContext, setRaiseContext ] = useState<RaiseContext<T>>(initialState);
     const isMouseOverMenu = useRef(false);
 
     const lowerMenu = useCallback((force: boolean | Object = false) => {
@@ -69,7 +69,6 @@ const useContextMenu = <T>(): [(force?: boolean | Object) => void,
 
     const menuLeave = useCallback(() => {
         isMouseOverMenu.current = false;
-        lowerMenu();
     }, [ lowerMenu ]);
 
     return [ lowerMenu, raiseMenu, toggleMenu, menuEnter, menuLeave, raiseContext ];
