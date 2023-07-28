@@ -278,7 +278,7 @@ const ContextMenu = ({
                 item: Element | null
         ): Element | null => {
             /**
-            * To find the last child.
+            * To find the last child of the list.
             *
             * @param {Element | null} element - Element.
             * @returns {Element | null}
@@ -337,7 +337,7 @@ const ContextMenu = ({
         };
 
         if (event.key === 'Escape') {
-            // Close the menu or
+            // Close the menu
             event.preventDefault();
             setIsHidden(true);
 
