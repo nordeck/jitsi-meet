@@ -1447,6 +1447,8 @@ var config = {
      peopleSearchUrl
      requireDisplayName
      tokenAuthUrl
+     tokenAuthUrlAutoRedirect
+     tokenLogoutUrl
      */
 
     /**

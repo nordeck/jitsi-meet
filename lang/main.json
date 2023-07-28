@@ -63,6 +63,8 @@
             "leaveBreakoutRoom": "Leave breakout room",
             "more": "More",
             "remove": "Remove",
+            "rename": "Rename",
+            "renameBreakoutRoom": "Rename breakout room",
             "sendToBreakoutRoom": "Send participant to:"
         },
         "breakoutList": "breakout list",
@@ -389,6 +391,8 @@
         "removePassword": "Remove $t(lockRoomPassword)",
         "removeSharedVideoMsg": "Are you sure you would like to remove your shared video?",
         "removeSharedVideoTitle": "Remove shared video",
+        "renameBreakoutRoomLabel": "Room name",
+        "renameBreakoutRoomTitle": "Rename breakout room",
         "reservationError": "Reservation system error",
         "reservationErrorMsg": "Error code: {{code}}, message: {{msg}}",
         "retry": "Retry",
