@@ -245,7 +245,8 @@ const ContextMenu = ({
             let wrappedOnce = false;
             let nextFocus = traversalFunction(list, currentFocus);
 
-            while (list && nextFocus) { // eslint-disable-next-line no-extra-parens
+            /* eslint-disable no-unmodified-loop-condition */
+            while (list && nextFocus) {
                 // Prevent infinite loop.
                 if (nextFocus === list.firstChild) {
                     if (wrappedOnce) {
@@ -278,7 +279,8 @@ const ContextMenu = ({
         ): Element | null => {
             /**
             * To find the last child.
-            * @param {Element | null} element
+            *
+            * @param {Element | null} element - Element.
             * @returns {Element | null}
             */
             function lastChild(element: Element | null): Element | null {
@@ -296,10 +298,10 @@ const ContextMenu = ({
             if (list === item) {
                 return list.lastElementChild;
             }
-            if (item && item.previousElementSibling) {
+            if (item?.previousElementSibling) {
                 return lastChild(item.previousElementSibling);
             }
-            if (item && item.parentElement !== list) {
+            if (item && item?.parentElement !== list) {
                 return item.parentElement;
             }
 
@@ -317,16 +319,16 @@ const ContextMenu = ({
             if (list === item) {
                 return list.firstElementChild;
             }
-            if (item && item.firstElementChild) {
+            if (item?.firstElementChild) {
                 return item.firstElementChild;
             }
-            if (item && item.nextElementSibling) {
+            if (item?.nextElementSibling) {
                 return item.nextElementSibling;
             }
             while (item && item.parentElement !== list) {
                 /* eslint-disable no-param-reassign */
                 item = item.parentElement;
-                if (item && item.nextElementSibling) {
+                if (item?.nextElementSibling) {
                     return item.nextElementSibling;
                 }
             }
@@ -349,10 +351,10 @@ const ContextMenu = ({
             event.preventDefault();
             moveFocus(listRef, currentFocusElement, nextItem);
         }
-    }, []);
+    }, [ containerRef ]);
 
     const removeFocus = useCallback(() => {
-        onDrawerClose && onDrawerClose();
+        onDrawerClose?.();
     }, [ onMouseLeave ]);
 
 
