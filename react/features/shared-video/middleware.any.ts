@@ -12,9 +12,12 @@ import { getLocalParticipant, getParticipantById, getParticipantDisplayName } fr
 import { FakeParticipant } from '../base/participants/types';
 import MiddlewareRegistry from '../base/redux/MiddlewareRegistry';
 import { SET_DYNAMIC_BRANDING_DATA } from '../dynamic-branding/actionTypes';
+import { showWarningNotification } from '../notifications/actions';
+import { NOTIFICATION_TIMEOUT_TYPE } from '../notifications/constants';
 
 import { RESET_SHARED_VIDEO_STATUS, SET_SHARED_VIDEO_STATUS } from './actionTypes';
 import {
+    hideConfirmPlayingDialog,
     resetSharedVideoStatus,
     setAllowedUrlDomians,
     setSharedVideoStatus,
@@ -27,7 +30,7 @@ import {
     SHARED_VIDEO,
     VIDEO_PLAYER_PARTICIPANT_NAME
 } from './constants';
-import { isSharedVideoEnabled, isSharingStatus, isURLAllowedForSharedVideo } from './functions';
+import { isSharedVideoEnabled, isSharingStatus, isURLAllowedForSharedVideo, sendShareVideoCommand } from './functions';
 import logger from './logger';
 
 
@@ -65,7 +68,7 @@ MiddlewareRegistry.register(store => next => action => {
                         return;
                     }
 
-                    if (isURLAllowedForSharedVideo(value)
+                    if (isURLAllowedForSharedVideo(value, getState()['features/shared-video'].allowedUrlDomains, true)
                         || localParticipantId === from
                         || getState()['features/shared-video'].confirmShowVideo) { // if confirmed skip asking again
                         handleSharingVideoStatus(store, value, attributes, conference);
@@ -83,6 +86,17 @@ MiddlewareRegistry.register(store => next => action => {
 
                 if (sharedVideoStatus === 'stop') {
                     const videoParticipant = getParticipantById(state, value);
+
+                    if (getState()['features/shared-video'].confirmShowVideo === false) {
+                        dispatch(showWarningNotification({
+                            titleKey: 'dialog.shareVideoLinkStopped',
+                            titleArguments: {
+                                name: getParticipantDisplayName(getState(), from)
+                            }
+                        }, NOTIFICATION_TIMEOUT_TYPE.LONG));
+                    }
+
+                    dispatch(hideConfirmPlayingDialog());
 
                     dispatch(participantLeft(value, conference, {
                         fakeParticipant: videoParticipant?.fakeParticipant
@@ -139,6 +153,14 @@ MiddlewareRegistry.register(store => next => action => {
 
         if (typeof APP !== 'undefined') {
             APP.API.notifyAudioOrVideoSharingToggled(MEDIA_TYPE.VIDEO, status, ownerId);
+        }
+
+        // when setting status we need to send the command for that, but not do it for the start command
+        // as we are sending the command in playSharedVideo and setting the start status once
+        // we receive the response, this way we will start the video at the same time when remote participants
+        // start it, on receiving the command
+        if (status === 'start') {
+            break;
         }
 
         if (localParticipantId === ownerId) {
@@ -210,12 +232,15 @@ function handleSharingVideoStatus(store: IStore, videoUrl: string,
 
     if (oldVideoUrl && oldVideoUrl !== videoUrl) {
         logger.warn(
-            `User with id: ${localParticipantId} sent videoUrl: ${videoUrl} while we are playing: ${oldVideoUrl}`);
+            `User with id: ${from} sent videoUrl: ${videoUrl} while we are playing: ${oldVideoUrl}`);
 
         return;
     }
 
-    if (state === PLAYBACK_START && !isSharingStatus(oldStatus)) {
+    // If the video was not started (no participant) we want to create the participant
+    // this can be triggered by start, but also by paused or playing
+    // commands (joining late) and getting the current state
+    if (state === PLAYBACK_START || !isSharingStatus(oldStatus)) {
         const youtubeId = videoUrl.match(/http/) ? false : videoUrl;
         const avatarURL = youtubeId ? `https://img.youtube.com/vi/${youtubeId}/0.jpg` : '';
 
@@ -228,6 +253,15 @@ function handleSharingVideoStatus(store: IStore, videoUrl: string,
         }));
 
         dispatch(pinParticipant(videoUrl));
+
+        if (localParticipantId === from) {
+            dispatch(setSharedVideoStatus({
+                videoUrl,
+                status: state,
+                time: Number(time),
+                ownerId: localParticipantId
+            }));
+        }
     }
 
     if (localParticipantId !== from) {
@@ -239,32 +273,4 @@ function handleSharingVideoStatus(store: IStore, videoUrl: string,
             videoUrl
         }));
     }
-}
-
-/* eslint-disable max-params */
-
-/**
- * Sends SHARED_VIDEO command.
- *
- * @param {string} id - The id of the video.
- * @param {string} status - The status of the shared video.
- * @param {JitsiConference} conference - The current conference.
- * @param {string} localParticipantId - The id of the local participant.
- * @param {string} time - The seek position of the video.
- * @returns {void}
- */
-function sendShareVideoCommand({ id, status, conference, localParticipantId = '', time, muted, volume }: {
-    conference?: IJitsiConference; id: string; localParticipantId?: string; muted: boolean;
-    status: string; time: number; volume: number;
-}) {
-    conference?.sendCommandOnce(SHARED_VIDEO, {
-        value: id,
-        attributes: {
-            from: localParticipantId,
-            muted,
-            state: status,
-            time,
-            volume
-        }
-    });
 }
